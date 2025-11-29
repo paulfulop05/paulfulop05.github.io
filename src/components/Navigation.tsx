@@ -4,8 +4,9 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="text-foreground hover:text-primary transition-colors">
+        <Link to="/" className="text-foreground hover:text-primary transition-colors flex items-center">
           <span className="text-lg">~/</span>
+          <span className="inline-block w-2 h-5 bg-foreground ml-0.5 animate-cursor-blink"></span>
         </Link>
         
         <div className="flex items-center gap-8">

@@ -28,10 +28,26 @@ const Projects = () => {
       repo: "yourusername"
     },
     {
-      title: "DevOps Pipeline",
-      description: "Automated CI/CD pipeline with zero-downtime deployments, automatic rollbacks, and comprehensive monitoring. Supports multiple cloud providers and container orchestration.",
-      tags: ["kubernetes", "docker", "terraform", "aws"],
-      stars: 567,
+      title: "API Shield",
+      description: "Rate limiting and DDoS protection middleware for APIs with intelligent threat detection, automatic blocking, and detailed analytics dashboard.",
+      tags: ["golang", "security", "rate-limiting", "middleware"],
+      stars: 445,
+      link: "https://github.com",
+      repo: "yourusername"
+    },
+    {
+      title: "LogStream",
+      description: "Real-time log aggregation and analysis platform with powerful search, custom dashboards, and alerting. Handles millions of events per second.",
+      tags: ["go", "elasticsearch", "kafka", "monitoring"],
+      stars: 1234,
+      link: "https://github.com",
+      repo: "yourusername"
+    },
+    {
+      title: "Container Registry",
+      description: "Self-hosted Docker registry with garbage collection, image scanning, and webhook notifications. Enterprise-ready with RBAC and audit logs.",
+      tags: ["go", "docker", "security", "kubernetes"],
+      stars: 891,
       link: "https://github.com",
       repo: "yourusername"
     }

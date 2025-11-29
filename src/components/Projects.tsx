@@ -4,32 +4,36 @@ import { ArrowRight } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
-      title: "TaskMaster Pro",
-      description: "A comprehensive task management application with team collaboration features, real-time updates, and advanced analytics.",
-      tags: ["react", "typescript", "firebase", "tailwind"],
-      stars: 342,
-      link: "https://github.com"
+      title: "Anubis",
+      description: "Weighs the soul of incoming HTTP requests using proof-of-work to stop AI crawlers and other malicious bots. Built with Golang and advanced security algorithms.",
+      tags: ["golang", "security", "anti-bot", "proof-of-work"],
+      stars: 1473,
+      link: "https://github.com",
+      repo: "TechnoROG"
     },
     {
-      title: "CodeShare",
-      description: "Real-time code collaboration platform with syntax highlighting, multiple language support, and live cursor tracking.",
-      tags: ["react", "websocket", "node.js", "monaco-editor"],
-      stars: 189,
-      link: "https://github.com"
-    },
-    {
-      title: "API Gateway",
-      description: "Lightweight API gateway with rate limiting, authentication, caching, and request transformation capabilities.",
-      tags: ["go", "redis", "docker", "kubernetes"],
-      stars: 567,
-      link: "https://github.com"
-    },
-    {
-      title: "Design System",
-      description: "Comprehensive React component library with accessibility features, theming support, and detailed documentation.",
-      tags: ["react", "storybook", "typescript", "css"],
+      title: "Abacus",
+      description: "A highly-scalable and stateless counting API. Simple at its core, designed from the ground up to be scalable, secure and easy to use. Built using Golang, Gin, Docker, and Redis.",
+      tags: ["golang", "api", "redis", "docker"],
       stars: 234,
-      link: "https://github.com"
+      link: "https://github.com",
+      repo: "yourusername"
+    },
+    {
+      title: "RealTime Chat",
+      description: "Production-ready WebSocket chat application with rooms, typing indicators, and message persistence. Features end-to-end encryption and rich media support.",
+      tags: ["react", "websocket", "node.js", "mongodb"],
+      stars: 892,
+      link: "https://github.com",
+      repo: "yourusername"
+    },
+    {
+      title: "DevOps Pipeline",
+      description: "Automated CI/CD pipeline with zero-downtime deployments, automatic rollbacks, and comprehensive monitoring. Supports multiple cloud providers and container orchestration.",
+      tags: ["kubernetes", "docker", "terraform", "aws"],
+      stars: 567,
+      link: "https://github.com",
+      repo: "yourusername"
     }
   ];
 

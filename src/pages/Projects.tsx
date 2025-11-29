@@ -4,88 +4,100 @@ import ProjectCard from "@/components/ProjectCard";
 const Projects = () => {
   const allProjects = [
     {
-      title: "TaskMaster Pro",
-      description: "A comprehensive task management application with team collaboration features, real-time updates, and advanced analytics.",
-      tags: ["react", "typescript", "firebase", "tailwind"],
-      stars: 342,
-      link: "https://github.com"
+      title: "Anubis",
+      description: "Weighs the soul of incoming HTTP requests using proof-of-work to stop AI crawlers and other malicious bots. Built with Golang and advanced security algorithms.",
+      tags: ["golang", "security", "anti-bot", "proof-of-work"],
+      stars: 1473,
+      link: "https://github.com",
+      repo: "TechnoROG"
     },
     {
-      title: "CodeShare",
-      description: "Real-time code collaboration platform with syntax highlighting, multiple language support, and live cursor tracking.",
-      tags: ["react", "websocket", "node.js", "monaco-editor"],
-      stars: 189,
-      link: "https://github.com"
-    },
-    {
-      title: "API Gateway",
-      description: "Lightweight API gateway with rate limiting, authentication, caching, and request transformation capabilities.",
-      tags: ["go", "redis", "docker", "kubernetes"],
-      stars: 567,
-      link: "https://github.com"
-    },
-    {
-      title: "Design System",
-      description: "Comprehensive React component library with accessibility features, theming support, and detailed documentation.",
-      tags: ["react", "storybook", "typescript", "css"],
+      title: "Abacus",
+      description: "A highly-scalable and stateless counting API. Simple at its core, designed from the ground up to be scalable, secure and easy to use. Built using Golang, Gin, Docker, and Redis.",
+      tags: ["golang", "api", "redis", "docker"],
       stars: 234,
-      link: "https://github.com"
+      link: "https://github.com",
+      repo: "yourusername"
     },
     {
-      title: "CloudDeploy",
-      description: "Automated deployment tool for containerized applications with zero-downtime deployments and rollback support.",
-      tags: ["python", "docker", "kubernetes", "aws"],
+      title: "RealTime Chat",
+      description: "Production-ready WebSocket chat application with rooms, typing indicators, and message persistence. Features end-to-end encryption and rich media support.",
+      tags: ["react", "websocket", "node.js", "mongodb"],
+      stars: 892,
+      link: "https://github.com",
+      repo: "yourusername"
+    },
+    {
+      title: "API Shield",
+      description: "Rate limiting and DDoS protection middleware for APIs with intelligent threat detection, automatic blocking, and detailed analytics dashboard.",
+      tags: ["golang", "security", "rate-limiting", "middleware"],
       stars: 445,
-      link: "https://github.com"
+      link: "https://github.com",
+      repo: "yourusername"
     },
     {
-      title: "DataViz Studio",
-      description: "Interactive data visualization library with customizable charts, real-time updates, and export capabilities.",
-      tags: ["javascript", "d3.js", "canvas", "webgl"],
-      stars: 298,
-      link: "https://github.com"
+      title: "CloudSync",
+      description: "Cross-platform file synchronization service with conflict resolution, version history, and selective sync. Built for teams with enterprise-grade security.",
+      tags: ["rust", "encryption", "distributed", "aws"],
+      stars: 678,
+      link: "https://github.com",
+      repo: "yourusername"
     },
     {
-      title: "SecureVault",
-      description: "End-to-end encrypted password manager with cross-platform sync and biometric authentication support.",
-      tags: ["react-native", "encryption", "sqlite", "biometrics"],
-      stars: 156,
-      link: "https://github.com"
+      title: "LogStream",
+      description: "Real-time log aggregation and analysis platform with powerful search, custom dashboards, and alerting. Handles millions of events per second.",
+      tags: ["go", "elasticsearch", "kafka", "monitoring"],
+      stars: 1234,
+      link: "https://github.com",
+      repo: "yourusername"
     },
     {
-      title: "MLOps Pipeline",
-      description: "Complete machine learning operations pipeline with model versioning, A/B testing, and monitoring dashboard.",
-      tags: ["python", "tensorflow", "docker", "grafana"],
+      title: "AuthKit",
+      description: "Complete authentication solution with OAuth2, JWT, MFA, and social login support. Drop-in replacement for auth services with zero configuration.",
+      tags: ["node.js", "typescript", "postgres", "redis"],
+      stars: 567,
+      link: "https://github.com",
+      repo: "yourusername"
+    },
+    {
+      title: "GraphQL Gateway",
+      description: "High-performance GraphQL API gateway with schema stitching, caching, and automatic documentation. Scales to millions of requests per day.",
+      tags: ["graphql", "apollo", "caching", "microservices"],
+      stars: 789,
+      link: "https://github.com",
+      repo: "yourusername"
+    },
+    {
+      title: "TaskQueue Pro",
+      description: "Distributed task queue with retry logic, priority scheduling, and dead letter handling. Perfect for background job processing at scale.",
+      tags: ["python", "redis", "celery", "rabbitmq"],
       stars: 423,
-      link: "https://github.com"
+      link: "https://github.com",
+      repo: "yourusername"
     },
     {
-      title: "E-Commerce Engine",
-      description: "Headless e-commerce platform with payment processing, inventory management, and multi-vendor support.",
-      tags: ["node.js", "postgres", "stripe", "graphql"],
-      stars: 612,
-      link: "https://github.com"
+      title: "Container Registry",
+      description: "Self-hosted Docker registry with garbage collection, image scanning, and webhook notifications. Enterprise-ready with RBAC and audit logs.",
+      tags: ["go", "docker", "security", "kubernetes"],
+      stars: 891,
+      link: "https://github.com",
+      repo: "yourusername"
     },
     {
-      title: "DevTools CLI",
-      description: "Command-line toolset for developers with project scaffolding, code generation, and workflow automation.",
-      tags: ["rust", "cli", "automation", "templates"],
-      stars: 278,
-      link: "https://github.com"
+      title: "Metrics Collector",
+      description: "Lightweight metrics collection agent for infrastructure monitoring. Supports Prometheus, InfluxDB, and custom exporters with minimal overhead.",
+      tags: ["go", "monitoring", "prometheus", "grafana"],
+      stars: 356,
+      link: "https://github.com",
+      repo: "yourusername"
     },
     {
-      title: "ChatBot Framework",
-      description: "Extensible chatbot framework with NLP capabilities, multi-channel support, and conversation flow builder.",
-      tags: ["python", "nlp", "api", "webhooks"],
-      stars: 389,
-      link: "https://github.com"
-    },
-    {
-      title: "Performance Monitor",
-      description: "Real-time application performance monitoring with error tracking, alerts, and detailed performance insights.",
-      tags: ["javascript", "monitoring", "analytics", "alerts"],
-      stars: 201,
-      link: "https://github.com"
+      title: "DB Migrator",
+      description: "Database migration tool with version control, rollback support, and multi-environment management. Works with PostgreSQL, MySQL, and MongoDB.",
+      tags: ["typescript", "database", "migrations", "cli"],
+      stars: 512,
+      link: "https://github.com",
+      repo: "yourusername"
     }
   ];
 

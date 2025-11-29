@@ -1,4 +1,4 @@
-import { ExternalLink, Star } from "lucide-react";
+import { ExternalLink, Star, Folder } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface ProjectCardProps {
@@ -7,9 +7,10 @@ interface ProjectCardProps {
   tags: string[];
   stars: number;
   link: string;
+  repo?: string;
 }
 
-const ProjectCard = ({ title, description, tags, stars, link }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, tags, stars, link, repo }: ProjectCardProps) => {
   return (
     <a href={link} target="_blank" rel="noopener noreferrer" className="block group">
       <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
@@ -25,10 +26,15 @@ const ProjectCard = ({ title, description, tags, stars, link }: ProjectCardProps
               <span>{stars}</span>
             </div>
           </div>
-          <div className="text-sm">
-            <span className="text-primary">username</span>
-            <span className="text-muted-foreground"> / </span>
-            <span className="text-foreground font-semibold">{title.toLowerCase()}</span>
+          <div className="text-sm flex items-center gap-2">
+            <Folder className="w-4 h-4 text-primary" />
+            {repo && (
+              <>
+                <span className="text-muted-foreground">{repo}</span>
+                <span className="text-muted-foreground"> / </span>
+              </>
+            )}
+            <span className="text-foreground font-semibold">{title.toLowerCase().replace(/\s+/g, '-')}</span>
           </div>
           <div className="mt-2 text-xs text-muted-foreground line-clamp-2">
             {description}

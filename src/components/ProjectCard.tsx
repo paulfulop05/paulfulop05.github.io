@@ -14,38 +14,26 @@ const ProjectCard = ({ title, description, tags, stars, link, repo }: ProjectCar
   return (
     <a href={link} target="_blank" rel="noopener noreferrer" className="block group">
       <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-        <div className="bg-[#1e1e1e] p-4 border-b border-border/50">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            </div>
-            <div className="flex items-center gap-1 text-muted-foreground text-xs">
-              <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" />
-              <span>{stars}</span>
-            </div>
-          </div>
-          <div className="text-sm flex items-center gap-2">
-            <Folder className="w-4 h-4 text-primary" />
-            {repo && (
-              <>
-                <span className="text-muted-foreground">{repo}</span>
-                <span className="text-muted-foreground"> / </span>
-              </>
-            )}
-            <span className="text-foreground font-semibold">{title.toLowerCase().replace(/\s+/g, '-')}</span>
-          </div>
-          <div className="mt-2 text-xs text-muted-foreground line-clamp-2">
-            {description}
+        <div className="relative h-48 bg-muted overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop" 
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <div className="absolute top-3 right-3 flex items-center gap-1 bg-background/80 backdrop-blur-sm px-2 py-1 rounded text-xs">
+            <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" />
+            <span>{stars}</span>
           </div>
         </div>
         
         <CardContent className="p-4">
-          <h3 className="text-xl font-bold mb-2 flex items-center gap-2 group-hover:text-primary transition-colors">
-            {title}
-            <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-          </h3>
+          <div className="flex items-center gap-2 mb-2">
+            <Folder className="w-4 h-4 text-primary flex-shrink-0" />
+            <h3 className="text-xl font-bold flex items-center gap-2 group-hover:text-primary transition-colors">
+              {title}
+              <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </h3>
+          </div>
           <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
             {description}
           </p>

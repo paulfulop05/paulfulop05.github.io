@@ -84,8 +84,8 @@ export default {
           },
         },
         "cursor-blink": {
-          "0%, 45%": { opacity: "1" },
-          "50%, 100%": { opacity: "0" },
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
         },
         "fade-in": {
           "0%": {
@@ -101,7 +101,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "cursor-blink": "cursor-blink 1.5s ease-in-out infinite",
+        "cursor-blink": "cursor-blink 1.2s ease-in-out infinite",
         "fade-in": "fade-in 0.5s ease-out forwards",
       },
     },

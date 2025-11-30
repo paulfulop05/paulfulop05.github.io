@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation";
-import { Code2, Database, Palette, Zap } from "lucide-react";
+import { Code2, Database, Palette, Zap, Lightbulb, Wrench, Briefcase } from "lucide-react";
 
 const About = () => {
   const skills = [
@@ -57,7 +57,7 @@ const About = () => {
             {/* What I Do Section */}
             <section className="mb-20">
               <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-                <span className="text-primary">💡</span>
+                <Lightbulb className="w-8 h-8 text-primary" />
                 What I Do
               </h2>
               
@@ -99,7 +99,7 @@ const About = () => {
             {/* Skills Section */}
             <section className="mb-20">
               <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-                <span className="text-primary">🛠️</span>
+                <Wrench className="w-8 h-8 text-primary" />
                 Skills & Technologies
               </h2>
               
@@ -128,7 +128,7 @@ const About = () => {
             {/* Experience Section */}
             <section>
               <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-                <span className="text-primary">💼</span>
+                <Briefcase className="w-8 h-8 text-primary" />
                 Experience
               </h2>
               

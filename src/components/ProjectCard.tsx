@@ -1,29 +1,44 @@
-import { ExternalLink, Star, Folder } from "lucide-react";
+import { ExternalLink, Folder } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 interface ProjectCardProps {
   title: string;
   description: string;
   tags: string[];
-  stars: number;
   link: string;
   repo?: string;
+  id?: string;
 }
 
-const ProjectCard = ({ title, description, tags, stars, link, repo }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, tags, link, repo, id }: ProjectCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const projectId = id || title.toLowerCase().replace(/\s+/g, "-");
+  const projectLink = `/projects/${projectId}`;
+
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer" className="block group">
+    <Link 
+      to={projectLink}
+      className="block group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
         <div className="relative h-48 bg-muted overflow-hidden">
-          <img 
-            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop" 
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-          <div className="absolute top-3 right-3 flex items-center gap-1 bg-background/80 backdrop-blur-sm px-2 py-1 rounded text-xs">
-            <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" />
-            <span>{stars}</span>
-          </div>
+          {isHovered ? (
+            <img 
+              src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
+              alt={`${title} demo`}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <img 
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop" 
+              alt={title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          )}
         </div>
         
         <CardContent className="p-4">
@@ -49,7 +64,7 @@ const ProjectCard = ({ title, description, tags, stars, link, repo }: ProjectCar
           </div>
         </CardContent>
       </Card>
-    </a>
+    </Link>
   );
 };
 

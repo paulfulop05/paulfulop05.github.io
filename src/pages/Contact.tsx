@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -39,64 +39,7 @@ const Contact = () => {
               I'm always open to discussing new projects, creative ideas, or opportunities.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Contact Form */}
-              <div>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-semibold mb-2">
-                      Name
-                    </label>
-                    <Input
-                      id="name"
-                      type="text"
-                      placeholder="Your name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      className="bg-card border-border focus:border-primary"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-semibold mb-2">
-                      Email
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="your.email@example.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                      className="bg-card border-border focus:border-primary"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-semibold mb-2">
-                      Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell me about your project or idea..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      required
-                      rows={6}
-                      className="bg-card border-border focus:border-primary resize-none"
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                  >
-                    Send Message
-                  </Button>
-                </form>
-              </div>
-
+            <div>
               {/* Contact Info */}
               <div>
                 <div className="space-y-8">
@@ -139,30 +82,14 @@ const Contact = () => {
                           <p className="text-sm text-muted-foreground">/in/yourname</p>
                         </div>
                       </a>
-                      
-                      <a 
-                        href="https://twitter.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary transition-colors group"
-                      >
-                        <Twitter className="w-6 h-6 text-primary" />
-                        <div>
-                          <p className="font-semibold group-hover:text-primary transition-colors">Twitter</p>
-                          <p className="text-sm text-muted-foreground">@yourusername</p>
-                        </div>
-                      </a>
                     </div>
                   </div>
 
                   <div className="p-6 bg-card border border-border rounded-lg">
                     <h3 className="text-xl font-bold mb-3">Availability</h3>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-muted-foreground">
                       I'm currently <span className="text-primary font-semibold">available</span> for 
                       freelance projects and consulting opportunities.
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Response time: Usually within 24 hours
                     </p>
                   </div>
                 </div>

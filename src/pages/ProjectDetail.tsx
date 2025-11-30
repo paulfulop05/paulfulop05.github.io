@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
 import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -35,9 +36,18 @@ const ProjectDetail = () => {
       
       <main className="pt-32 pb-20">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="animate-fade-in">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
             {/* Project Header */}
-            <div className="mb-8">
+            <motion.div 
+              className="mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+            >
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 {project.title}
               </h1>
@@ -87,19 +97,29 @@ const ProjectDetail = () => {
                   </a>
                 </Button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Project Demo/Image */}
-            <div className="mb-12 rounded-lg overflow-hidden border border-border">
+            <motion.div 
+              className="mb-12 rounded-lg overflow-hidden border border-border"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
               <img 
                 src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
                 alt={`${project.title} demo`}
                 className="w-full"
               />
-            </div>
+            </motion.div>
 
             {/* Project Content */}
-            <div className="prose prose-invert max-w-none">
+            <motion.div 
+              className="prose prose-invert max-w-none"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+            >
               <div className="space-y-8">
                 <section>
                   <h2 className="text-3xl font-bold mb-4 text-foreground">Overview</h2>
@@ -135,8 +155,8 @@ const ProjectDetail = () => {
                   </p>
                 </section>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </main>
     </div>

@@ -1,12 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
+  const location = useLocation();
+  
+  const getPath = () => {
+    const path = location.pathname;
+    if (path === "/") return "~/";
+    if (path.startsWith("/projects/")) {
+      const projectName = path.split("/")[2];
+      return `~/projects/${projectName}`;
+    }
+    if (path === "/projects") return "~/projects/";
+    if (path === "/about") return "~/about/";
+    if (path === "/contact") return "~/contact/";
+    return "~/";
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="text-foreground hover:text-primary transition-colors flex items-center">
-          <span className="text-lg">~/</span>
-          <span className="inline-block w-1.5 h-4 bg-[hsl(210,21%,46%)] ml-1 animate-cursor-blink"></span>
+          <span className="text-lg">{getPath()}</span>
+          <span className="inline-block w-2 h-4 bg-primary ml-1.5 animate-cursor-blink"></span>
         </Link>
         
         <div className="flex items-center gap-8">

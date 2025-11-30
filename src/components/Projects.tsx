@@ -1,5 +1,5 @@
 import ProjectCard from "./ProjectCard";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 
 const Projects = () => {
   const projects = [
@@ -58,7 +58,7 @@ const Projects = () => {
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex items-center justify-between mb-12">
           <h2 className="text-3xl font-bold flex items-center gap-3">
-            <span className="text-primary">⭐</span>
+            <Star className="w-8 h-8 text-primary" />
             Featured Projects
           </h2>
           <a 

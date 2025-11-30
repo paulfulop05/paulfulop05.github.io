@@ -34,6 +34,7 @@ const Hero = () => {
               <Github className="w-5 h-5" />
               <span className="text-sm">GitHub</span>
             </a>
+            <span className="text-muted-foreground">|</span>
             <a
               href="https://linkedin.com"
               target="_blank"
@@ -43,12 +44,20 @@ const Hero = () => {
               <Linkedin className="w-5 h-5" />
               <span className="text-sm">LinkedIn</span>
             </a>
+            <span className="text-muted-foreground">|</span>
             <a
               href="mailto:hello@example.com"
               className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             >
               <Mail className="w-5 h-5" />
               <span className="text-sm">Email</span>
+            </a>
+            <span className="text-muted-foreground">|</span>
+            <a
+              href="/about"
+              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <span className="text-sm">More about me →</span>
             </a>
           </div>
         </div>

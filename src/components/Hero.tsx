@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="max-w-5xl mx-auto px-6 w-full">
         <div className="animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Hi, I'm <span className="text-primary">Your Name</span>
+            Hello, I'm <span className="text-primary">Your Name</span>
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-4 leading-relaxed">

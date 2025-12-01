@@ -8,6 +8,7 @@ const Hero = () => {
   const sectionRef = useRef(null);
   const activeBadgeRef = useRef(null); // Ref to track the currently clicked badge element
   const [activeModal, setActiveModal] = useState(null);
+  const [activeTab, setActiveTab] = useState("work"); // 'work' or 'education'
   const [modalPosition, setModalPosition] = useState({
     top: 0,
     left: 0,
@@ -78,8 +79,9 @@ const Hero = () => {
     };
   }, [activeModal]);
 
-  const organizations = {
-    ubb: {
+  const workExperience = [
+    {
+      key: "ubb",
       name: "UBB",
       role: "CTO",
       description:
@@ -87,9 +89,9 @@ const Hero = () => {
       period: "September 2024 - June 2025",
       website: "https://www.cs.ubbcluj.ro/",
       icon: ubb_icon,
-      isPast: false,
     },
-    cnlr: {
+    {
+      key: "cnlr",
       name: "CNLR",
       role: "Software Engineer",
       description:
@@ -97,8 +99,26 @@ const Hero = () => {
       period: "January 2023 - August 2024",
       website: "https://www.cnlr.ro/",
       icon: cnlr_icon,
-      isPast: true,
     },
+  ];
+
+  const education = [
+    {
+      key: "ubb-edu",
+      name: "UBB",
+      role: "Bachelor's in Computer Science",
+      description:
+        "Focused on software engineering, algorithms, and distributed systems. Graduated with honors and completed multiple research projects in AI and machine learning.",
+      period: "September 2020 - June 2024",
+      website: "https://www.cs.ubbcluj.ro/",
+      icon: ubb_icon,
+    },
+  ];
+
+  const organizations = {
+    ubb: workExperience[0],
+    cnlr: workExperience[1],
+    "ubb-edu": education[0],
   };
 
   const Modal = ({ org, onClose, position }) => {
@@ -248,76 +268,73 @@ const Hero = () => {
           className="mt-20 opacity-0 animate-fade-in"
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         >
-          <div className="flex items-center gap-3 mb-8">
-            <h2 className="text-2xl font-bold">Work & Education</h2>
+          {/* Tab Toggle */}
+          <div className="flex items-center gap-0 mb-8 border border-border rounded-lg p-1 w-fit bg-card/50">
+            <button
+              onClick={() => setActiveTab("work")}
+              className={cn(
+                "px-6 py-2 rounded-md text-sm font-medium transition-all duration-200",
+                activeTab === "work"
+                  ? "bg-primary/10 text-primary border border-primary/20"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Work
+            </button>
+            <button
+              onClick={() => setActiveTab("education")}
+              className={cn(
+                "px-6 py-2 rounded-md text-sm font-medium transition-all duration-200",
+                activeTab === "education"
+                  ? "bg-primary/10 text-primary border border-primary/20"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Education
+            </button>
           </div>
           
           <div className="space-y-8">
-            {/* Current Work */}
-            <div className="flex gap-4 group">
-              <div
-                className="w-12 h-12 rounded-full bg-transparent flex items-center justify-center overflow-hidden flex-shrink-0 cursor-pointer"
-                onClick={(e) => handleOrgClick("ubb", e)}
-              >
-                <img
-                  src={ubb_icon}
-                  alt="UBB"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-start justify-between mb-2">
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                      UBB
-                    </h3>
-                    <p className="text-sm text-primary">{organizations.ubb.role}</p>
+            {(activeTab === "work" ? workExperience : education).map((org, index) => (
+              <div key={org.key}>
+                <div className="flex gap-4 group">
+                  <div
+                    className="w-12 h-12 rounded-full bg-transparent flex items-center justify-center overflow-hidden flex-shrink-0 cursor-pointer"
+                    onClick={(e) => handleOrgClick(org.key, e)}
+                  >
+                    <img
+                      src={org.icon}
+                      alt={org.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <span className="text-xs text-muted-foreground">
-                    {organizations.ubb.period}
-                  </span>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {organizations.ubb.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <div className="h-px bg-border flex-1" />
-              <span className="text-primary text-sm">/</span>
-              <div className="h-px bg-border flex-1" />
-            </div>
-
-            {/* Past Work */}
-            <div className="flex gap-4 group">
-              <div
-                className="w-12 h-12 rounded-full bg-transparent flex items-center justify-center overflow-hidden flex-shrink-0 cursor-pointer"
-                onClick={(e) => handleOrgClick("cnlr", e)}
-              >
-                <img
-                  src={cnlr_icon}
-                  alt="CNLR"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-start justify-between mb-2">
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                      CNLR
-                    </h3>
-                    <p className="text-sm text-primary">{organizations.cnlr.role}</p>
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between mb-2">
+                      <div>
+                        <h3 className="text-lg font-semibold text-foreground">
+                          {org.name}
+                        </h3>
+                        <p className="text-sm text-primary">{org.role}</p>
+                      </div>
+                      <span className="text-xs text-muted-foreground">
+                        {org.period}
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {org.description}
+                    </p>
                   </div>
-                  <span className="text-xs text-muted-foreground">
-                    {organizations.cnlr.period}
-                  </span>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {organizations.cnlr.description}
-                </p>
+                
+                {index < (activeTab === "work" ? workExperience : education).length - 1 && (
+                  <div className="flex items-center gap-3 my-8">
+                    <div className="h-px bg-border flex-1" />
+                    <span className="text-primary text-sm">/</span>
+                    <div className="h-px bg-border flex-1" />
+                  </div>
+                )}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

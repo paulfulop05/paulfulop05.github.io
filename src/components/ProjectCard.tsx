@@ -4,24 +4,25 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const getTechColor = (tech: string) => {
+  const techLower = tech.toLowerCase();
   // Languages
-  if (["JavaScript", "TypeScript", "Python", "Java", "C++", "Go", "Rust"].includes(tech)) {
+  if (["javascript", "typescript", "python", "java", "c++", "go", "rust", "golang"].some(lang => techLower.includes(lang))) {
     return "text-blue-400";
   }
   // Frameworks
-  if (["React", "Next.js", "Vue.js", "Node.js", "Express", "Django", "Flask"].includes(tech)) {
+  if (["react", "next.js", "vue.js", "node.js", "express", "django", "flask", "nextjs", "vuejs", "nodejs"].some(fw => techLower.includes(fw))) {
     return "text-green-400";
   }
   // Concepts
-  if (["REST API", "GraphQL", "WebSocket", "Microservices", "CI/CD", "Agile"].includes(tech)) {
+  if (["rest api", "graphql", "websocket", "microservices", "ci/cd", "agile", "api", "rest", "security", "anti-bot", "proof-of-work", "rate-limiting", "middleware", "monitoring"].some(concept => techLower.includes(concept))) {
     return "text-purple-400";
   }
   // Tools & Databases
-  if (["Git", "Docker", "PostgreSQL", "MongoDB", "Redis", "AWS", "Kubernetes"].includes(tech)) {
+  if (["git", "docker", "postgresql", "mongodb", "redis", "aws", "kubernetes", "postgres", "mongo", "elasticsearch", "kafka"].some(tool => techLower.includes(tool))) {
     return "text-orange-400";
   }
   // Styling & Design
-  if (["Tailwind", "CSS", "SASS", "Figma"].includes(tech)) {
+  if (["tailwind", "css", "sass", "scss", "figma"].some(style => techLower.includes(style))) {
     return "text-pink-400";
   }
   return "text-foreground";

@@ -17,18 +17,33 @@ const RecentCommits = () => {
   const [loading, setLoading] = useState(true);
 
   const accounts = {
-    main: "paulfulop05",
-    student: "PaulFulop",
+    main: {
+      username: "paulfulop05",
+      token: import.meta.env.VITE_GITHUB_TOKEN_MAIN,
+    },
+    student: {
+      username: "PaulFulop",
+      token: import.meta.env.VITE_GITHUB_TOKEN_STUDENT,
+    },
   };
 
   useEffect(() => {
     const fetchCommitsForAccount = async (
-      username: string
+      username: string,
+      token?: string
     ): Promise<Commit[]> => {
       try {
+        const headers: HeadersInit = {};
+
+        // Add token if available
+        if (token) {
+          headers["Authorization"] = `token ${token}`;
+        }
+
         // Fetch user's recent events
         const eventsRes = await fetch(
-          `https://api.github.com/users/${username}/events/public?per_page=100`
+          `https://api.github.com/users/${username}/events/public?per_page=100`,
+          { headers }
         );
         const events = await eventsRes.json();
 
@@ -49,7 +64,8 @@ const RecentCommits = () => {
             const [owner, repo] = event.repo.name.split("/");
             try {
               const commitRes = await fetch(
-                `https://api.github.com/repos/${owner}/${repo}/commits/${commit.sha}`
+                `https://api.github.com/repos/${owner}/${repo}/commits/${commit.sha}`,
+                { headers }
               );
               const commitData = await commitRes.json();
 
@@ -80,8 +96,11 @@ const RecentCommits = () => {
       setLoading(true);
       try {
         const [main, student] = await Promise.all([
-          fetchCommitsForAccount(accounts.main),
-          fetchCommitsForAccount(accounts.student),
+          fetchCommitsForAccount(accounts.main.username, accounts.main.token),
+          fetchCommitsForAccount(
+            accounts.student.username,
+            accounts.student.token
+          ),
         ]);
         setMainCommits(main);
         setStudentCommits(student);
@@ -105,7 +124,7 @@ const RecentCommits = () => {
           Recent Commits
         </h3>
         <a
-          href={`https://github.com/${accounts.main}`}
+          href={`https://github.com/${accounts.main.username}`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs text-muted-foreground hover:text-primary transition-colors"
@@ -132,7 +151,7 @@ const RecentCommits = () => {
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-1 h-3 bg-primary rounded"></div>
                 <p className="text-xs font-semibold text-primary">
-                  Main Account (@{accounts.main})
+                  Main Account (@{accounts.main.username})
                 </p>
               </div>
               <div className="space-y-2">
@@ -176,7 +195,7 @@ const RecentCommits = () => {
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-1 h-3 bg-primary rounded"></div>
                 <p className="text-xs font-semibold text-primary">
-                  Student Account (@{accounts.student})
+                  Student Account (@{accounts.student.username})
                 </p>
               </div>
               <div className="space-y-2">

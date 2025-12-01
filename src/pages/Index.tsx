@@ -14,19 +14,19 @@ const Index = () => {
       {/* Dashboard / Highlights Section */}
       <section className="py-20 bg-background">
         <div className="max-w-5xl mx-auto px-6">
-          {/* Responsive Grid for Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Recent Commits Card */}
+          {/* Responsive Flex for Cards with Equal Height */}
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            {/* Recent Commits Card - 2/3 width */}
             <div
-              className="opacity-0 animate-fade-in"
+              className="w-full md:flex-[2] opacity-0 animate-fade-in h-auto md:h-72"
               style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}
             >
               <RecentCommits />
             </div>
 
-            {/* Current Location Card */}
+            {/* Current Location Card - 1/3 width (square) */}
             <div
-              className="opacity-0 animate-fade-in"
+              className="w-full md:flex-[1] opacity-0 animate-fade-in aspect-square md:h-72"
               style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
             >
               <CurrentLocation />

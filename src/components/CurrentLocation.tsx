@@ -51,7 +51,7 @@ const CurrentLocation = () => {
       </h3>
 
       {/* Map Container with Dark Theme */}
-      <div className="relative w-full h-48 mb-3 rounded-lg overflow-hidden bg-[#1a1d23]">
+      <div className="relative w-full h-48 mb-3 rounded-lg overflow-hidden bg-[#2a2d35]">
         {isLoading ? (
           <div className="absolute inset-0 flex items-center justify-center">
             <p className="text-sm text-muted-foreground">Loading map...</p>
@@ -65,19 +65,20 @@ const CurrentLocation = () => {
               frameBorder="0"
               style={{
                 border: 0,
-                filter: "grayscale(100%) brightness(0.4) contrast(1.2)",
-                opacity: 0.8,
+                filter:
+                  "invert(1) grayscale(100%) brightness(0.9) contrast(1.3)",
+                opacity: 0.85,
               }}
               src={`https://www.openstreetmap.org/export/embed.html?bbox=${
                 LONGITUDE - 0.05
               },${LATITUDE - 0.05},${LONGITUDE + 0.05},${
                 LATITUDE + 0.05
-              }&layer=mapnik&marker=${LATITUDE},${LONGITUDE}`}
+              }&layer=mapnik`}
               allowFullScreen
             />
             {/* City Name Overlay */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <p className="text-2xl font-bold text-gray-400/50 tracking-wider uppercase">
+              <p className="text-3xl font-bold text-foreground/70 tracking-wider uppercase drop-shadow-lg">
                 {CITY.replace("-", " ")}
               </p>
             </div>

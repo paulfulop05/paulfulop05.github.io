@@ -97,6 +97,7 @@ const Hero = () => {
       period: "September 2024 - June 2025",
       website: "https://www.cs.ubbcluj.ro/",
       icon: ubb_icon,
+      isPast: false,
     },
     {
       key: "cnlr",
@@ -107,6 +108,7 @@ const Hero = () => {
       period: "January 2023 - August 2024",
       website: "https://www.cnlr.ro/",
       icon: cnlr_icon,
+      isPast: true,
     },
   ];
 
@@ -120,6 +122,7 @@ const Hero = () => {
       period: "September 2020 - June 2024",
       website: "https://www.cs.ubbcluj.ro/",
       icon: ubb_icon,
+      isPast: true,
     },
   ];
 
@@ -308,7 +311,7 @@ const Hero = () => {
               {(activeTab === "work" ? workExperience : education).map(
                 (org, index, array) => (
                   <div key={org.key} className="flex items-center gap-6">
-                    <div 
+                    <div
                       className="flex items-center gap-3 cursor-pointer group"
                       onClick={(e) => handleOrgClick(org.key, e)}
                     >
@@ -323,9 +326,11 @@ const Hero = () => {
                         <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                           {org.name}
                         </span>
-                        <span className="text-xs text-muted-foreground">
-                          (Past)
-                        </span>
+                        {org.isPast && (
+                          <span className="text-xs text-muted-foreground">
+                            (Past)
+                          </span>
+                        )}
                       </div>
                     </div>
                     {index < array.length - 1 && (

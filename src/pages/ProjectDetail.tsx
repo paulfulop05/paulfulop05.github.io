@@ -7,23 +7,67 @@ import { motion } from "framer-motion";
 const getTechColor = (tech: string) => {
   const techLower = tech.toLowerCase();
   // Languages
-  if (["javascript", "typescript", "python", "java", "c++", "go", "rust"].some(lang => techLower.includes(lang))) {
+  if (
+    ["javascript", "typescript", "python", "java", "c++", "go", "rust"].some(
+      (lang) => techLower.includes(lang)
+    )
+  ) {
     return "text-blue-400";
   }
   // Frameworks
-  if (["react", "next.js", "vue.js", "node.js", "express", "django", "flask", "nextjs", "vuejs", "nodejs"].some(fw => techLower.includes(fw))) {
+  if (
+    [
+      "react",
+      "next.js",
+      "vue.js",
+      "node.js",
+      "express",
+      "django",
+      "flask",
+      "nextjs",
+      "vuejs",
+      "nodejs",
+    ].some((fw) => techLower.includes(fw))
+  ) {
     return "text-green-400";
   }
   // Concepts
-  if (["rest api", "graphql", "websocket", "microservices", "ci/cd", "agile", "api", "rest"].some(concept => techLower.includes(concept))) {
+  if (
+    [
+      "rest api",
+      "graphql",
+      "websocket",
+      "microservices",
+      "ci/cd",
+      "agile",
+      "api",
+      "rest",
+    ].some((concept) => techLower.includes(concept))
+  ) {
     return "text-purple-400";
   }
   // Tools & Databases
-  if (["git", "docker", "postgresql", "mongodb", "redis", "aws", "kubernetes", "postgres", "mongo"].some(tool => techLower.includes(tool))) {
+  if (
+    [
+      "git",
+      "docker",
+      "postgresql",
+      "mongodb",
+      "redis",
+      "aws",
+      "kubernetes",
+      "postgres",
+      "mongo",
+    ].some((tool) => techLower.includes(tool))
+  ) {
     return "text-orange-400";
   }
   // Styling & Design
-  if (["tailwind", "css", "sass", "scss", "figma"].some(style => techLower.includes(style))) {
+  if (
+    ["tailwind", "css", "sass", "scss", "figma"].some((style) =>
+      techLower.includes(style)
+    )
+  ) {
     return "text-pink-400";
   }
   return "text-foreground";
@@ -34,8 +78,13 @@ const ProjectDetail = () => {
 
   // Sample project data - in real app this would come from a data source
   const project = {
-    title: id?.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") || "Project",
-    description: "A comprehensive description of the project. This is a placeholder that would normally contain detailed information about the project's goals, features, and technical implementation.",
+    title:
+      id
+        ?.split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ") || "Project",
+    description:
+      "A comprehensive description of the project. This is a placeholder that would normally contain detailed information about the project's goals, features, and technical implementation.",
     tags: ["react", "typescript", "tailwind"],
     fullDescription: `
       ## Overview
@@ -52,13 +101,13 @@ const ProjectDetail = () => {
       
       ## Implementation Details
       The project follows industry best practices and coding standards.
-    `
+    `,
   };
 
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       <main className="pt-32 pb-20">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
@@ -67,7 +116,7 @@ const ProjectDetail = () => {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
             {/* Project Header */}
-            <motion.div 
+            <motion.div
               className="mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -79,12 +128,14 @@ const ProjectDetail = () => {
               <p className="text-lg text-muted-foreground max-w-3xl mb-6">
                 {project.description}
               </p>
-              
+
               <div className="flex flex-wrap gap-3 mb-8">
                 {project.tags.map((tag, index) => (
-                  <span 
+                  <span
                     key={index}
-                    className={`text-sm px-3 py-1.5 rounded bg-primary/10 border border-primary/20 ${getTechColor(tag)}`}
+                    className={`text-sm font-semibold px-3 py-1.5 rounded bg-primary/10 border border-primary/20 ${getTechColor(
+                      tag
+                    )}`}
                   >
                     {tag}
                   </span>
@@ -92,11 +143,11 @@ const ProjectDetail = () => {
               </div>
 
               <div className="flex gap-4">
-                <Button 
+                <Button
                   asChild
                   className="bg-primary text-primary-foreground hover:bg-primary/90"
                 >
-                  <a 
+                  <a
                     href="https://github.com"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -106,12 +157,12 @@ const ProjectDetail = () => {
                     View on GitHub
                   </a>
                 </Button>
-                <Button 
+                <Button
                   asChild
                   variant="outline"
                   className="border-border hover:border-primary"
                 >
-                  <a 
+                  <a
                     href="https://demo.example.com"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -125,13 +176,13 @@ const ProjectDetail = () => {
             </motion.div>
 
             {/* Project Demo/Image */}
-            <motion.div 
+            <motion.div
               className="mb-12 rounded-lg overflow-hidden border border-border"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
             >
-              <img 
+              <img
                 src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
                 alt={`${project.title} demo`}
                 className="w-full"
@@ -139,7 +190,7 @@ const ProjectDetail = () => {
             </motion.div>
 
             {/* Project Content */}
-            <motion.div 
+            <motion.div
               className="prose prose-invert max-w-none"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -147,17 +198,26 @@ const ProjectDetail = () => {
             >
               <div className="space-y-8">
                 <section>
-                  <h2 className="text-3xl font-bold mb-4 text-foreground">Overview</h2>
+                  <h2 className="text-3xl font-bold mb-4 text-foreground">
+                    Overview
+                  </h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    This project demonstrates advanced web development techniques and best practices.
-                    It showcases modern design patterns, performance optimization, and scalable architecture.
+                    This project demonstrates advanced web development
+                    techniques and best practices. It showcases modern design
+                    patterns, performance optimization, and scalable
+                    architecture.
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="text-3xl font-bold mb-4 text-foreground">Features</h2>
+                  <h2 className="text-3xl font-bold mb-4 text-foreground">
+                    Features
+                  </h2>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Modern and responsive design that works across all devices</li>
+                    <li>
+                      • Modern and responsive design that works across all
+                      devices
+                    </li>
                     <li>• High performance optimization for fast load times</li>
                     <li>• Scalable architecture that grows with your needs</li>
                     <li>• Comprehensive testing for reliability</li>
@@ -165,18 +225,24 @@ const ProjectDetail = () => {
                 </section>
 
                 <section>
-                  <h2 className="text-3xl font-bold mb-4 text-foreground">Technical Stack</h2>
+                  <h2 className="text-3xl font-bold mb-4 text-foreground">
+                    Technical Stack
+                  </h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    Built with cutting-edge technologies including React, TypeScript, and Tailwind CSS
-                    to ensure reliability, maintainability, and developer experience.
+                    Built with cutting-edge technologies including React,
+                    TypeScript, and Tailwind CSS to ensure reliability,
+                    maintainability, and developer experience.
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="text-3xl font-bold mb-4 text-foreground">Implementation</h2>
+                  <h2 className="text-3xl font-bold mb-4 text-foreground">
+                    Implementation
+                  </h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    The project follows industry best practices and coding standards. Every component
-                    is carefully crafted with attention to detail and user experience.
+                    The project follows industry best practices and coding
+                    standards. Every component is carefully crafted with
+                    attention to detail and user experience.
                   </p>
                 </section>
               </div>

@@ -12,7 +12,7 @@ const Index = () => {
       <Projects />
 
       {/* Dashboard / Highlights Section */}
-      <section className="py-20 bg-background">
+      <section className="py-12 bg-background">
         <div className="max-w-5xl mx-auto px-6">
           {/* Responsive Flex for Cards with Equal Height */}
           <div className="flex flex-col md:flex-row gap-6 items-start">

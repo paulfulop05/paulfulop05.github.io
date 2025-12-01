@@ -21,47 +21,11 @@ const Projects = () => {
       link: "https://github.com",
       repo: "yourusername",
     },
-    {
-      title: "RealTime Chat",
-      description:
-        "Production-ready WebSocket chat application with rooms, typing indicators, and message persistence. Features end-to-end encryption and rich media support.",
-      tags: ["react", "websocket", "node.js", "mongodb"],
-      stars: 892,
-      link: "https://github.com",
-      repo: "yourusername",
-    },
-    {
-      title: "API Shield",
-      description:
-        "Rate limiting and DDoS protection middleware for APIs with intelligent threat detection, automatic blocking, and detailed analytics dashboard.",
-      tags: ["golang", "security", "rate-limiting", "middleware"],
-      stars: 445,
-      link: "https://github.com",
-      repo: "yourusername",
-    },
-    {
-      title: "LogStream",
-      description:
-        "Real-time log aggregation and analysis platform with powerful search, custom dashboards, and alerting. Handles millions of events per second.",
-      tags: ["go", "elasticsearch", "kafka", "monitoring"],
-      stars: 1234,
-      link: "https://github.com",
-      repo: "yourusername",
-    },
-    {
-      title: "Container Registry",
-      description:
-        "Self-hosted Docker registry with garbage collection, image scanning, and webhook notifications. Enterprise-ready with RBAC and audit logs.",
-      tags: ["go", "docker", "security", "kubernetes"],
-      stars: 891,
-      link: "https://github.com",
-      repo: "yourusername",
-    },
   ];
 
   return (
-    <section className="py-6 bg-background">
-      <div className="max-w-5xl mx-auto px-4">
+    <section className="pt-0 pb-4 bg-background">
+      <div className="max-w-5xl mx-auto px-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-3xl font-bold flex items-center gap-3">
             <Star className="w-8 h-8 text-primary" />

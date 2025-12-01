@@ -134,7 +134,7 @@ const Hero = () => {
 
   const Modal = ({ org, onClose, position }) => {
     const isTop = position.placement === "top";
-    const verticalOffset = 45; // The gap between badge and modal
+    const verticalOffset = 20; // The gap between badge and modal
 
     return (
       <>
@@ -144,7 +144,7 @@ const Hero = () => {
         {/* Absolute Modal */}
         <div
           className={cn(
-            "absolute z-50 bg-[#1A1D23] rounded-[12px] p-4 md:p-6 w-[calc(100vw-2rem)] max-w-96 shadow-2xl border border-gray-700 -translate-x-1/2 transition-all duration-200 ease-out",
+            "absolute z-50 bg-secondary rounded-[12px] p-4 md:p-6 w-[calc(100vw-2rem)] max-w-96 shadow-2xl border border-border -translate-x-1/2 transition-all duration-200 ease-out",
             // If top, translate up by 100% to sit above. If bottom, no Y translation needed (starts from calculated top).
             isTop ? "-translate-y-full" : ""
           )}
@@ -159,7 +159,7 @@ const Hero = () => {
           {/* Arrow */}
           <div
             className={cn(
-              "absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-[#1A1D23] border-gray-700 transform rotate-45 transition-all duration-200",
+              "absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-secondary border-border transform rotate-45 transition-all duration-200",
               isTop
                 ? "-bottom-1.5 border-r border-b" // Points down
                 : "-top-1.5 border-l border-t" // Points up
@@ -168,7 +168,7 @@ const Hero = () => {
 
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-1 rounded-md hover:bg-transparent flex items-center justify-center text-gray-400 hover:text-blue-400 transition-colors"
+            className="absolute top-4 right-4 p-1 rounded-md hover:bg-muted flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -213,7 +213,7 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen flex items-center pt-20 relative"
+      className="min-h-[85vh] flex items-center pt-20 pb-8 relative"
     >
       <div className="max-w-5xl mx-auto px-6 w-full">
         <div className="animate-fade-in">

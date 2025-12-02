@@ -9,6 +9,8 @@ import {
   Trophy,
 } from "lucide-react";
 import profileImage from "../assets/avatar.jpg";
+import profileImageGlasses from "../assets/avatar_with_glasses.jpg";
+import PixelTransition from "@/components/ui/pixel_transition";
 
 const About = () => {
   const skills = [
@@ -83,15 +85,28 @@ const About = () => {
                 </p>
               </div>
 
-              <div className="flex items-start justify-center md:justify-end">
-                <div className="relative w-64 h-64 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-lg">
+              <PixelTransition
+                firstContent={
                   <img
                     src={profileImage}
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
-                </div>
-              </div>
+                }
+                secondContent={
+                  <img
+                    src={profileImageGlasses}
+                    alt="Profile with glasses"
+                    className="w-full h-full object-cover"
+                  />
+                }
+                gridSize={12}
+                pixelColor="hsl(var(--background))"
+                once={false}
+                animationStepDuration={0.4}
+                aspectRatio="100%"
+                className="w-full max-w-[300px] rounded-xl border-2 border-primary/30 shadow-lg shadow-primary/10 bg-background"
+              />
             </div>
 
             {/* What I Do Section */}

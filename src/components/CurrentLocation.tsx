@@ -47,15 +47,9 @@ const CurrentLocation = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.1 }}
-      whileHover={{ scale: 1.02 }}
     >
       <h3 className="text-sm font-semibold flex items-center gap-2 mb-4">
-        <motion.div
-          animate={{ y: [0, -3, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <MapPin className="w-4 h-4 text-primary" />
-        </motion.div>
+        <MapPin className="w-4 h-4 text-primary" />
         Currently Based In
       </h3>
 
@@ -101,61 +95,27 @@ const CurrentLocation = () => {
               allowFullScreen
             />
             {/* City Name Overlay */}
-            <motion.div
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <motion.p
-                className="text-3xl font-bold text-foreground/70 tracking-wider uppercase drop-shadow-lg"
-                animate={{ scale: [1, 1.02, 1] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <p className="text-3xl font-bold text-foreground/70 tracking-wider uppercase drop-shadow-lg">
                 {CITY.replace("-", " ")}
-              </motion.p>
-            </motion.div>
+              </p>
+            </div>
             
-            {/* Pulsing location dot */}
-            <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full"
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [1, 0.5, 1],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-primary/30 rounded-full"
-              animate={{
-                scale: [1, 2, 1],
-                opacity: [0.5, 0, 0.5],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
+            {/* Location dot */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full" />
           </motion.div>
         )}
       </div>
 
       {/* Location Info */}
-      <motion.div
-        className="flex items-center justify-between"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      >
+      <div className="flex items-center justify-between">
         <p className="text-sm font-medium text-foreground">
           {CITY}, {COUNTRY.substring(0, 2).toUpperCase()}
         </p>
-        <motion.p
-          className="text-xs text-muted-foreground flex items-center gap-1 font-mono"
-          key={currentTime}
-          initial={{ opacity: 0.5 }}
-          animate={{ opacity: 1 }}
-        >
-          <span>{currentTime}</span>
-        </motion.p>
-      </motion.div>
+        <p className="text-xs text-muted-foreground flex items-center gap-1 font-mono">
+          {currentTime}
+        </p>
+      </div>
     </motion.div>
   );
 };

@@ -343,11 +343,7 @@ const RecentCommits = () => {
                           whileHover={{ scale: 1.01 }}
                         >
                           <div className="flex items-start gap-2 mb-2">
-                            <motion.div
-                              className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"
-                              animate={{ scale: [1, 1.2, 1] }}
-                              transition={{ duration: 2, repeat: Infinity }}
-                            />
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                             <div className="flex-1 min-w-0">
                               <p className="text-xs font-medium text-primary/80 mb-0.5">
                                 {commit.repo.split("/")[1]}

@@ -157,12 +157,12 @@ const Hero = () => {
 
   const Modal = ({ org, onClose, position }) => {
     const isTop = position.placement === "top";
-    const verticalOffset = 20;
+    const verticalOffset = 8;
 
     return (
       <>
         <motion.div
-          className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
+          className="fixed inset-0 z-40 bg-black/20"
           onClick={onClose}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -199,7 +199,7 @@ const Hero = () => {
           <motion.button
             onClick={onClose}
             className="absolute top-4 right-4 p-1 rounded-md hover:bg-muted flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
-            whileHover={{ scale: 1.1, rotate: 90 }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
             <X className="w-4 h-4" />

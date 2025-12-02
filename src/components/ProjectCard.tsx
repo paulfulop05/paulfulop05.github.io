@@ -2,6 +2,7 @@ import { ExternalLink, Folder } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const getTechColor = (tech: string) => {
   const techLower = tech.toLowerCase();
@@ -115,48 +116,87 @@ const ProjectCard = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-        <div className="relative h-48 bg-muted overflow-hidden">
-          {isHovered ? (
-            <img
-              src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
-              alt={`${title} demo`}
-              className="w-full h-full object-cover"
+      <motion.div
+        whileHover={{ y: -8, scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      >
+        <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/10">
+          <div className="relative h-48 bg-muted overflow-hidden">
+            <motion.div
+              className="absolute inset-0"
+              initial={false}
+              animate={{ scale: isHovered ? 1.1 : 1 }}
+              transition={{ duration: 0.4 }}
+            >
+              {isHovered ? (
+                <motion.img
+                  src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
+                  alt={`${title} demo`}
+                  className="w-full h-full object-cover"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              ) : (
+                <img
+                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop"
+                  alt={title}
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </motion.div>
+            
+            {/* Gradient overlay on hover */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isHovered ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
             />
-          ) : (
-            <img
-              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop"
-              alt={title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          )}
-        </div>
+          </div>
 
-        <CardContent className="p-4">
-          <div className="flex items-center gap-2 mb-2">
-            <Folder className="w-4 h-4 text-primary flex-shrink-0" />
-            <h3 className="text-xl font-bold flex items-center gap-2 group-hover:text-primary transition-colors">
-              {title}
-              <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </h3>
-          </div>
-          <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-            {description}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag, index) => (
-              <span
-                key={index}
-                className={`text-xs font-semibold px-2 py-1 rounded bg-primary/10 border border-primary/20 ${getTechColor(
-                  tag
-                )}`}
+          <CardContent className="p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <motion.div
+                animate={{ rotate: isHovered ? 15 : 0 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+                <Folder className="w-4 h-4 text-primary flex-shrink-0" />
+              </motion.div>
+              <h3 className="text-xl font-bold flex items-center gap-2 group-hover:text-primary transition-colors">
+                {title}
+                <motion.span
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </motion.span>
+              </h3>
+            </div>
+            <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+              {description}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {tags.map((tag, index) => (
+                <motion.span
+                  key={index}
+                  className={`text-xs font-semibold px-2 py-1 rounded bg-primary/10 border border-primary/20 ${getTechColor(
+                    tag
+                  )}`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.05 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                >
+                  {tag}
+                </motion.span>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
     </Link>
   );
 };

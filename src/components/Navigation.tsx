@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Navigation = () => {
   const location = useLocation();
@@ -36,45 +37,77 @@ const Navigation = () => {
   };
 
   const segments = getPathSegments();
+  const navLinks = [
+    { to: "/about", label: "About" },
+    { to: "/projects", label: "Projects" },
+    { to: "/contact", label: "Contact" },
+  ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
+    <motion.nav
+      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+    >
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center text-lg">
+        <motion.div
+          className="flex items-center text-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
           {segments.map((segment, index) => (
-            <Link
+            <motion.div
               key={index}
-              to={segment.link}
-              className="text-foreground hover:text-primary transition-colors"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 + index * 0.1 }}
             >
-              {segment.text}
-            </Link>
+              <Link
+                to={segment.link}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                <motion.span whileHover={{ scale: 1.05 }}>
+                  {segment.text}
+                </motion.span>
+              </Link>
+            </motion.div>
           ))}
-          <span className="inline-block w-2 h-4 bg-primary ml-1.5 animate-cursor-blink"></span>
-        </div>
+          <motion.span
+            className="inline-block w-2 h-4 bg-primary ml-1.5"
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
 
         <div className="flex items-center gap-8">
-          <Link
-            to="/about"
-            className="text-sm text-muted-foreground hover:text-primary transition-colors link-hover"
-          >
-            About
-          </Link>
-          <Link
-            to="/projects"
-            className="text-sm text-muted-foreground hover:text-primary transition-colors link-hover"
-          >
-            Projects
-          </Link>
-          <Link
-            to="/contact"
-            className="text-sm text-muted-foreground hover:text-primary transition-colors link-hover"
-          >
-            Contact
-          </Link>
+          {navLinks.map((link, index) => (
+            <motion.div
+              key={link.to}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 + index * 0.1 }}
+            >
+              <Link
+                to={link.to}
+                className="text-sm text-muted-foreground hover:text-primary transition-colors relative group"
+              >
+                <motion.span whileHover={{ y: -2 }} className="inline-block">
+                  {link.label}
+                </motion.span>
+                <motion.span
+                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary origin-left"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.2 }}
+                />
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

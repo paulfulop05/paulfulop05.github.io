@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { GitCommit, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Commit {
   sha: string;
@@ -36,12 +37,10 @@ const RecentCommits = () => {
       try {
         const headers: HeadersInit = {};
 
-        // Add authorization header if token is available
         if (token) {
           headers["Authorization"] = `Bearer ${token}`;
         }
 
-        // Fetch user's public events only (client-safe, no authentication needed)
         const eventsRes = await fetch(
           `https://api.github.com/users/${username}/events/public?per_page=100`,
           { headers }
@@ -58,23 +57,20 @@ const RecentCommits = () => {
 
         const events = await eventsRes.json();
 
-        // Filter push events and extract commits
         const pushEvents = events.filter(
           (event: any) => event.type === "PushEvent"
         );
 
         const recentCommits: Commit[] = [];
-        const seenShas = new Set<string>(); // Track unique commits
+        const seenShas = new Set<string>();
 
         for (const event of pushEvents) {
           if (recentCommits.length >= 4) break;
 
           const [owner, repo] = event.repo.name.split("/");
 
-          // If no commits in payload, fetch from repo directly
           if (!event.payload.commits || event.payload.commits.length === 0) {
             try {
-              // Fetch latest commits from the repository
               const repoCommitsRes = await fetch(
                 `https://api.github.com/repos/${owner}/${repo}/commits?per_page=1`,
                 { headers }
@@ -89,11 +85,9 @@ const RecentCommits = () => {
 
               const latestCommit = repoCommits[0];
 
-              // Skip if we've already seen this commit
               if (seenShas.has(latestCommit.sha)) continue;
               seenShas.add(latestCommit.sha);
 
-              // Fetch full commit details to get stats
               const fullCommitRes = await fetch(
                 `https://api.github.com/repos/${owner}/${repo}/commits/${latestCommit.sha}`,
                 { headers }
@@ -130,11 +124,9 @@ const RecentCommits = () => {
 
           const commits = event.payload.commits || [];
 
-          // Process ALL commits in this push event, not just the first one
           for (const commit of commits) {
             if (recentCommits.length >= 4) break;
 
-            // Skip if we've already seen this commit
             if (seenShas.has(commit.sha)) continue;
             seenShas.add(commit.sha);
 
@@ -145,14 +137,6 @@ const RecentCommits = () => {
               );
 
               if (!commitRes.ok) {
-                console.error(
-                  `Failed to fetch commit details for ${commit.sha.substring(
-                    0,
-                    7
-                  )} (status ${commitRes.status})`
-                );
-
-                // Fallback: use basic commit info without stats
                 recentCommits.push({
                   sha: commit.sha.substring(0, 7),
                   message: commit.message.split("\n")[0],
@@ -177,11 +161,6 @@ const RecentCommits = () => {
                 date: event.created_at,
               });
             } catch (err) {
-              console.error(
-                `Error processing commit ${commit.sha.substring(0, 7)}:`,
-                err
-              );
-              // Still add the commit even if we can't get stats
               recentCommits.push({
                 sha: commit.sha.substring(0, 7),
                 message: commit.message.split("\n")[0],
@@ -221,13 +200,35 @@ const RecentCommits = () => {
 
     fetchAllCommits();
 
-    // Refresh commits every 5 minutes
     const interval = setInterval(fetchAllCommits, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3, ease: "easeOut" as const },
+    },
+  };
+
   return (
-    <div className="border border-border rounded-lg bg-card/50 p-4 h-full flex flex-col overflow-hidden">
+    <motion.div
+      className="border border-border rounded-lg bg-card/50 p-4 h-full flex flex-col overflow-hidden"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 8px;
@@ -251,126 +252,154 @@ const RecentCommits = () => {
       `}</style>
       <div className="flex items-center justify-between mb-3 flex-shrink-0">
         <h3 className="text-sm font-semibold flex items-center gap-2">
-          <GitCommit className="w-4 h-4 text-primary" />
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          >
+            <GitCommit className="w-4 h-4 text-primary" />
+          </motion.div>
           Recent Commits
         </h3>
-        <a
+        <motion.a
           href={`https://github.com/${accounts.main.username}`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs text-muted-foreground hover:text-primary transition-colors"
+          whileHover={{ scale: 1.05 }}
         >
           [info]
-        </a>
+        </motion.a>
       </div>
 
-      {/* Tab Switcher - Left aligned with horizontal underline */}
+      {/* Tab Switcher */}
       <div className="flex items-center gap-1 text-xs mb-3 pb-2 border-b border-border flex-shrink-0">
-        <button
-          onClick={() => setActiveTab("main")}
-          className={`px-3 py-1 transition-colors relative ${
-            activeTab === "main"
-              ? "text-primary"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Main
-          {activeTab === "main" && (
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"></div>
-          )}
-        </button>
-        <span className="text-muted-foreground">/</span>
-        <button
-          onClick={() => setActiveTab("student")}
-          className={`px-3 py-1 transition-colors relative ${
-            activeTab === "student"
-              ? "text-primary"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Student
-          {activeTab === "student" && (
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"></div>
-          )}
-        </button>
+        {["main", "student"].map((tab) => (
+          <motion.button
+            key={tab}
+            onClick={() => setActiveTab(tab as "main" | "student")}
+            className={`px-3 py-1 transition-colors relative ${
+              activeTab === tab
+                ? "text-primary"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+            whileHover={{ y: -1 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            {activeTab === tab && (
+              <motion.div
+                className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                layoutId="commitTab"
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
+            )}
+          </motion.button>
+        ))}
       </div>
 
-      {/* Commits List - Scrollable */}
+      {/* Commits List */}
       <div className="flex-1 overflow-y-scroll pr-2 custom-scrollbar min-h-0">
-        <div className="space-y-2.5">
-          {loading ? (
-            <div className="space-y-2">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className="animate-pulse">
-                  <div className="h-3 bg-border rounded w-3/4 mb-1"></div>
-                  <div className="h-2 bg-border rounded w-1/3"></div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <>
-              {(activeTab === "main" ? mainCommits : studentCommits).length >
-              0 ? (
-                (activeTab === "main" ? mainCommits : studentCommits).map(
-                  (commit, index) => (
-                    <a
-                      key={index}
-                      href={commit.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block group"
-                    >
-                      <div className="border border-border/50 rounded-md p-3 hover:border-primary/50 hover:bg-card/80 transition-all">
-                        {/* Commit Message & Repo */}
-                        <div className="flex items-start gap-2 mb-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></div>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-xs font-medium text-primary/80 mb-0.5">
-                              {commit.repo.split("/")[1]}
-                            </p>
-                            <p className="text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                              {commit.message}
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* Stats & SHA */}
-                        <div className="flex items-center justify-between mt-2 pt-2 border-t border-border/30">
-                          <div className="flex items-center gap-3 text-xs">
-                            <span className="font-mono text-muted-foreground">
-                              {commit.sha}
-                            </span>
-                            <div className="flex items-center gap-2">
-                              <span className="flex items-center gap-1 text-green-500">
-                                <span className="text-[10px]">●</span>
-                                <span className="font-medium">
-                                  +{commit.additions}
-                                </span>
-                              </span>
-                              <span className="flex items-center gap-1 text-red-500">
-                                <span className="text-[10px]">●</span>
-                                <span className="font-medium">
-                                  -{commit.deletions}
-                                </span>
-                              </span>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            className="space-y-2.5"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit={{ opacity: 0 }}
+          >
+            {loading ? (
+              <div className="space-y-2">
+                {[...Array(4)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="animate-pulse"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <div className="h-3 bg-border rounded w-3/4 mb-1"></div>
+                    <div className="h-2 bg-border rounded w-1/3"></div>
+                  </motion.div>
+                ))}
+              </div>
+            ) : (
+              <>
+                {(activeTab === "main" ? mainCommits : studentCommits).length >
+                0 ? (
+                  (activeTab === "main" ? mainCommits : studentCommits).map(
+                    (commit, index) => (
+                      <motion.a
+                        key={commit.sha + index}
+                        href={commit.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block group"
+                        variants={itemVariants}
+                        whileHover={{ x: 4 }}
+                      >
+                        <motion.div
+                          className="border border-border/50 rounded-md p-3 hover:border-primary/50 hover:bg-card/80 transition-all"
+                          whileHover={{ scale: 1.01 }}
+                        >
+                          <div className="flex items-start gap-2 mb-2">
+                            <motion.div
+                              className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"
+                              animate={{ scale: [1, 1.2, 1] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            />
+                            <div className="flex-1 min-w-0">
+                              <p className="text-xs font-medium text-primary/80 mb-0.5">
+                                {commit.repo.split("/")[1]}
+                              </p>
+                              <p className="text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                                {commit.message}
+                              </p>
                             </div>
                           </div>
-                          <ExternalLink className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
-                        </div>
-                      </div>
-                    </a>
+
+                          <div className="flex items-center justify-between mt-2 pt-2 border-t border-border/30">
+                            <div className="flex items-center gap-3 text-xs">
+                              <span className="font-mono text-muted-foreground">
+                                {commit.sha}
+                              </span>
+                              <div className="flex items-center gap-2">
+                                <span className="flex items-center gap-1 text-green-500">
+                                  <span className="text-[10px]">●</span>
+                                  <span className="font-medium">
+                                    +{commit.additions}
+                                  </span>
+                                </span>
+                                <span className="flex items-center gap-1 text-red-500">
+                                  <span className="text-[10px]">●</span>
+                                  <span className="font-medium">
+                                    -{commit.deletions}
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              whileHover={{ opacity: 1 }}
+                            >
+                              <ExternalLink className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                      </motion.a>
+                    )
                   )
-                )
-              ) : (
-                <p className="text-xs text-muted-foreground py-2">
-                  No recent commits
-                </p>
-              )}
-            </>
-          )}
-        </div>
+                ) : (
+                  <p className="text-xs text-muted-foreground py-2">
+                    No recent commits
+                  </p>
+                )}
+              </>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

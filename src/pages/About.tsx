@@ -100,7 +100,7 @@ const About = () => {
                     className="w-full h-full object-cover"
                   />
                 }
-                gridSize={12}
+                gridSize={21}
                 pixelColor="hsl(var(--background))"
                 once={false}
                 animationStepDuration={0.4}

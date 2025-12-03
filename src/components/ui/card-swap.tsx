@@ -36,7 +36,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       {...rest}
       className={cn(
-        "absolute top-1/2 left-1/2 rounded-xl border border-white bg-black",
+        "absolute top-1/2 left-1/2 rounded-xl border border-border/30 bg-card shadow-xl shadow-background/50",
         "[transform-style:preserve-3d] will-change-transform [backface-visibility:hidden]",
         customClass,
         rest.className
@@ -242,10 +242,10 @@ const CardSwap: React.FC<CardSwapProps> = ({
     <div
       ref={container}
       className={cn(
-        "absolute bottom-0 right-0 translate-x-[5%] translate-y-[20%] origin-bottom-right",
-        "[perspective:900px] overflow-visible",
-        "md:scale-100 max-md:scale-75 max-md:translate-x-[25%] max-md:translate-y-[25%]",
-        "max-[480px]:scale-[0.55] max-[480px]:translate-x-[25%] max-[480px]:translate-y-[25%]"
+        "absolute bottom-0 right-0 translate-x-[10%] translate-y-[15%] origin-bottom-right",
+        "[perspective:1200px] overflow-visible",
+        "md:scale-100 max-md:scale-80 max-md:translate-x-[20%] max-md:translate-y-[20%]",
+        "max-[480px]:scale-[0.6] max-[480px]:translate-x-[20%] max-[480px]:translate-y-[20%]"
       )}
       style={{ width, height }}
     >

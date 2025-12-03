@@ -7,39 +7,38 @@ import {
   Lightbulb,
   Wrench,
   Trophy,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import profileImage from "../assets/avatar.jpg";
 import profileImageGlasses from "../assets/avatar_with_glasses.jpg";
 import PixelTransition from "@/components/ui/pixel_transition";
 import CardSwap, { Card } from "@/components/ui/card-swap";
 import { motion } from "framer-motion";
-import { useRef } from "react";
 
 const About = () => {
-  const achievementsRef = useRef<HTMLDivElement>(null);
-
   const skills = [
     {
       category: "Languages",
       items: ["JavaScript", "TypeScript", "Python", "Java", "C++"],
       icon: Code2,
+      color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
     },
     {
       category: "Frameworks",
       items: ["React", "Next.js", "Vue.js", "Node.js", "Express"],
       icon: Zap,
+      color: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
     },
     {
       category: "Concepts",
       items: ["REST APIs", "GraphQL", "Microservices", "CI/CD", "Agile"],
       icon: Lightbulb,
+      color: "bg-purple-500/20 text-purple-400 border-purple-500/30",
     },
     {
       category: "Tools",
       items: ["Git", "Docker", "VS Code", "Figma", "Postman"],
       icon: Wrench,
+      color: "bg-blue-500/20 text-blue-400 border-blue-500/30",
     },
   ];
 
@@ -67,30 +66,23 @@ const About = () => {
   const cardData = [
     {
       title: "UI/UX Design",
-      description: "Creating beautiful, intuitive interfaces that users love to interact with.",
+      description:
+        "Creating beautiful, intuitive interfaces that users love to interact with.",
       icon: Palette,
     },
     {
       title: "Database Design",
-      description: "Architecting scalable database solutions for high-performance applications.",
+      description:
+        "Architecting scalable database solutions for high-performance applications.",
       icon: Database,
     },
     {
       title: "Performance",
-      description: "Optimizing applications for speed, efficiency, and better user experience.",
+      description:
+        "Optimizing applications for speed, efficiency, and better user experience.",
       icon: Zap,
     },
   ];
-
-  const scrollAchievements = (direction: "left" | "right") => {
-    if (achievementsRef.current) {
-      const scrollAmount = 320;
-      achievementsRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <div className="min-h-screen">
@@ -107,7 +99,7 @@ const About = () => {
               About <span className="text-primary">Me</span>
             </h1>
 
-            <div className="grid md:grid-cols-[1fr,300px] gap-12 mb-16">
+            <div className="grid md:grid-cols-[1fr,300px] gap-12 mb-32">
               <div className="prose prose-invert max-w-none">
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   I'm a passionate developer with over 5 years of experience
@@ -150,15 +142,15 @@ const About = () => {
 
             {/* What I Do Section */}
             <section className="mb-32">
-              <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
+              <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
                 <Lightbulb className="w-8 h-8 text-primary" />
                 What I Do
               </h2>
 
-              <div className="relative h-[380px] md:h-[350px] flex items-center justify-center">
+              <div className="relative h-[350px] md:h-[320px] mt-16">
                 <CardSwap
-                  width={380}
-                  height={220}
+                  width={500}
+                  height={200}
                   cardDistance={50}
                   verticalDistance={45}
                   delay={4000}
@@ -175,7 +167,9 @@ const About = () => {
                             <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                               <Icon className="w-5 h-5 text-primary" />
                             </div>
-                            <h3 className="text-lg font-bold mb-2 text-foreground">{card.title}</h3>
+                            <h3 className="text-lg font-bold mb-2 text-foreground">
+                              {card.title}
+                            </h3>
                             <p className="text-muted-foreground text-sm leading-relaxed">
                               {card.description}
                             </p>
@@ -189,7 +183,7 @@ const About = () => {
             </section>
 
             {/* Skills Section */}
-            <section className="mb-24">
+            <section className="mb-32">
               <motion.h2
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -224,7 +218,7 @@ const About = () => {
                         {skillGroup.items.map((skill, idx) => (
                           <span
                             key={idx}
-                            className="px-2.5 py-1 rounded-md text-xs font-medium border border-border bg-background text-muted-foreground"
+                            className={`px-2.5 py-1 rounded-md text-xs font-medium border ${skillGroup.color}`}
                           >
                             {skill}
                           </span>
@@ -238,64 +232,54 @@ const About = () => {
 
             {/* Achievements Section */}
             <section>
-              <div className="flex items-center justify-between mb-8">
-                <motion.h2
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="text-3xl font-bold flex items-center gap-3"
-                >
-                  <Trophy className="w-8 h-8 text-primary" />
-                  Achievements
-                </motion.h2>
-                
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => scrollAchievements("left")}
-                    className="p-2 rounded-lg border border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all duration-200"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => scrollAchievements("right")}
-                    className="p-2 rounded-lg border border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all duration-200"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-
-              <div 
-                ref={achievementsRef}
-                className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin snap-x snap-mandatory"
-                style={{ scrollbarWidth: "thin" }}
+              <motion.h2
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="text-3xl font-bold flex items-center gap-3 mb-8"
               >
-                {achievements.map((achievement, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="min-w-[280px] max-w-[280px] snap-start"
-                  >
-                    <div className="h-full p-5 rounded-xl bg-secondary border border-border hover:border-primary/30 transition-all duration-300">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        <span className="text-xs text-muted-foreground font-medium">
-                          {achievement.year}
-                        </span>
+                <Trophy className="w-8 h-8 text-primary" />
+                Achievements
+              </motion.h2>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="rounded-xl bg-secondary border border-border overflow-hidden"
+              >
+                <div
+                  className="max-h-[320px] overflow-y-auto p-6 scrollbar-thin"
+                  style={{ scrollbarWidth: "thin" }}
+                >
+                  <div className="space-y-0">
+                    {achievements.map((achievement, index) => (
+                      <div key={index} className="flex gap-4">
+                        {/* Timeline checkpoint */}
+                        <div className="flex flex-col items-center">
+                          <div className="w-3 h-3 rounded-full bg-primary border-2 border-primary shadow-lg shadow-primary/30 flex-shrink-0" />
+                          {index < achievements.length - 1 && (
+                            <div className="w-0.5 h-full min-h-[80px] bg-border" />
+                          )}
+                        </div>
+
+                        {/* Content */}
+                        <div className="pb-8 flex-1">
+                          <span className="text-xs text-primary font-semibold">
+                            {achievement.year}
+                          </span>
+                          <h3 className="text-base font-bold text-foreground mt-1">
+                            {achievement.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed mt-1">
+                            {achievement.description}
+                          </p>
+                        </div>
                       </div>
-                      <h3 className="text-base font-bold mb-2 text-foreground">
-                        {achievement.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {achievement.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             </section>
           </motion.div>
         </div>

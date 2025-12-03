@@ -19,7 +19,7 @@ const getTechColor = (tech: string) => {
       "golang",
     ].some((lang) => techLower.includes(lang))
   ) {
-    return "text-blue-400";
+    return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
   }
   // Frameworks
   if (
@@ -36,7 +36,7 @@ const getTechColor = (tech: string) => {
       "nodejs",
     ].some((fw) => techLower.includes(fw))
   ) {
-    return "text-green-400";
+    return "bg-cyan-500/20 text-cyan-400 border-cyan-500/30";
   }
   // Concepts
   if (
@@ -57,7 +57,7 @@ const getTechColor = (tech: string) => {
       "monitoring",
     ].some((concept) => techLower.includes(concept))
   ) {
-    return "text-purple-400";
+    return "bg-purple-500/20 text-purple-400 border-purple-500/30";
   }
   // Tools & Databases
   if (
@@ -75,7 +75,7 @@ const getTechColor = (tech: string) => {
       "kafka",
     ].some((tool) => techLower.includes(tool))
   ) {
-    return "text-orange-400";
+    return "bg-orange-500/20 text-orange-400 border-orange-500/30";
   }
   // Styling & Design
   if (
@@ -83,9 +83,9 @@ const getTechColor = (tech: string) => {
       techLower.includes(style)
     )
   ) {
-    return "text-pink-400";
+    return "bg-pink-500/20 text-pink-400 border-pink-500/30";
   }
-  return "text-foreground";
+  return "bg-primary/10 text-foreground border-primary/20";
 };
 
 interface ProjectCardProps {
@@ -146,7 +146,7 @@ const ProjectCard = ({
                 />
               )}
             </motion.div>
-            
+
             {/* Gradient overlay on hover */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"
@@ -168,7 +168,10 @@ const ProjectCard = ({
                 {title}
                 <motion.span
                   initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -10 }}
+                  animate={{
+                    opacity: isHovered ? 1 : 0,
+                    x: isHovered ? 0 : -10,
+                  }}
                   transition={{ duration: 0.2 }}
                 >
                   <ExternalLink className="w-4 h-4" />
@@ -182,7 +185,7 @@ const ProjectCard = ({
               {tags.map((tag, index) => (
                 <motion.span
                   key={index}
-                  className={`text-xs font-semibold px-2 py-1 rounded bg-primary/10 border border-primary/20 ${getTechColor(
+                  className={`text-xs font-semibold px-2 py-1 rounded border ${getTechColor(
                     tag
                   )}`}
                   initial={{ opacity: 0, scale: 0.8 }}

@@ -143,7 +143,13 @@ const About = () => {
             {/* What I Do Section */}
             <section className="mb-32">
               <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-                <Lightbulb className="w-8 h-8 text-primary" />
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.5 }}
+                  className="cursor-pointer"
+                >
+                  <Lightbulb className="w-8 h-8 text-primary" />
+                </motion.div>
                 What I Do
               </h2>
 
@@ -190,7 +196,13 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-3xl font-bold mb-10 flex items-center gap-3"
               >
-                <Wrench className="w-8 h-8 text-primary" />
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.5 }}
+                  className="cursor-pointer"
+                >
+                  <Wrench className="w-8 h-8 text-primary" />
+                </motion.div>
                 Skills & Technologies
               </motion.h2>
 
@@ -238,7 +250,13 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-3xl font-bold flex items-center gap-3 mb-8"
               >
-                <Trophy className="w-8 h-8 text-primary" />
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.5 }}
+                  className="cursor-pointer"
+                >
+                  <Trophy className="w-8 h-8 text-primary" />
+                </motion.div>
                 Achievements
               </motion.h2>
 

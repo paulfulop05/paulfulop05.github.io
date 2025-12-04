@@ -86,7 +86,7 @@ const Navigation = () => {
             animate={{ opacity: [1, 0, 1] }}
             transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
           />
-          <motion.span 
+          <motion.span
             className="ml-3 text-xs text-muted-foreground/40 select-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

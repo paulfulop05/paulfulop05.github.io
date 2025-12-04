@@ -15,30 +15,48 @@ import CardSwap, { Card } from "@/components/ui/card-swap";
 import { motion } from "framer-motion";
 
 const About = () => {
+  const languageSkills = {
+    proficient: {
+      description:
+        "I have used these programming languages in various projects throughout my journey.",
+      items: ["C", "C++", "C#", "Python", "Java"],
+    },
+    familiar: {
+      description:
+        "I have worked with these programming languages at least once in my life, but I don't have as much experience.",
+      items: ["Lua", "JavaScript", "TypeScript", "AssemblyScript"],
+    },
+  };
+
   const skills = [
     {
-      category: "Languages",
-      items: ["JavaScript", "TypeScript", "Python", "Java", "C++"],
-      icon: Code2,
-      color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-    },
-    {
       category: "Frameworks",
-      items: ["React", "Next.js", "Vue.js", "Node.js", "Express"],
+      description:
+        "Software frameworks and libraries that provide structure, reusable components, and tools to build applications efficiently.",
+      items: ["Qt", "React", "Tailwind CSS", ".NET"],
       icon: Zap,
-      color: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
-    },
-    {
-      category: "Concepts",
-      items: ["REST APIs", "GraphQL", "Microservices", "CI/CD", "Agile"],
-      icon: Lightbulb,
-      color: "bg-purple-500/20 text-purple-400 border-purple-500/30",
+      color: "bg-red-500/20 text-red-400 border-red-500/30",
     },
     {
       category: "Tools",
-      items: ["Git", "Docker", "VS Code", "Figma", "Postman"],
+      description:
+        "Software and utilities that help build, test, and manage applications efficiently.",
+      items: ["SQL Server", "GitHub", "Git", "Vite"],
       icon: Wrench,
       color: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+    },
+    {
+      category: "Concepts",
+      description:
+        "Core principles and techniques that guide writing efficient, organized, and maintainable code.",
+      items: [
+        "Object-Oriented Programming",
+        "Data Structures",
+        "Algorithms",
+        "Software Engineering Principles",
+      ],
+      icon: Lightbulb,
+      color: "bg-background text-foreground border-border",
     },
   ];
 
@@ -154,12 +172,12 @@ const About = () => {
 
               <div className="relative h-[350px] md:h-[320px] mt-16">
                 <CardSwap
-                  width={500}
+                  width={750}
                   height={200}
                   cardDistance={50}
-                  verticalDistance={45}
+                  verticalDistance={35}
                   delay={4000}
-                  pauseOnHover={true}
+                  pauseOnHover={false}
                   skewAmount={4}
                   easing="elastic"
                 >
@@ -204,39 +222,104 @@ const About = () => {
                 Skills & Technologies
               </motion.h2>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {skills.map((skillGroup, index) => {
-                  const Icon = skillGroup.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="p-5 rounded-xl bg-secondary border border-border hover:border-primary/30 transition-all duration-300"
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                          <Icon className="w-4 h-4 text-primary" />
-                        </div>
-                        <h3 className="text-base font-bold text-primary">
-                          {skillGroup.category}
-                        </h3>
-                      </div>
+              <div className="flex flex-col gap-4">
+                {/* Languages Card - Full Width with Stacked Sub-sections */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="p-5 rounded-xl bg-secondary border border-border hover:border-primary/30 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Code2 className="w-4 h-4 text-primary" />
+                    </div>
+                    <h3 className="text-base font-bold text-primary">
+                      Languages
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-col gap-6">
+                    {/* Proficient */}
+                    <div>
+                      <h4 className="text-sm font-semibold text-foreground mb-2">
+                        Proficient
+                      </h4>
+                      <p className="text-xs text-muted-foreground mb-3">
+                        {languageSkills.proficient.description}
+                      </p>
                       <div className="flex flex-wrap gap-2">
-                        {skillGroup.items.map((skill, idx) => (
+                        {languageSkills.proficient.items.map((skill, idx) => (
                           <span
                             key={idx}
-                            className={`px-2.5 py-1 rounded-md text-xs font-medium border ${skillGroup.color}`}
+                            className="px-2.5 py-1 rounded-md text-xs font-medium border bg-amber-500/20 text-amber-400 border-amber-500/30"
                           >
                             {skill}
                           </span>
                         ))}
                       </div>
-                    </motion.div>
-                  );
-                })}
+                    </div>
+
+                    {/* Familiar */}
+                    <div>
+                      <h4 className="text-sm font-semibold text-foreground mb-2">
+                        Familiar
+                      </h4>
+                      <p className="text-xs text-muted-foreground mb-3">
+                        {languageSkills.familiar.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {languageSkills.familiar.items.map((skill, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2.5 py-1 rounded-md text-xs font-medium border bg-amber-500/20 text-amber-400 border-amber-500/30"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Other Skills - 3 Column Grid */}
+                <div className="grid md:grid-cols-3 gap-4">
+                  {skills.map((skillGroup, index) => {
+                    const Icon = skillGroup.icon;
+                    return (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: (index + 1) * 0.1 }}
+                        className="p-5 rounded-xl bg-secondary border border-border hover:border-primary/30 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <Icon className="w-4 h-4 text-primary" />
+                          </div>
+                          <h3 className="text-base font-bold text-primary">
+                            {skillGroup.category}
+                          </h3>
+                        </div>
+                        <p className="text-xs text-muted-foreground mb-3">
+                          {skillGroup.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {skillGroup.items.map((skill, idx) => (
+                            <span
+                              key={idx}
+                              className={`px-2.5 py-1 rounded-md text-xs font-medium border ${skillGroup.color}`}
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
               </div>
             </section>
 

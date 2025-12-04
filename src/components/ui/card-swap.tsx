@@ -146,7 +146,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
       tlRef.current = tl;
 
       tl.to(elFront, {
-        y: "+=280",
+        y: "+=200",
         duration: config.durDrop,
         ease: config.ease,
       });

@@ -12,9 +12,8 @@ export interface Project {
   fullDescription?: string;
   tags: ProjectTag[];
   link: string;
-  repo: string;
-  image?: string;
-  gif?: string;
+  previewImage?: string;
+  previewGif?: string;
 }
 
 export const projects: Project[] = [
@@ -30,7 +29,9 @@ export const projects: Project[] = [
       { name: "Proof-of-work", type: "concept" },
     ],
     link: "https://github.com",
-    repo: "TechnoROG",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "abacus",
@@ -44,7 +45,9 @@ export const projects: Project[] = [
       { name: "Docker", type: "tool" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "realtime-chat",
@@ -58,7 +61,9 @@ export const projects: Project[] = [
       { name: "MongoDB", type: "tool" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "api-shield",
@@ -72,7 +77,9 @@ export const projects: Project[] = [
       { name: "Middleware", type: "concept" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "cloudsync",
@@ -86,7 +93,9 @@ export const projects: Project[] = [
       { name: "AWS", type: "tool" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "logstream",
@@ -100,7 +109,9 @@ export const projects: Project[] = [
       { name: "Monitoring", type: "concept" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "authkit",
@@ -114,7 +125,9 @@ export const projects: Project[] = [
       { name: "Redis", type: "tool" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "graphql-gateway",
@@ -128,7 +141,9 @@ export const projects: Project[] = [
       { name: "Microservices", type: "concept" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "taskqueue-pro",
@@ -142,7 +157,9 @@ export const projects: Project[] = [
       { name: "RabbitMQ", type: "tool" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "container-registry",
@@ -156,7 +173,9 @@ export const projects: Project[] = [
       { name: "Kubernetes", type: "tool" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "metrics-collector",
@@ -170,7 +189,9 @@ export const projects: Project[] = [
       { name: "Grafana", type: "tool" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
   {
     id: "db-migrator",
@@ -184,7 +205,9 @@ export const projects: Project[] = [
       { name: "CLI", type: "concept" },
     ],
     link: "https://github.com",
-    repo: "yourusername",
+    previewImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
   },
 ];
 

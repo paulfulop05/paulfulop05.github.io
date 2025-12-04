@@ -18,9 +18,12 @@ const ProjectDetail = () => {
         .join(" ") || "Project",
     description:
       "A comprehensive description of the project. This is a placeholder that would normally contain detailed information about the project's goals, features, and technical implementation.",
-    tags: ["react", "typescript", "tailwind"],
+    tags: [
+      { name: "React", type: "framework" as const },
+      { name: "TypeScript", type: "language" as const },
+      { name: "Tailwind", type: "framework" as const },
+    ],
     link: "https://github.com",
-    repo: "yourusername",
   };
 
   return (

@@ -13,9 +13,23 @@ interface ProjectCardProps {
   link: string;
   repo?: string;
   id?: string;
+  previewImage?: string;
+  previewGif?: string;
 }
 
-const ProjectCard = ({ title, description, tags, id }: ProjectCardProps) => {
+const DEFAULT_PREVIEW_IMAGE =
+  "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop";
+const DEFAULT_PREVIEW_GIF =
+  "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif";
+
+const ProjectCard = ({
+  title,
+  description,
+  tags,
+  id,
+  previewImage,
+  previewGif,
+}: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const projectId = id || title.toLowerCase().replace(/\s+/g, "-");
   const projectLink = `/projects/${projectId}`;
@@ -43,7 +57,7 @@ const ProjectCard = ({ title, description, tags, id }: ProjectCardProps) => {
             >
               {isHovered ? (
                 <motion.img
-                  src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
+                  src={previewGif || DEFAULT_PREVIEW_GIF}
                   alt={`${title} demo`}
                   className="w-full h-full object-cover"
                   initial={{ opacity: 0 }}
@@ -52,7 +66,7 @@ const ProjectCard = ({ title, description, tags, id }: ProjectCardProps) => {
                 />
               ) : (
                 <img
-                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop"
+                  src={previewImage || DEFAULT_PREVIEW_IMAGE}
                   alt={title}
                   className="w-full h-full object-cover"
                 />

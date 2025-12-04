@@ -51,8 +51,7 @@ const Projects = () => {
           <motion.a
             href="/projects"
             className="flex items-center gap-2 text-primary text-sm font-semibold"
-            whileHover={{ x: 5 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            whileHover={{ x: 5, transition: { duration: 0.15 } }}
           >
             View all
             <motion.div

@@ -43,9 +43,8 @@ const ProjectCard = ({
       onClick={() => window.scrollTo(0, 0)}
     >
       <motion.div
-        whileHover={{ y: -8, scale: 1.02 }}
+        whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.2 } }}
         whileTap={{ scale: 0.98 }}
-        transition={{ type: "spring", stiffness: 400, damping: 17 }}
       >
         <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/10">
           <div className="relative h-48 bg-muted overflow-hidden">

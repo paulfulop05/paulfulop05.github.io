@@ -37,6 +37,18 @@ const ProjectDetail = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
+            {/* Back to Projects */}
+            <motion.a
+              href="/projects"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
+              whileHover={{ x: 5, transition: { duration: 0.15 } }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 }}
+            >
+              <span className="text-sm">← Back to Projects</span>
+            </motion.a>
+
             {/* Project Header */}
             <motion.div
               className="mb-8"

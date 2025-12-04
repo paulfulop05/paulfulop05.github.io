@@ -73,7 +73,9 @@ const Navigation = () => {
                 to={segment.link}
                 className="text-foreground hover:text-primary transition-colors"
               >
-                <motion.span whileHover={{ scale: 1.05 }}>
+                <motion.span
+                  whileHover={{ scale: 1.05, transition: { duration: 0.15 } }}
+                >
                   {segment.text}
                 </motion.span>
               </Link>
@@ -98,14 +100,16 @@ const Navigation = () => {
                 to={link.to}
                 className="text-sm text-muted-foreground hover:text-primary transition-colors relative group"
               >
-                <motion.span whileHover={{ y: -2 }} className="inline-block">
+                <motion.span
+                  whileHover={{ y: -2, transition: { duration: 0.15 } }}
+                  className="inline-block"
+                >
                   {link.label}
                 </motion.span>
                 <motion.span
                   className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary origin-left"
                   initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.2 }}
+                  whileHover={{ scaleX: 1, transition: { duration: 0.15 } }}
                 />
               </Link>
             </motion.div>

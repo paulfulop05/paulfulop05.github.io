@@ -1,7 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, Download, ExternalLink } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Download, ExternalLink } from "lucide-react";
 
 const CV = () => {
   const cvPdfPath = "/PAUL_FÜLÖP_CV.pdf";
@@ -25,13 +24,13 @@ const CV = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <Link
-              to="/"
+            <motion.a
+              href="/"
               className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+              whileHover={{ x: 5, transition: { duration: 0.15 } }}
             >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="text-sm">Back to Home</span>
-            </Link>
+              <span className="text-sm">← Back to Home</span>
+            </motion.a>
 
             <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
               <motion.a
@@ -39,7 +38,7 @@ const CV = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 md:px-4 py-2 text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors border border-border rounded-lg hover:border-primary"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
                 whileTap={{ scale: 0.98 }}
               >
                 <ExternalLink className="w-4 h-4" />
@@ -50,7 +49,7 @@ const CV = () => {
                 href={cvPdfPath}
                 download
                 className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 md:px-4 py-2 text-xs md:text-sm bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
                 whileTap={{ scale: 0.98 }}
               >
                 <Download className="w-4 h-4" />
@@ -95,7 +94,7 @@ const CV = () => {
                 href={cvPdfPath}
                 download
                 className="flex items-center justify-center gap-2 px-4 py-3 text-sm bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
                 whileTap={{ scale: 0.98 }}
               >
                 <Download className="w-4 h-4" />
@@ -106,7 +105,7 @@ const CV = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-4 py-3 text-sm text-muted-foreground hover:text-primary transition-colors border border-border rounded-lg hover:border-primary"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
                 whileTap={{ scale: 0.98 }}
               >
                 <ExternalLink className="w-4 h-4" />

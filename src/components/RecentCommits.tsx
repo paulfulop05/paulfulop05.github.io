@@ -265,7 +265,7 @@ const RecentCommits = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs text-muted-foreground hover:text-primary transition-colors"
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, transition: { duration: 0.15 } }}
         >
           [info]
         </motion.a>
@@ -282,7 +282,7 @@ const RecentCommits = () => {
                 ? "text-primary"
                 : "text-muted-foreground hover:text-foreground"
             }`}
-            whileHover={{ y: -1 }}
+            whileHover={{ y: -1, transition: { duration: 0.15 } }}
             whileTap={{ scale: 0.98 }}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -336,11 +336,14 @@ const RecentCommits = () => {
                         rel="noopener noreferrer"
                         className="block group"
                         variants={itemVariants}
-                        whileHover={{ x: 4 }}
+                        whileHover={{ x: 4, transition: { duration: 0.15 } }}
                       >
                         <motion.div
                           className="border border-border/50 rounded-md p-3 hover:border-primary/50 hover:bg-card/80 transition-all"
-                          whileHover={{ scale: 1.01 }}
+                          whileHover={{
+                            scale: 1.01,
+                            transition: { duration: 0.15 },
+                          }}
                         >
                           <div className="flex items-start gap-2 mb-2">
                             <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />

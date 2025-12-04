@@ -89,41 +89,41 @@ const Contact = () => {
                     </motion.h2>
                     <div className="space-y-4">
                       {contactLinks.map((link, index) => (
-                        <motion.a
+                        <motion.div
                           key={link.title}
-                          href={link.href}
-                          target={link.external ? "_blank" : undefined}
-                          rel={
-                            link.external ? "noopener noreferrer" : undefined
-                          }
-                          className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary transition-colors group"
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{
                             duration: 0.4,
                             delay: 0.3 + index * 0.1,
                           }}
-                          whileHover={{ x: 5 }}
                         >
-                          <motion.div
-                            whileHover={{ scale: 1.1, rotate: 5 }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 400,
-                              damping: 10,
-                            }}
+                          <motion.a
+                            href={link.href}
+                            target={link.external ? "_blank" : undefined}
+                            rel={
+                              link.external ? "noopener noreferrer" : undefined
+                            }
+                            className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary transition-colors group"
+                            whileHover={{ x: 5 }}
+                            transition={{ duration: 0.15 }}
                           >
-                            <link.icon className="w-6 h-6 text-primary" />
-                          </motion.div>
-                          <div>
-                            <p className="font-semibold group-hover:text-primary transition-colors">
-                              {link.title}
-                            </p>
-                            <p className="text-sm text-muted-foreground">
-                              {link.value}
-                            </p>
-                          </div>
-                        </motion.a>
+                            <motion.div
+                              whileHover={{ scale: 1.1, rotate: 5 }}
+                              transition={{ duration: 0.15 }}
+                            >
+                              <link.icon className="w-6 h-6 text-primary" />
+                            </motion.div>
+                            <div>
+                              <p className="font-semibold group-hover:text-primary transition-colors">
+                                {link.title}
+                              </p>
+                              <p className="text-sm text-muted-foreground">
+                                {link.value}
+                              </p>
+                            </div>
+                          </motion.a>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
@@ -132,21 +132,25 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.6 }}
-                    whileHover={{ scale: 1.02 }}
-                    className="p-6 bg-card border border-border rounded-lg"
                   >
-                    <h3 className="text-xl font-bold mb-3">Availability</h3>
-                    <p className="text-muted-foreground">
-                      I'm currently{" "}
-                      <motion.span
-                        className="text-primary font-semibold inline-block"
-                        animate={{ scale: [1, 1.05, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        available
-                      </motion.span>{" "}
-                      for freelance projects and consulting opportunities.
-                    </p>
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.15 }}
+                      className="p-6 bg-card border border-border rounded-lg"
+                    >
+                      <h3 className="text-xl font-bold mb-3">Availability</h3>
+                      <p className="text-muted-foreground">
+                        I'm currently{" "}
+                        <motion.span
+                          className="text-primary font-semibold inline-block"
+                          animate={{ scale: [1, 1.05, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          available
+                        </motion.span>{" "}
+                        for freelance projects and consulting opportunities.
+                      </p>
+                    </motion.div>
                   </motion.div>
                 </div>
               </div>

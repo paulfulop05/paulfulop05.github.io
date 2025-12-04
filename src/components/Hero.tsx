@@ -166,7 +166,7 @@ const Hero = () => {
           <motion.button
             onClick={onClose}
             className="absolute top-4 right-4 p-1 rounded-md hover:bg-muted flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
             whileTap={{ scale: 0.9 }}
           >
             <X className="w-4 h-4" />
@@ -218,7 +218,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.25 }}
-            whileHover={{ x: 5 }}
+            whileHover={{ x: 5, transition: { duration: 0.15 } }}
           >
             Visit Website
             <span className="text-xs">↗</span>
@@ -246,8 +246,7 @@ const Hero = () => {
             Hello, I'm{" "}
             <motion.span
               className="text-primary inline-block"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.15 } }}
             >
               Your Name
             </motion.span>
@@ -261,21 +260,33 @@ const Hero = () => {
             I specialize in creating{" "}
             <motion.span
               className="text-primary font-semibold inline-block"
-              whileHover={{ scale: 1.1, rotate: -2 }}
+              whileHover={{
+                scale: 1.1,
+                rotate: -2,
+                transition: { duration: 0.15 },
+              }}
             >
               beautiful
             </motion.span>
             ,{" "}
             <motion.span
               className="text-primary font-semibold inline-block"
-              whileHover={{ scale: 1.1, rotate: 2 }}
+              whileHover={{
+                scale: 1.1,
+                rotate: 2,
+                transition: { duration: 0.15 },
+              }}
             >
               functional
             </motion.span>
             , and{" "}
             <motion.span
               className="text-primary font-semibold inline-block"
-              whileHover={{ scale: 1.1, rotate: -2 }}
+              whileHover={{
+                scale: 1.1,
+                rotate: -2,
+                transition: { duration: 0.15 },
+              }}
             >
               user-friendly
             </motion.span>{" "}
@@ -295,51 +306,63 @@ const Hero = () => {
             variants={itemVariants}
             className="flex items-center gap-6"
           >
-            <motion.a
-              href="/cv"
-              className="flex items-center gap-2 px-3 py-1.5 text-sm border border-border rounded-lg text-muted-foreground hover:text-primary hover:border-primary transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <FileText className="w-4 h-4" />
-              <span>CV</span>
-            </motion.a>
+              <motion.a
+                href="/cv"
+                className="flex items-center gap-2 px-3 py-1.5 text-sm border border-border rounded-lg text-muted-foreground hover:text-primary hover:border-primary transition-all"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.15 }}
+              >
+                <FileText className="w-4 h-4" />
+                <span>CV</span>
+              </motion.a>
+            </motion.div>
             <span className="text-muted-foreground opacity-30">|</span>
             {socialLinks.map((link, index) => (
-              <motion.a
+              <motion.div
                 key={link.label}
-                href={link.href}
-                target={link.href.startsWith("mailto") ? undefined : "_blank"}
-                rel={
-                  link.href.startsWith("mailto")
-                    ? undefined
-                    : "noopener noreferrer"
-                }
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 + index * 0.1 }}
               >
-                <link.icon className="w-5 h-5" />
-                <span className="text-sm">{link.label}</span>
-              </motion.a>
+                <motion.a
+                  href={link.href}
+                  target={link.href.startsWith("mailto") ? undefined : "_blank"}
+                  rel={
+                    link.href.startsWith("mailto")
+                      ? undefined
+                      : "noopener noreferrer"
+                  }
+                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <link.icon className="w-5 h-5" />
+                  <span className="text-sm">{link.label}</span>
+                </motion.a>
+              </motion.div>
             ))}
             <span className="text-muted-foreground opacity-30">|</span>
-            <motion.a
-              href="/about"
-              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-              whileHover={{ x: 5 }}
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 }}
             >
-              <span className="text-sm">More about me →</span>
-            </motion.a>
+              <motion.a
+                href="/about"
+                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.15 }}
+              >
+                <span className="text-sm">More about me →</span>
+              </motion.a>
+            </motion.div>
           </motion.div>
         </motion.div>
 
@@ -364,6 +387,7 @@ const Hero = () => {
                 )}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15 }}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
                 {activeTab === tab && (
@@ -400,13 +424,18 @@ const Hero = () => {
                       <motion.div
                         className="flex items-center gap-3 cursor-pointer group"
                         onClick={(e) => handleOrgClick(org.key, e)}
-                        whileHover={{ scale: 1.05 }}
+                        whileHover={{
+                          scale: 1.05,
+                          transition: { duration: 0.15 },
+                        }}
                         whileTap={{ scale: 0.98 }}
                       >
                         <motion.div
                           className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 group-hover:ring-2 group-hover:ring-primary/50 transition-all"
-                          whileHover={{ rotate: [0, -5, 5, 0] }}
-                          transition={{ duration: 0.5 }}
+                          whileHover={{
+                            rotate: [0, -5, 5, 0],
+                            transition: { duration: 0.5 },
+                          }}
                         >
                           <img
                             src={org.icon}

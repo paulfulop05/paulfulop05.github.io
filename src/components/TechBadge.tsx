@@ -30,7 +30,7 @@ const TechBadge = ({
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: index * 0.05 }}
-        whileHover={{ scale: 1.1, y: -2 }}
+        whileHover={{ scale: 1.1, y: -2, transition: { duration: 0.15 } }}
       >
         {tech}
       </motion.span>

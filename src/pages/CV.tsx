@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const CV = () => {
   const cvPdfPath = "/PAUL_FÜLÖP_CV.pdf";
+  const privateCvPdfPath = "/PAUL_FÜLÖP_CV_PRIVATE.pdf";
 
   return (
     <div className="min-h-screen bg-background">
@@ -34,7 +35,7 @@ const CV = () => {
 
             <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
               <motion.a
-                href={cvPdfPath}
+                href={privateCvPdfPath}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 md:px-4 py-2 text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors border border-border rounded-lg hover:border-primary"
@@ -66,7 +67,7 @@ const CV = () => {
             transition={{ delay: 0.2 }}
           >
             <iframe
-              src={cvPdfPath}
+              src={privateCvPdfPath}
               className="w-full h-[calc(100vh-200px)] min-h-[500px]"
               title="CV"
             />
@@ -101,7 +102,7 @@ const CV = () => {
                 <span>Download CV</span>
               </motion.a>
               <motion.a
-                href={cvPdfPath}
+                href={privateCvPdfPath}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-4 py-3 text-sm text-muted-foreground hover:text-primary transition-colors border border-border rounded-lg hover:border-primary"

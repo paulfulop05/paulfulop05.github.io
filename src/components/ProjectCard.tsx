@@ -3,90 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
-
-const getTechColor = (tech: string) => {
-  const techLower = tech.toLowerCase();
-  // Languages
-  if (
-    [
-      "javascript",
-      "typescript",
-      "python",
-      "java",
-      "c++",
-      "go",
-      "rust",
-      "golang",
-    ].some((lang) => techLower.includes(lang))
-  ) {
-    return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
-  }
-  // Frameworks
-  if (
-    [
-      "react",
-      "next.js",
-      "vue.js",
-      "node.js",
-      "express",
-      "django",
-      "flask",
-      "nextjs",
-      "vuejs",
-      "nodejs",
-    ].some((fw) => techLower.includes(fw))
-  ) {
-    return "bg-cyan-500/20 text-cyan-400 border-cyan-500/30";
-  }
-  // Concepts
-  if (
-    [
-      "rest api",
-      "graphql",
-      "websocket",
-      "microservices",
-      "ci/cd",
-      "agile",
-      "api",
-      "rest",
-      "security",
-      "anti-bot",
-      "proof-of-work",
-      "rate-limiting",
-      "middleware",
-      "monitoring",
-    ].some((concept) => techLower.includes(concept))
-  ) {
-    return "bg-purple-500/20 text-purple-400 border-purple-500/30";
-  }
-  // Tools & Databases
-  if (
-    [
-      "git",
-      "docker",
-      "postgresql",
-      "mongodb",
-      "redis",
-      "aws",
-      "kubernetes",
-      "postgres",
-      "mongo",
-      "elasticsearch",
-      "kafka",
-    ].some((tool) => techLower.includes(tool))
-  ) {
-    return "bg-orange-500/20 text-orange-400 border-orange-500/30";
-  }
-  // Styling & Design
-  if (
-    ["tailwind", "css", "sass", "scss", "figma"].some((style) =>
-      techLower.includes(style)
-    )
-  ) {
-    return "bg-pink-500/20 text-pink-400 border-pink-500/30";
-  }
-  return "bg-primary/10 text-foreground border-primary/20";
-};
+import TechBadge from "./TechBadge";
 
 interface ProjectCardProps {
   title: string;
@@ -147,7 +64,6 @@ const ProjectCard = ({
               )}
             </motion.div>
 
-            {/* Gradient overlay on hover */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"
               initial={{ opacity: 0 }}
@@ -183,18 +99,7 @@ const ProjectCard = ({
             </p>
             <div className="flex flex-wrap gap-2">
               {tags.map((tag, index) => (
-                <motion.span
-                  key={index}
-                  className={`text-xs font-semibold px-2 py-1 rounded border ${getTechColor(
-                    tag
-                  )}`}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.05 }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                >
-                  {tag}
-                </motion.span>
+                <TechBadge key={index} tech={tag} index={index} />
               ))}
             </div>
           </CardContent>

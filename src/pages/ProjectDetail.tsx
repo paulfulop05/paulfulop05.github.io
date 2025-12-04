@@ -3,115 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Github } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-
-const getTechColor = (tech: string) => {
-  const techLower = tech.toLowerCase();
-  // Languages
-  if (
-    [
-      "javascript",
-      "typescript",
-      "python",
-      "java",
-      "c++",
-      "go",
-      "rust",
-      "golang",
-    ].some((lang) => techLower.includes(lang))
-  ) {
-    return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
-  }
-  // Frameworks
-  if (
-    [
-      "react",
-      "next.js",
-      "vue.js",
-      "node.js",
-      "express",
-      "django",
-      "flask",
-      "nextjs",
-      "vuejs",
-      "nodejs",
-    ].some((fw) => techLower.includes(fw))
-  ) {
-    return "bg-cyan-500/20 text-cyan-400 border-cyan-500/30";
-  }
-  // Concepts
-  if (
-    [
-      "rest api",
-      "graphql",
-      "websocket",
-      "microservices",
-      "ci/cd",
-      "agile",
-      "api",
-      "rest",
-      "security",
-      "anti-bot",
-      "proof-of-work",
-    ].some((concept) => techLower.includes(concept))
-  ) {
-    return "bg-purple-500/20 text-purple-400 border-purple-500/30";
-  }
-  // Tools & Databases
-  if (
-    [
-      "git",
-      "docker",
-      "postgresql",
-      "mongodb",
-      "redis",
-      "aws",
-      "kubernetes",
-      "postgres",
-      "mongo",
-    ].some((tool) => techLower.includes(tool))
-  ) {
-    return "bg-orange-500/20 text-orange-400 border-orange-500/30";
-  }
-  // Styling & Design
-  if (
-    ["tailwind", "css", "sass", "scss", "figma"].some((style) =>
-      techLower.includes(style)
-    )
-  ) {
-    return "bg-pink-500/20 text-pink-400 border-pink-500/30";
-  }
-  return "bg-primary/10 text-foreground border-primary/20";
-};
+import TechBadge from "@/components/TechBadge";
+import { getProjectById } from "@/data/projects";
 
 const ProjectDetail = () => {
   const { id } = useParams();
-
-  // Sample project data - in real app this would come from a data source
-  const project = {
-    title:
-      id
-        ?.split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ") || "Project",
-    description:
-      "A comprehensive description of the project. This is a placeholder that would normally contain detailed information about the project's goals, features, and technical implementation.",
+  
+  const project = getProjectById(id || "") || {
+    id: id || "unknown",
+    title: id?.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") || "Project",
+    description: "A comprehensive description of the project. This is a placeholder that would normally contain detailed information about the project's goals, features, and technical implementation.",
     tags: ["react", "typescript", "tailwind"],
-    fullDescription: `
-      ## Overview
-      This project demonstrates advanced web development techniques and best practices.
-      
-      ## Features
-      - Feature 1: Modern and responsive design
-      - Feature 2: High performance optimization
-      - Feature 3: Scalable architecture
-      - Feature 4: Comprehensive testing
-      
-      ## Technical Stack
-      Built with cutting-edge technologies to ensure reliability and maintainability.
-      
-      ## Implementation Details
-      The project follows industry best practices and coding standards.
-    `,
+    link: "https://github.com",
+    repo: "yourusername",
   };
 
   return (
@@ -141,14 +45,7 @@ const ProjectDetail = () => {
 
               <div className="flex flex-wrap gap-2 mb-8">
                 {project.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className={`text-xs font-semibold px-2 py-1 rounded border ${getTechColor(
-                      tag
-                    )}`}
-                  >
-                    {tag}
-                  </span>
+                  <TechBadge key={index} tech={tag} index={index} />
                 ))}
               </div>
 
@@ -159,7 +56,7 @@ const ProjectDetail = () => {
                   className="border-border hover:border-primary"
                 >
                   <a
-                    href="https://github.com"
+                    href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"

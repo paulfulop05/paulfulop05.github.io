@@ -1,28 +1,10 @@
 import ProjectCard from "./ProjectCard";
 import { ArrowRight, Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { getFeaturedProjects } from "@/data/projects";
 
 const Projects = () => {
-  const projects = [
-    {
-      title: "Anubis",
-      description:
-        "Weighs the soul of incoming HTTP requests using proof-of-work to stop AI crawlers and other malicious bots. Built with Golang and advanced security algorithms.",
-      tags: ["golang", "security", "anti-bot", "proof-of-work"],
-      stars: 1473,
-      link: "https://github.com",
-      repo: "TechnoROG",
-    },
-    {
-      title: "Abacus",
-      description:
-        "A highly-scalable and stateless counting API. Simple at its core, designed from the ground up to be scalable, secure and easy to use. Built using Golang, Gin, Docker, and Redis.",
-      tags: ["golang", "api", "redis", "docker"],
-      stars: 234,
-      link: "https://github.com",
-      repo: "yourusername",
-    },
-  ];
+  const projects = getFeaturedProjects();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -90,7 +72,7 @@ const Projects = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {projects.map((project, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <motion.div key={project.id} variants={itemVariants}>
               <ProjectCard {...project} />
             </motion.div>
           ))}

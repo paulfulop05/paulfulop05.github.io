@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink } from "lucide-react";
+import { Github } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -8,11 +8,18 @@ const getTechColor = (tech: string) => {
   const techLower = tech.toLowerCase();
   // Languages
   if (
-    ["javascript", "typescript", "python", "java", "c++", "go", "rust"].some(
-      (lang) => techLower.includes(lang)
-    )
+    [
+      "javascript",
+      "typescript",
+      "python",
+      "java",
+      "c++",
+      "go",
+      "rust",
+      "golang",
+    ].some((lang) => techLower.includes(lang))
   ) {
-    return "text-blue-400";
+    return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
   }
   // Frameworks
   if (
@@ -29,7 +36,7 @@ const getTechColor = (tech: string) => {
       "nodejs",
     ].some((fw) => techLower.includes(fw))
   ) {
-    return "text-green-400";
+    return "bg-cyan-500/20 text-cyan-400 border-cyan-500/30";
   }
   // Concepts
   if (
@@ -42,9 +49,12 @@ const getTechColor = (tech: string) => {
       "agile",
       "api",
       "rest",
+      "security",
+      "anti-bot",
+      "proof-of-work",
     ].some((concept) => techLower.includes(concept))
   ) {
-    return "text-purple-400";
+    return "bg-purple-500/20 text-purple-400 border-purple-500/30";
   }
   // Tools & Databases
   if (
@@ -60,7 +70,7 @@ const getTechColor = (tech: string) => {
       "mongo",
     ].some((tool) => techLower.includes(tool))
   ) {
-    return "text-orange-400";
+    return "bg-orange-500/20 text-orange-400 border-orange-500/30";
   }
   // Styling & Design
   if (
@@ -68,9 +78,9 @@ const getTechColor = (tech: string) => {
       techLower.includes(style)
     )
   ) {
-    return "text-pink-400";
+    return "bg-pink-500/20 text-pink-400 border-pink-500/30";
   }
-  return "text-foreground";
+  return "bg-primary/10 text-foreground border-primary/20";
 };
 
 const ProjectDetail = () => {
@@ -129,11 +139,11 @@ const ProjectDetail = () => {
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-3 mb-8">
+              <div className="flex flex-wrap gap-2 mb-8">
                 {project.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className={`text-sm font-semibold px-3 py-1.5 rounded bg-primary/10 border border-primary/20 ${getTechColor(
+                    className={`text-xs font-semibold px-2 py-1 rounded border ${getTechColor(
                       tag
                     )}`}
                   >
@@ -145,7 +155,8 @@ const ProjectDetail = () => {
               <div className="flex gap-4">
                 <Button
                   asChild
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                  variant="outline"
+                  className="border-border hover:border-primary"
                 >
                   <a
                     href="https://github.com"
@@ -155,21 +166,6 @@ const ProjectDetail = () => {
                   >
                     <Github className="w-4 h-4" />
                     View on GitHub
-                  </a>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-border hover:border-primary"
-                >
-                  <a
-                    href="https://demo.example.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
                   </a>
                 </Button>
               </div>

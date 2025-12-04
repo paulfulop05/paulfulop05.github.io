@@ -4,24 +4,18 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import TechBadge from "./TechBadge";
+import { ProjectTag } from "@/data/projects";
 
 interface ProjectCardProps {
   title: string;
   description: string;
-  tags: string[];
+  tags: ProjectTag[];
   link: string;
   repo?: string;
   id?: string;
 }
 
-const ProjectCard = ({
-  title,
-  description,
-  tags,
-  link,
-  repo,
-  id,
-}: ProjectCardProps) => {
+const ProjectCard = ({ title, description, tags, id }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const projectId = id || title.toLowerCase().replace(/\s+/g, "-");
   const projectLink = `/projects/${projectId}`;
@@ -100,7 +94,12 @@ const ProjectCard = ({
             </p>
             <div className="flex flex-wrap gap-2">
               {tags.map((tag, index) => (
-                <TechBadge key={index} tech={tag} index={index} />
+                <TechBadge
+                  key={index}
+                  tech={tag.name}
+                  type={tag.type}
+                  index={index}
+                />
               ))}
             </div>
           </CardContent>

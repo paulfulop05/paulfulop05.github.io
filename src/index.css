@@ -69,9 +69,9 @@ All colors MUST be HSL.
     --tech-tool-text: 217 92% 70%;
     --tech-tool-border: 217 92% 60% / 0.3;
 
-    --tech-concept-bg: 220 10% 11%;
-    --tech-concept-text: 220 10% 88%;
-    --tech-concept-border: 220 10% 25%;
+    --tech-concept-bg: 220 10% 30% / 0.3;
+    --tech-concept-text: 220 10% 75%;
+    --tech-concept-border: 220 10% 40%;
   }
 
   .dark {

@@ -8,11 +8,16 @@ import { getProjectById } from "@/data/projects";
 
 const ProjectDetail = () => {
   const { id } = useParams();
-  
+
   const project = getProjectById(id || "") || {
     id: id || "unknown",
-    title: id?.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") || "Project",
-    description: "A comprehensive description of the project. This is a placeholder that would normally contain detailed information about the project's goals, features, and technical implementation.",
+    title:
+      id
+        ?.split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ") || "Project",
+    description:
+      "A comprehensive description of the project. This is a placeholder that would normally contain detailed information about the project's goals, features, and technical implementation.",
     tags: ["react", "typescript", "tailwind"],
     link: "https://github.com",
     repo: "yourusername",
@@ -45,7 +50,12 @@ const ProjectDetail = () => {
 
               <div className="flex flex-wrap gap-2 mb-8">
                 {project.tags.map((tag, index) => (
-                  <TechBadge key={index} tech={tag} index={index} />
+                  <TechBadge
+                    key={index}
+                    tech={tag.name}
+                    type={tag.type}
+                    index={index}
+                  />
                 ))}
               </div>
 

@@ -17,7 +17,7 @@ const TechBadge = ({
   animated = true,
   className,
 }: TechBadgeProps) => {
-  const colorClasses = getTechColorClasses(tech, type);
+  const colorClasses = getTechColorClasses(type);
 
   if (animated) {
     return (

@@ -144,8 +144,8 @@ const About = () => {
             <section className="mb-32">
               <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
                 <motion.div
-                  whileHover={{ rotate: [0, 15, -15, 0] }}
-                  transition={{ duration: 0.5 }}
+                  animate={{ rotate: [0, 15, -15, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                 >
                   <Lightbulb className="w-8 h-8 text-primary" />
                 </motion.div>
@@ -196,8 +196,8 @@ const About = () => {
                 className="text-3xl font-bold mb-10 flex items-center gap-3"
               >
                 <motion.div
-                  whileHover={{ rotate: [0, 15, -15, 0] }}
-                  transition={{ duration: 0.5 }}
+                  animate={{ rotate: [0, 15, -15, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 4 }}
                 >
                   <Wrench className="w-8 h-8 text-primary" />
                 </motion.div>
@@ -249,8 +249,8 @@ const About = () => {
                 className="text-3xl font-bold flex items-center gap-3 mb-8"
               >
                 <motion.div
-                  whileHover={{ rotate: [0, 15, -15, 0] }}
-                  transition={{ duration: 0.5 }}
+                  animate={{ rotate: [0, 15, -15, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 5 }}
                 >
                   <Trophy className="w-8 h-8 text-primary" />
                 </motion.div>

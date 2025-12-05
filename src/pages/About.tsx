@@ -8,8 +8,32 @@ import { motion } from "framer-motion";
 import { languageSkills, skills } from "@/data/skills";
 import { achievements } from "@/data/achievements";
 import { whatIDoCards } from "@/data/profile";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useState, useEffect } from "react";
 
 const About = () => {
+  const isMobile = useIsMobile();
+  const [cardWidth, setCardWidth] = useState(750);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      const viewportWidth = window.innerWidth;
+      if (viewportWidth < 480) {
+        setCardWidth(viewportWidth - 60);
+      } else if (viewportWidth < 640) {
+        setCardWidth(viewportWidth - 80);
+      } else if (viewportWidth < 768) {
+        setCardWidth(Math.min(550, viewportWidth - 80));
+      } else {
+        setCardWidth(750);
+      }
+    };
+
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -78,10 +102,10 @@ const About = () => {
                 What I Do
               </h2>
 
-              <div className="relative h-[350px] md:h-[320px] mt-16">
+              <div className="relative h-[280px] sm:h-[320px] mt-8 sm:mt-16">
                 <CardSwap
-                  width={750}
-                  height={200}
+                  width={cardWidth}
+                  height={isMobile ? 180 : 200}
                   cardDistance={50}
                   verticalDistance={35}
                   delay={4000}

@@ -243,9 +243,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
       ref={container}
       className={cn(
         "relative",
-        "[perspective:1000px] overflow-visible",
-        "scale-100 sm:scale-100 max-sm:scale-[0.65] max-[400px]:scale-[0.55]",
-        "origin-top-left"
+        "[perspective:1000px] overflow-visible"
       )}
       style={{ width, height }}
     >

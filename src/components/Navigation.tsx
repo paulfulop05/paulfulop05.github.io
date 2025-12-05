@@ -56,9 +56,9 @@ const Navigation = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-2">
         <motion.div
-          className="flex items-center text-lg"
+          className="flex items-center text-sm md:text-lg min-w-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -97,7 +97,7 @@ const Navigation = () => {
           </motion.span>
         </motion.div>
 
-        <div className="flex items-center gap-3 sm:gap-4 md:gap-8">
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-6 flex-wrap">
           {navLinks.map((link, index) => (
             <motion.div
               key={link.to}
@@ -107,7 +107,7 @@ const Navigation = () => {
             >
               <Link
                 to={link.to}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors relative group"
+                className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors relative group whitespace-nowrap"
               >
                 <motion.span
                   whileHover={{ y: -2, transition: { duration: 0.15 } }}

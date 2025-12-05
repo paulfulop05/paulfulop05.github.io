@@ -109,6 +109,15 @@ const Hero = () => {
     const verticalOffset = 10; // Small gap between badge and arrow
     const modalRef = useRef<HTMLDivElement>(null);
     const [modalHeight, setModalHeight] = useState(0);
+    const [isMobileView, setIsMobileView] = useState(false);
+
+    // Check if mobile view
+    useEffect(() => {
+      const checkMobile = () => setIsMobileView(window.innerWidth < 640);
+      checkMobile();
+      window.addEventListener("resize", checkMobile);
+      return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     // Get actual modal height after render
     useEffect(() => {
@@ -128,6 +137,25 @@ const Hero = () => {
       }
     };
 
+    // Calculate left position with boundary checking for desktop
+    const getLeftPosition = () => {
+      const modalWidth = 384; // max-w-96 = 24rem = 384px
+      const padding = 16; // 1rem padding from edges
+      const viewportWidth = window.innerWidth;
+
+      let left = position.centerX;
+      const halfModal = modalWidth / 2;
+
+      // Clamp to viewport bounds
+      if (left - halfModal < padding) {
+        left = halfModal + padding;
+      } else if (left + halfModal > viewportWidth - padding) {
+        left = viewportWidth - halfModal - padding;
+      }
+
+      return left;
+    };
+
     return (
       <>
         <motion.div
@@ -141,27 +169,49 @@ const Hero = () => {
 
         <motion.div
           ref={modalRef}
-          className="absolute z-50 bg-secondary rounded-[12px] p-4 md:p-6 w-[calc(100vw-2rem)] max-w-96 shadow-2xl border border-border"
-          style={{
-            top: `${getTopPosition()}px`,
-            left: `${position.centerX}px`,
-            x: "-50%",
-          }}
+          className={cn(
+            "z-50 bg-secondary rounded-[12px] p-4 md:p-6 shadow-2xl border border-border",
+            isMobileView
+              ? "fixed left-1/2 top-1/2 w-[calc(100vw-2rem)] max-w-96"
+              : "absolute w-[calc(100vw-2rem)] max-w-96"
+          )}
+          style={
+            isMobileView
+              ? {
+                  x: "-50%",
+                  y: "-50%",
+                }
+              : {
+                  top: `${getTopPosition()}px`,
+                  left: `${getLeftPosition()}px`,
+                  x: "-50%",
+                }
+          }
           onClick={(e) => e.stopPropagation()}
-          initial={{ opacity: 0, scale: 0.9, y: isTop ? 20 : -20 }}
+          initial={{
+            opacity: 0,
+            scale: 0.9,
+            y: isMobileView ? 0 : isTop ? 20 : -20,
+          }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: isTop ? 20 : -20 }}
+          exit={{
+            opacity: 0,
+            scale: 0.9,
+            y: isMobileView ? 0 : isTop ? 20 : -20,
+          }}
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Arrow pointing to badge */}
-          <div
-            className={cn(
-              "absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-secondary border-border rotate-45",
-              isTop
-                ? "-bottom-1.5 border-r border-b"
-                : "-top-1.5 border-l border-t"
-            )}
-          />
+          {/* Arrow pointing to badge - hidden on mobile */}
+          {!isMobileView && (
+            <div
+              className={cn(
+                "absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-secondary border-border rotate-45",
+                isTop
+                  ? "-bottom-1.5 border-r border-b"
+                  : "-top-1.5 border-l border-t"
+              )}
+            />
+          )}
 
           <motion.button
             onClick={onClose}
@@ -322,7 +372,9 @@ const Hero = () => {
                 <span>CV</span>
               </motion.a>
             </motion.div>
-            <span className="text-muted-foreground opacity-30 hidden sm:inline">|</span>
+            <span className="text-muted-foreground opacity-30 hidden sm:inline">
+              |
+            </span>
             {socialLinks.map((link, index) => (
               <motion.div
                 key={link.label}
@@ -348,7 +400,9 @@ const Hero = () => {
                 </motion.a>
               </motion.div>
             ))}
-            <span className="text-muted-foreground opacity-30 hidden sm:inline">|</span>
+            <span className="text-muted-foreground opacity-30 hidden sm:inline">
+              |
+            </span>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}

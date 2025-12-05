@@ -302,7 +302,7 @@ const RecentCommits = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            className="space-y-2.5"
+            className="space-y-1"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -339,25 +339,25 @@ const RecentCommits = () => {
                         whileHover={{ x: 4, transition: { duration: 0.15 } }}
                       >
                         <motion.div
-                          className="border border-border/50 rounded-md p-3 hover:border-primary/50 hover:bg-card/80 transition-all"
+                          className="border border-border/50 rounded-md px-2 py-1.5 hover:border-primary/50 hover:bg-card/80 transition-all"
                           whileHover={{
                             scale: 1.01,
                             transition: { duration: 0.15 },
                           }}
                         >
-                          <div className="flex items-start gap-2 mb-2">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                          <div className="flex items-start gap-1.5 mb-1">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1 flex-shrink-0" />
                             <div className="flex-1 min-w-0">
-                              <p className="text-xs font-medium text-primary/80 mb-0.5">
+                              <p className="text-[11px] font-medium text-primary/80">
                                 {commit.repo.split("/")[1]}
                               </p>
-                              <p className="text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                              <p className="text-xs text-foreground group-hover:text-primary transition-colors line-clamp-2">
                                 {commit.message}
                               </p>
                             </div>
                           </div>
 
-                          <div className="flex items-center justify-between mt-2 pt-2 border-t border-border/30">
+                          <div className="flex items-center justify-between mt-1 pt-1 border-t border-border/30">
                             <div className="flex items-center gap-3 text-xs">
                               <span className="font-mono text-muted-foreground">
                                 {commit.sha}

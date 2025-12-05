@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import RecentCommits from "@/components/RecentCommits";
 import CurrentLocation from "@/components/CurrentLocation";
+import StatusBar from "@/components/StatusBar";
 
 const Index = () => {
   return (
@@ -34,6 +35,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <StatusBar />
     </div>
   );
 };

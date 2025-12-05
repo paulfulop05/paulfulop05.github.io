@@ -100,7 +100,7 @@ const CurrentLocation = () => {
                 {CITY.replace("-", " ")}
               </p>
             </div>
-            
+
             {/* Location dot */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full" />
           </motion.div>
@@ -109,8 +109,16 @@ const CurrentLocation = () => {
 
       {/* Location Info */}
       <div className="flex items-center justify-between">
-        <p className="text-sm font-medium text-foreground">
+        <p className="text-sm font-medium text-foreground flex items-center gap-1.5">
           {CITY}, {COUNTRY.substring(0, 2).toUpperCase()}
+          <svg
+            className="w-4 h-3 rounded-sm overflow-hidden"
+            viewBox="0 0 30 20"
+          >
+            <rect x="0" y="0" width="10" height="20" fill="#002B7F" />
+            <rect x="10" y="0" width="10" height="20" fill="#FCD116" />
+            <rect x="20" y="0" width="10" height="20" fill="#CE1126" />
+          </svg>
         </p>
         <p className="text-xs text-muted-foreground flex items-center gap-1 font-mono">
           {currentTime}

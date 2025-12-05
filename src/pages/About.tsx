@@ -14,32 +14,54 @@ import { useState, useEffect } from "react";
 const About = () => {
   const isMobile = useIsMobile();
   const [cardWidth, setCardWidth] = useState(750);
+  const [cardHeight, setCardHeight] = useState(200);
   const [cardDistance, setCardDistance] = useState(50);
+  const [verticalDistance, setVerticalDistance] = useState(35);
 
   useEffect(() => {
-    const updateWidth = () => {
+    const updateDimensions = () => {
       const viewportWidth = window.innerWidth;
       if (viewportWidth < 400) {
         setCardWidth(viewportWidth - 100);
+        setCardHeight(220);
         setCardDistance(25);
+        setVerticalDistance(20);
       } else if (viewportWidth < 480) {
         setCardWidth(viewportWidth - 120);
+        setCardHeight(210);
         setCardDistance(30);
+        setVerticalDistance(22);
       } else if (viewportWidth < 640) {
         setCardWidth(viewportWidth - 140);
+        setCardHeight(200);
         setCardDistance(35);
+        setVerticalDistance(25);
       } else if (viewportWidth < 768) {
         setCardWidth(Math.min(500, viewportWidth - 150));
+        setCardHeight(220);
         setCardDistance(40);
+        setVerticalDistance(28);
+      } else if (viewportWidth < 900) {
+        setCardWidth(Math.min(550, viewportWidth - 200));
+        setCardHeight(230);
+        setCardDistance(45);
+        setVerticalDistance(30);
+      } else if (viewportWidth < 1024) {
+        setCardWidth(Math.min(650, viewportWidth - 200));
+        setCardHeight(210);
+        setCardDistance(48);
+        setVerticalDistance(32);
       } else {
         setCardWidth(750);
+        setCardHeight(200);
         setCardDistance(50);
+        setVerticalDistance(35);
       }
     };
 
-    updateWidth();
-    window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
   return (
@@ -110,12 +132,12 @@ const About = () => {
                 What I Do
               </h2>
 
-              <div className="relative h-[280px] sm:h-[320px] mt-8 sm:mt-16 overflow-hidden">
+              <div className="relative h-[320px] sm:h-[350px] mt-8 sm:mt-16 overflow-hidden">
                 <CardSwap
                   width={cardWidth}
-                  height={isMobile ? 160 : 200}
+                  height={cardHeight}
                   cardDistance={cardDistance}
-                  verticalDistance={isMobile ? 25 : 35}
+                  verticalDistance={verticalDistance}
                   delay={4000}
                   pauseOnHover={false}
                   skewAmount={4}

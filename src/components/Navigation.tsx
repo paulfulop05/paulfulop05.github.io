@@ -43,6 +43,7 @@ const Navigation = () => {
 
   const segments = getPathSegments();
   const navLinks = [
+    { to: "/", label: "Home" },
     { to: "/about", label: "About" },
     { to: "/projects", label: "Projects" },
     { to: "/contact", label: "Contact" },
@@ -87,7 +88,7 @@ const Navigation = () => {
             transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.span
-            className="ml-3 text-xs text-muted-foreground/40 select-none"
+            className="ml-2 md:ml-3 text-[10px] md:text-xs text-muted-foreground/40 select-none hidden sm:inline"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
@@ -96,7 +97,7 @@ const Navigation = () => {
           </motion.span>
         </motion.div>
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-3 sm:gap-4 md:gap-8">
           {navLinks.map((link, index) => (
             <motion.div
               key={link.to}

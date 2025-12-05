@@ -304,7 +304,7 @@ const Hero = () => {
 
           <motion.div
             variants={itemVariants}
-            className="flex items-center gap-6"
+            className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6"
           >
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -322,7 +322,7 @@ const Hero = () => {
                 <span>CV</span>
               </motion.a>
             </motion.div>
-            <span className="text-muted-foreground opacity-30">|</span>
+            <span className="text-muted-foreground opacity-30 hidden sm:inline">|</span>
             {socialLinks.map((link, index) => (
               <motion.div
                 key={link.label}
@@ -348,7 +348,7 @@ const Hero = () => {
                 </motion.a>
               </motion.div>
             ))}
-            <span className="text-muted-foreground opacity-30">|</span>
+            <span className="text-muted-foreground opacity-30 hidden sm:inline">|</span>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -402,11 +402,11 @@ const Hero = () => {
           </div>
 
           {/* Organization Badges */}
-          <div className="w-fit mb-8">
+          <div className="w-full md:w-fit mb-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
-                className="flex items-center gap-6"
+                className="flex flex-wrap items-center gap-4 md:gap-6"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
@@ -456,7 +456,7 @@ const Hero = () => {
                       </motion.div>
                       {index < array.length - 1 && (
                         <motion.span
-                          className="text-primary text-lg font-bold"
+                          className="text-primary text-lg font-bold hidden md:inline"
                           animate={{ opacity: [0.5, 1, 0.5] }}
                           transition={{ duration: 2, repeat: Infinity }}
                         >

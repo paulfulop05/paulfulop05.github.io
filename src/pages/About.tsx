@@ -67,7 +67,12 @@ const getInitialDimensions = () => {
   if (typeof window !== "undefined") {
     return getCardDimensions(window.innerWidth);
   }
-  return { cardWidth: 750, cardHeight: 200, cardDistance: 50, verticalDistance: 35 };
+  return {
+    cardWidth: 750,
+    cardHeight: 200,
+    cardDistance: 50,
+    verticalDistance: 35,
+  };
 };
 
 const About = () => {

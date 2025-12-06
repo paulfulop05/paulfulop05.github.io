@@ -2,10 +2,15 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import {
+  socialLinks,
+  getEmailAddress,
+  getGithubUsername,
+  getLinkedinUsername,
+} from "@/data/profile";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -24,29 +29,20 @@ const Contact = () => {
     setFormData({ name: "", email: "", message: "" });
   };
 
-  const contactLinks = [
-    {
-      href: "mailto:hello@example.com",
-      icon: Mail,
-      title: "Email",
-      value: "hello@example.com",
-      external: false,
-    },
-    {
-      href: "https://github.com",
-      icon: Github,
-      title: "GitHub",
-      value: "@yourusername",
-      external: true,
-    },
-    {
-      href: "https://linkedin.com",
-      icon: Linkedin,
-      title: "LinkedIn",
-      value: "/in/yourname",
-      external: true,
-    },
-  ];
+  const contactLinks = socialLinks.map((link) => ({
+    href: link.href,
+    icon: link.icon,
+    title: link.label,
+    value:
+      link.label === "Email"
+        ? getEmailAddress()
+        : link.label === "GitHub"
+        ? `@${getGithubUsername()}`
+        : link.label === "LinkedIn"
+        ? `/in/${getLinkedinUsername()}`
+        : link.href.split("/").pop() || "",
+    external: link.label !== "Email",
+  }));
 
   return (
     <div className="min-h-screen">
@@ -70,8 +66,8 @@ const Contact = () => {
               className="text-lg text-muted-foreground max-w-3xl mb-12"
             >
               Have a project in mind or just want to chat? Feel free to reach
-              out. I'm always open to discussing new projects, creative ideas,
-              or opportunities.
+              out. I'm open to discussing new projects, creative ideas, or
+              opportunities.
             </motion.p>
 
             <div>

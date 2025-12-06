@@ -37,7 +37,7 @@ export const skills: SkillCategory[] = [
     category: "Frameworks",
     description:
       "Software frameworks and libraries that provide structure, reusable components, and tools to build applications efficiently.",
-    items: ["Qt", "React", "Tailwind CSS", ".NET"],
+    items: ["Qt", "React", "React-Native", "Tailwind CSS", ".NET"],
     icon: Zap,
     color:
       "bg-[hsl(var(--tech-framework-bg))] text-[hsl(var(--tech-framework-text))] border-[hsl(var(--tech-framework-border))]",

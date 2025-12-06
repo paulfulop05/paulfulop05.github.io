@@ -1,15 +1,13 @@
 import { motion } from "framer-motion";
 import { Circle, Mail, Code2 } from "lucide-react";
 import { currentStatus } from "@/data/status";
+import { getEmailLink } from "@/data/profile";
 
 const StatusBar = () => {
-  const {
-    available,
-    availabilityText,
-    availabilityColor,
-    currentProject,
-    contactEmail,
-  } = currentStatus;
+  const { available, availabilityText, availabilityColor, currentProject } =
+    currentStatus;
+
+  const emailLink = getEmailLink();
 
   return (
     <motion.div
@@ -41,7 +39,7 @@ const StatusBar = () => {
 
           {/* Contact - visible on mobile in top row */}
           <motion.a
-            href={`mailto:${contactEmail}`}
+            href={emailLink}
             className="flex sm:hidden items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -79,7 +77,7 @@ const StatusBar = () => {
 
         {/* Right side - CTA (hidden on mobile, shown in top row instead) */}
         <motion.a
-          href={`mailto:${contactEmail}`}
+          href={emailLink}
           className="hidden sm:flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

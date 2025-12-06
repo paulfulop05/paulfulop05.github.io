@@ -49,7 +49,12 @@ const CurrentLocation = () => {
       transition={{ duration: 0.5, delay: 0.1 }}
     >
       <h3 className="text-sm font-semibold flex items-center gap-2 mb-4">
-        <MapPin className="w-4 h-4 text-primary" />
+        <motion.div
+          animate={{ y: [0, -2, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <MapPin className="w-4 h-4 text-primary" />
+        </motion.div>
         Currently Based In
       </h3>
 
@@ -100,9 +105,6 @@ const CurrentLocation = () => {
                 {CITY.replace("-", " ")}
               </p>
             </div>
-
-            {/* Location dot */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full" />
           </motion.div>
         )}
       </div>

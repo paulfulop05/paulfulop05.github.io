@@ -6,7 +6,6 @@ export interface CurrentStatus {
     title: string;
     technologies: string[];
   };
-  contactEmail: string;
 }
 
 export const currentStatus: CurrentStatus = {
@@ -17,5 +16,4 @@ export const currentStatus: CurrentStatus = {
     title: "Portfolio Website",
     technologies: ["React", "TypeScript", "Tailwind CSS"],
   },
-  contactEmail: "hello@example.com",
 };

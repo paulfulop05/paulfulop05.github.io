@@ -13,10 +13,29 @@ export interface WhatIDoCard {
 }
 
 export const socialLinks: SocialLink[] = [
-  { href: "https://github.com", icon: Github, label: "GitHub" },
-  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
-  { href: "mailto:hello@example.com", icon: Mail, label: "Email" },
+  { href: "https://github.com/paulfulop05", icon: Github, label: "GitHub" },
+  {
+    href: "https://www.linkedin.com/in/paul-f%C3%BCl%C3%B6p/",
+    icon: Linkedin,
+    label: "LinkedIn",
+  },
+  { href: "mailto:paulfulop52@gmail.com", icon: Mail, label: "Email" },
 ];
+
+// Helper functions to get specific links
+export const getEmailLink = () =>
+  socialLinks.find((link) => link.label === "Email")?.href || "";
+export const getEmailAddress = () => getEmailLink().replace("mailto:", "");
+export const getGithubLink = () =>
+  socialLinks.find((link) => link.label === "GitHub")?.href || "";
+export const getGithubUsername = () => getGithubLink().split("/").pop() || "";
+export const getLinkedinLink = () =>
+  socialLinks.find((link) => link.label === "LinkedIn")?.href || "";
+export const getLinkedinUsername = () => {
+  const link = getLinkedinLink();
+  const match = link.match(/\/in\/([^/]+)/);
+  return match ? decodeURIComponent(match[1]) : "";
+};
 
 export const whatIDoCards: WhatIDoCard[] = [
   {

@@ -7,17 +7,15 @@ import { socialLinks } from "@/data/profile";
 import OrganizationModal, { ModalPosition } from "./OrganizationModal";
 
 const Hero = () => {
-  const sectionRef = useRef(null);
   const activeBadgeRef = useRef<HTMLElement | null>(null);
-  const [activeModal, setActiveModal] = useState(null);
+  const [activeModal, setActiveModal] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState("work");
-  const [modalPosition, setModalPosition] = useState({
-    // Store document-relative Y position (won't change on scroll)
+  const [modalPosition, setModalPosition] = useState<ModalPosition>({
     badgeTopAbsolute: 0,
     badgeBottomAbsolute: 0,
     centerX: 0,
     badgeHeight: 0,
-    placement: "top" as "top" | "bottom",
+    placement: "top",
   });
 
   const organizations = getOrganizations();
@@ -97,10 +95,7 @@ const Hero = () => {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="min-h-[85vh] flex items-center pt-20 pb-8 relative"
-    >
+    <section className="min-h-[85vh] flex items-center pt-20 pb-8 relative">
       <div className="max-w-5xl mx-auto px-6 w-full">
         <motion.div
           variants={containerVariants}

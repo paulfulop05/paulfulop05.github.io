@@ -8,11 +8,9 @@ import { motion } from "framer-motion";
 import { languageSkills, skills } from "@/data/skills";
 import { achievements } from "@/data/achievements";
 import { whatIDoCards } from "@/data/profile";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { useState, useEffect } from "react";
 
 const About = () => {
-  const isMobile = useIsMobile();
   const [cardWidth, setCardWidth] = useState(750);
   const [cardHeight, setCardHeight] = useState(200);
   const [cardDistance, setCardDistance] = useState(50);

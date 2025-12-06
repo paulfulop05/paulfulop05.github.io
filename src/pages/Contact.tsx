@@ -1,9 +1,4 @@
 import Navigation from "@/components/Navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import {
   socialLinks,
@@ -13,22 +8,6 @@ import {
 } from "@/data/profile";
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", message: "" });
-  };
-
   const contactLinks = socialLinks.map((link) => ({
     href: link.href,
     icon: link.icon,

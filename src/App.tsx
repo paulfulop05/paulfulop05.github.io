@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
@@ -26,6 +26,18 @@ const ScrollToTop = () => {
   return null;
 };
 
+// Reusable page transition wrapper
+const PageTransition = ({ children }: { children: ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.2 }}
+  >
+    {children}
+  </motion.div>
+);
+
 const AnimatedRoutes = () => {
   const location = useLocation();
 
@@ -35,79 +47,49 @@ const AnimatedRoutes = () => {
         <Route
           path="/"
           element={
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
+            <PageTransition>
               <Index />
-            </motion.div>
+            </PageTransition>
           }
         />
         <Route
           path="/about"
           element={
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
+            <PageTransition>
               <About />
-            </motion.div>
+            </PageTransition>
           }
         />
         <Route
           path="/projects"
           element={
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
+            <PageTransition>
               <Projects />
-            </motion.div>
+            </PageTransition>
           }
         />
         <Route
           path="/projects/:id"
           element={
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
+            <PageTransition>
               <ProjectDetail />
-            </motion.div>
+            </PageTransition>
           }
         />
         <Route
           path="/contact"
           element={
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
+            <PageTransition>
               <Contact />
-            </motion.div>
+            </PageTransition>
           }
         />
         <Route
           path="/cv"
           element={
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
+            <PageTransition>
               <CV />
-            </motion.div>
+            </PageTransition>
           }
         />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

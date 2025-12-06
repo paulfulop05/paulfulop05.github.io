@@ -64,14 +64,14 @@ const Projects = () => {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 gap-6"
+          className="grid md:grid-cols-2 gap-6 items-stretch"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {projects.map((project, index) => (
-            <motion.div key={project.id} variants={itemVariants}>
+          {projects.map((project) => (
+            <motion.div key={project.id} variants={itemVariants} className="h-full">
               <ProjectCard {...project} />
             </motion.div>
           ))}

@@ -19,31 +19,17 @@ const RecentCommits = () => {
   const [activeTab, setActiveTab] = useState<"main" | "student">("main");
 
   const accounts = {
-    main: {
-      username: "paulfulop05",
-      token: import.meta.env.VITE_GITHUB_TOKEN_MAIN,
-    },
-    student: {
-      username: "PaulFulop",
-      token: import.meta.env.VITE_GITHUB_TOKEN_STUDENT,
-    },
+    main: { username: "paulfulop05" },
+    student: { username: "PaulFulop" },
   };
 
   useEffect(() => {
     const fetchCommitsForAccount = async (
-      username: string,
-      token?: string
+      username: string
     ): Promise<Commit[]> => {
       try {
-        const headers: HeadersInit = {};
-
-        if (token) {
-          headers["Authorization"] = `Bearer ${token}`;
-        }
-
         const eventsRes = await fetch(
-          `https://api.github.com/users/${username}/events/public?per_page=100`,
-          { headers }
+          `https://api.github.com/users/${username}/events/public?per_page=100`
         );
 
         if (!eventsRes.ok) {
@@ -72,8 +58,7 @@ const RecentCommits = () => {
           if (!event.payload.commits || event.payload.commits.length === 0) {
             try {
               const repoCommitsRes = await fetch(
-                `https://api.github.com/repos/${owner}/${repo}/commits?per_page=1`,
-                { headers }
+                `https://api.github.com/repos/${owner}/${repo}/commits?per_page=1`
               );
 
               if (!repoCommitsRes.ok) {
@@ -89,8 +74,7 @@ const RecentCommits = () => {
               seenShas.add(latestCommit.sha);
 
               const fullCommitRes = await fetch(
-                `https://api.github.com/repos/${owner}/${repo}/commits/${latestCommit.sha}`,
-                { headers }
+                `https://api.github.com/repos/${owner}/${repo}/commits/${latestCommit.sha}`
               );
 
               let additions = 0;
@@ -132,8 +116,7 @@ const RecentCommits = () => {
 
             try {
               const commitRes = await fetch(
-                `https://api.github.com/repos/${owner}/${repo}/commits/${commit.sha}`,
-                { headers }
+                `https://api.github.com/repos/${owner}/${repo}/commits/${commit.sha}`
               );
 
               if (!commitRes.ok) {
@@ -185,11 +168,8 @@ const RecentCommits = () => {
       setLoading(true);
       try {
         const [main, student] = await Promise.all([
-          fetchCommitsForAccount(accounts.main.username, accounts.main.token),
-          fetchCommitsForAccount(
-            accounts.student.username,
-            accounts.student.token
-          ),
+          fetchCommitsForAccount(accounts.main.username),
+          fetchCommitsForAccount(accounts.student.username),
         ]);
         setMainCommits(main);
         setStudentCommits(student);

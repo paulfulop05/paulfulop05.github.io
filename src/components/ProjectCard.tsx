@@ -47,18 +47,18 @@ const ProjectCard = ({
         whileTap={{ scale: 0.98 }}
       >
         <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/10">
-          <div className="relative h-48 bg-muted overflow-hidden">
+          <div className="relative h-48 bg-muted overflow-hidden flex items-center justify-center">
             <motion.div
-              className="absolute inset-0"
+              className="absolute inset-0 flex items-center justify-center"
               initial={false}
-              animate={{ scale: isHovered ? 1.1 : 1 }}
+              animate={{ scale: isHovered ? 1.05 : 1 }}
               transition={{ duration: 0.4 }}
             >
               {isHovered ? (
                 <motion.img
                   src={previewGif || DEFAULT_PREVIEW_GIF}
                   alt={`${title} demo`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
@@ -67,7 +67,7 @@ const ProjectCard = ({
                 <img
                   src={previewImage || DEFAULT_PREVIEW_IMAGE}
                   alt={title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               )}
             </motion.div>
@@ -80,7 +80,7 @@ const ProjectCard = ({
             />
           </div>
 
-          <CardContent className="p-4">
+          <CardContent className="p-4 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-2">
               <motion.div
                 animate={{ rotate: isHovered ? 15 : 0 }}
@@ -105,7 +105,7 @@ const ProjectCard = ({
             <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
               {description}
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 items-start mt-auto">
               {tags.map((tag, index) => (
                 <TechBadge
                   key={index}

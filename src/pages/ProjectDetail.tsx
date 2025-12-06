@@ -9,22 +9,26 @@ import { getProjectById } from "@/data/projects";
 const ProjectDetail = () => {
   const { id } = useParams();
 
-  const project = getProjectById(id || "") || {
-    id: id || "unknown",
-    title:
-      id
-        ?.split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ") || "Project",
-    description:
-      "A comprehensive description of the project. This is a placeholder that would normally contain detailed information about the project's goals, features, and technical implementation.",
-    tags: [
-      { name: "React", type: "framework" as const },
-      { name: "TypeScript", type: "language" as const },
-      { name: "Tailwind", type: "framework" as const },
-    ],
-    link: "https://github.com",
-  };
+  const project = getProjectById(id || "");
+
+  if (!project) {
+    return (
+      <div className="min-h-screen">
+        <Navigation />
+        <main className="pt-32 pb-20">
+          <div className="max-w-5xl mx-auto px-6 text-center">
+            <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+            <p className="text-muted-foreground mb-8">
+              The project you're looking for doesn't exist.
+            </p>
+            <Button asChild variant="outline">
+              <a href="/projects">← Back to Projects</a>
+            </Button>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -95,15 +99,15 @@ const ProjectDetail = () => {
 
             {/* Project Demo/Image */}
             <motion.div
-              className="mb-12 rounded-lg overflow-hidden border border-border"
+              className="mb-12 rounded-lg overflow-hidden border border-border bg-muted flex items-center justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
             >
               <img
-                src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
+                src={project.previewGif || project.previewImage}
                 alt={`${project.title} demo`}
-                className="w-full"
+                className="w-full max-h-[500px] object-contain"
               />
             </motion.div>
 
@@ -115,51 +119,51 @@ const ProjectDetail = () => {
               transition={{ duration: 0.4, delay: 0.3 }}
             >
               <div className="space-y-8">
-                <section>
-                  <h2 className="text-3xl font-bold mb-4 text-foreground">
-                    Overview
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Hello World
-                  </p>
-                </section>
+                {project.overview && (
+                  <section>
+                    <h2 className="text-3xl font-bold mb-4 text-foreground">
+                      Overview
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {project.overview}
+                    </p>
+                  </section>
+                )}
 
-                <section>
-                  <h2 className="text-3xl font-bold mb-4 text-foreground">
-                    Features
-                  </h2>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li>
-                      • Modern and responsive design that works across all
-                      devices
-                    </li>
-                    <li>• High performance optimization for fast load times</li>
-                    <li>• Scalable architecture that grows with your needs</li>
-                    <li>• Comprehensive testing for reliability</li>
-                  </ul>
-                </section>
+                {project.features && project.features.length > 0 && (
+                  <section>
+                    <h2 className="text-3xl font-bold mb-4 text-foreground">
+                      Features
+                    </h2>
+                    <ul className="space-y-2 text-muted-foreground">
+                      {project.features.map((feature, index) => (
+                        <li key={index}>• {feature}</li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
 
-                <section>
-                  <h2 className="text-3xl font-bold mb-4 text-foreground">
-                    Technical Stack
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Built with cutting-edge technologies including React,
-                    TypeScript, and Tailwind CSS to ensure reliability,
-                    maintainability, and developer experience.
-                  </p>
-                </section>
+                {project.technicalStack && (
+                  <section>
+                    <h2 className="text-3xl font-bold mb-4 text-foreground">
+                      Technical Stack
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {project.technicalStack}
+                    </p>
+                  </section>
+                )}
 
-                <section>
-                  <h2 className="text-3xl font-bold mb-4 text-foreground">
-                    Implementation
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    The project follows industry best practices and coding
-                    standards. Every component is carefully crafted with
-                    attention to detail and user experience.
-                  </p>
-                </section>
+                {project.implementation && (
+                  <section>
+                    <h2 className="text-3xl font-bold mb-4 text-foreground">
+                      Implementation
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {project.implementation}
+                    </p>
+                  </section>
+                )}
               </div>
             </motion.div>
           </motion.div>

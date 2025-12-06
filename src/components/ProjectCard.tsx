@@ -46,7 +46,7 @@ const ProjectCard = ({
         whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.2 } }}
         whileTap={{ scale: 0.98 }}
       >
-        <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/10">
+        <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 h-full flex flex-col">
           <div className="relative h-48 bg-muted overflow-hidden flex items-center justify-center">
             <motion.div
               className="absolute inset-0 flex items-center justify-center"

@@ -20,11 +20,11 @@ const Projects = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {projects.map((project, index) => (
               <div
                 key={project.id}
-                className="opacity-0 animate-fade-in"
+                className="opacity-0 animate-fade-in h-full"
                 style={{
                   animationDelay: `${0.05 * index}s`,
                   animationFillMode: "forwards",

@@ -106,7 +106,7 @@ const ProjectCard = ({
               {description}
             </p>
             <div className="flex flex-wrap gap-1.5 items-start mt-auto">
-              {tags.map((tag, index) => (
+              {tags.slice(0, 4).map((tag, index) => (
                 <TechBadge
                   key={index}
                   tech={tag.name}
@@ -114,6 +114,11 @@ const ProjectCard = ({
                   index={index}
                 />
               ))}
+              {tags.length > 4 && (
+                <span className="text-xs px-2 py-0.5 rounded border border-border text-muted-foreground">
+                  +{tags.length - 4} more
+                </span>
+              )}
             </div>
           </CardContent>
         </Card>

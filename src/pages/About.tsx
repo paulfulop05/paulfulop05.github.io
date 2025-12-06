@@ -10,54 +10,74 @@ import { achievements } from "@/data/achievements";
 import { whatIDoCards } from "@/data/profile";
 import { useState, useEffect } from "react";
 
+const getCardDimensions = (viewportWidth: number) => {
+  if (viewportWidth < 400) {
+    return {
+      cardWidth: viewportWidth - 100,
+      cardHeight: 220,
+      cardDistance: 25,
+      verticalDistance: 20,
+    };
+  } else if (viewportWidth < 480) {
+    return {
+      cardWidth: viewportWidth - 120,
+      cardHeight: 210,
+      cardDistance: 30,
+      verticalDistance: 22,
+    };
+  } else if (viewportWidth < 640) {
+    return {
+      cardWidth: viewportWidth - 140,
+      cardHeight: 200,
+      cardDistance: 35,
+      verticalDistance: 25,
+    };
+  } else if (viewportWidth < 768) {
+    return {
+      cardWidth: Math.min(500, viewportWidth - 150),
+      cardHeight: 220,
+      cardDistance: 40,
+      verticalDistance: 28,
+    };
+  } else if (viewportWidth < 900) {
+    return {
+      cardWidth: Math.min(550, viewportWidth - 200),
+      cardHeight: 230,
+      cardDistance: 45,
+      verticalDistance: 30,
+    };
+  } else if (viewportWidth < 1024) {
+    return {
+      cardWidth: Math.min(650, viewportWidth - 200),
+      cardHeight: 210,
+      cardDistance: 48,
+      verticalDistance: 32,
+    };
+  } else {
+    return {
+      cardWidth: 750,
+      cardHeight: 200,
+      cardDistance: 50,
+      verticalDistance: 35,
+    };
+  }
+};
+
+const getInitialDimensions = () => {
+  if (typeof window !== "undefined") {
+    return getCardDimensions(window.innerWidth);
+  }
+  return { cardWidth: 750, cardHeight: 200, cardDistance: 50, verticalDistance: 35 };
+};
+
 const About = () => {
-  const [cardWidth, setCardWidth] = useState(750);
-  const [cardHeight, setCardHeight] = useState(200);
-  const [cardDistance, setCardDistance] = useState(50);
-  const [verticalDistance, setVerticalDistance] = useState(35);
+  const [dimensions, setDimensions] = useState(getInitialDimensions);
 
   useEffect(() => {
     const updateDimensions = () => {
-      const viewportWidth = window.innerWidth;
-      if (viewportWidth < 400) {
-        setCardWidth(viewportWidth - 100);
-        setCardHeight(220);
-        setCardDistance(25);
-        setVerticalDistance(20);
-      } else if (viewportWidth < 480) {
-        setCardWidth(viewportWidth - 120);
-        setCardHeight(210);
-        setCardDistance(30);
-        setVerticalDistance(22);
-      } else if (viewportWidth < 640) {
-        setCardWidth(viewportWidth - 140);
-        setCardHeight(200);
-        setCardDistance(35);
-        setVerticalDistance(25);
-      } else if (viewportWidth < 768) {
-        setCardWidth(Math.min(500, viewportWidth - 150));
-        setCardHeight(220);
-        setCardDistance(40);
-        setVerticalDistance(28);
-      } else if (viewportWidth < 900) {
-        setCardWidth(Math.min(550, viewportWidth - 200));
-        setCardHeight(230);
-        setCardDistance(45);
-        setVerticalDistance(30);
-      } else if (viewportWidth < 1024) {
-        setCardWidth(Math.min(650, viewportWidth - 200));
-        setCardHeight(210);
-        setCardDistance(48);
-        setVerticalDistance(32);
-      } else {
-        setCardWidth(750);
-        setCardHeight(200);
-        setCardDistance(50);
-        setVerticalDistance(35);
-      }
+      setDimensions(getCardDimensions(window.innerWidth));
     };
 
-    updateDimensions();
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
@@ -144,10 +164,10 @@ const About = () => {
 
               <div className="relative h-[420px] sm:h-[450px] mt-8 sm:mt-16">
                 <CardSwap
-                  width={cardWidth}
-                  height={cardHeight}
-                  cardDistance={cardDistance}
-                  verticalDistance={verticalDistance}
+                  width={dimensions.cardWidth}
+                  height={dimensions.cardHeight}
+                  cardDistance={dimensions.cardDistance}
+                  verticalDistance={dimensions.verticalDistance}
                   delay={4000}
                   pauseOnHover={false}
                   skewAmount={4}

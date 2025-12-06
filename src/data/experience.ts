@@ -1,5 +1,4 @@
 import ubb_icon from "../assets/UBB.png";
-import cnlr_icon from "../assets/CNLR.png";
 
 export interface Experience {
   key: string;
@@ -12,30 +11,7 @@ export interface Experience {
   isPast: boolean;
 }
 
-export const workExperience: Experience[] = [
-  {
-    key: "ubb",
-    name: "UBB",
-    role: "CTO",
-    description:
-      "As CTO, I led the development of StorageBox, an innovative startup revolutionizing eco-friendly Shopify fulfillment with edge based sustainable warehousing technology and seamless logistics integrations.",
-    period: "September 2024 - June 2025",
-    website: "https://www.cs.ubbcluj.ro/",
-    icon: ubb_icon,
-    isPast: false,
-  },
-  {
-    key: "cnlr",
-    name: "CNLR",
-    role: "Software Engineer",
-    description:
-      "Worked on cutting-edge projects involving distributed systems and cloud infrastructure, contributing to solutions that served millions of users worldwide.",
-    period: "January 2023 - August 2024",
-    website: "https://www.cnlr.ro/",
-    icon: cnlr_icon,
-    isPast: true,
-  },
-];
+export const workExperience: Experience[] = [];
 
 export const education: Experience[] = [
   {
@@ -43,11 +19,11 @@ export const education: Experience[] = [
     name: "UBB",
     role: "Bachelor's in Computer Science",
     description:
-      "Focused on software engineering, algorithms, and distributed systems. Graduated with honors and completed multiple research projects in AI and machine learning.",
-    period: "September 2020 - June 2024",
+      "Focused on software engineering, algorithms, and distributed systems. Completed multiple personal projects in web development and problem-solving.",
+    period: "September 2023 - Present",
     website: "https://www.cs.ubbcluj.ro/",
     icon: ubb_icon,
-    isPast: true,
+    isPast: false,
   },
 ];
 

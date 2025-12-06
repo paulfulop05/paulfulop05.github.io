@@ -283,54 +283,62 @@ const Hero = () => {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                {(activeTab === "work" ? workExperience : education).map(
-                  (org, index, array) => (
-                    <motion.div
-                      key={org.key}
-                      className="flex items-center gap-6"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
+                {(activeTab === "work" ? workExperience : education).length === 0 ? (
+                  <span className="text-muted-foreground text-sm italic">
+                    {activeTab === "work" 
+                      ? "No work experience yet — currently focused on learning and personal projects."
+                      : "No education entries yet."}
+                  </span>
+                ) : (
+                  (activeTab === "work" ? workExperience : education).map(
+                    (org, index, array) => (
                       <motion.div
-                        className="flex items-center gap-3 cursor-pointer group"
-                        onClick={(e) => handleOrgClick(org.key, e)}
-                        whileHover={{
-                          scale: 1.05,
-                          transition: { duration: 0.15 },
-                        }}
-                        whileTap={{ scale: 0.98 }}
+                        key={org.key}
+                        className="flex items-center gap-6"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
                       >
                         <motion.div
-                          className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 group-hover:ring-2 group-hover:ring-primary/50 transition-all"
+                          className="flex items-center gap-3 cursor-pointer group"
+                          onClick={(e) => handleOrgClick(org.key, e)}
                           whileHover={{
-                            rotate: [0, -5, 5, 0],
-                            transition: { duration: 0.5 },
+                            scale: 1.05,
+                            transition: { duration: 0.15 },
                           }}
+                          whileTap={{ scale: 0.98 }}
                         >
-                          <img
-                            src={org.icon}
-                            alt={org.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </motion.div>
-                        <div className="flex flex-col">
-                          <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                            {org.name}
-                          </span>
-                          {org.isPast && (
-                            <span className="text-xs text-muted-foreground">
-                              (Past)
+                          <motion.div
+                            className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 group-hover:ring-2 group-hover:ring-primary/50 transition-all"
+                            whileHover={{
+                              rotate: [0, -5, 5, 0],
+                              transition: { duration: 0.5 },
+                            }}
+                          >
+                            <img
+                              src={org.icon}
+                              alt={org.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </motion.div>
+                          <div className="flex flex-col">
+                            <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                              {org.name}
                             </span>
-                          )}
-                        </div>
+                            {org.isPast && (
+                              <span className="text-xs text-muted-foreground">
+                                (Past)
+                              </span>
+                            )}
+                          </div>
+                        </motion.div>
+                        {index < array.length - 1 && (
+                          <span className="text-primary text-lg font-bold hidden md:inline">
+                            /
+                          </span>
+                        )}
                       </motion.div>
-                      {index < array.length - 1 && (
-                        <span className="text-primary text-lg font-bold hidden md:inline">
-                          /
-                        </span>
-                      )}
-                    </motion.div>
+                    )
                   )
                 )}
               </motion.div>

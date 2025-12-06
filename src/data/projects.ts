@@ -1,4 +1,14 @@
 import { TechType } from "@/lib/techColors";
+import chess_gif from "@/assets/project_data/chess.gif";
+import chess_preview from "@/assets/project_data/chess_preview.png";
+import obstruction_gif from "@/assets/project_data/obstruction.gif";
+import obstruction_preview from "@/assets/project_data/obstruction_preview.png";
+import lee_gif from "@/assets/project_data/lee.gif";
+import lee_preview from "@/assets/project_data/lee_preview.png";
+import snake_gif from "@/assets/project_data/snake.gif";
+import snake_preview from "@/assets/project_data/snake_preview.png";
+import eco_rewards_gif from "@/assets/project_data/eco_rewards.gif";
+import eco_rewards_preview from "@/assets/project_data/eco_rewards_preview.jpg";
 
 export interface ProjectTag {
   name: string;
@@ -18,196 +28,74 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "anubis",
-    title: "Anubis",
+    id: "eco_rewards",
+    title: "Eco Rewards",
     description:
-      "Weighs the soul of incoming HTTP requests using proof-of-work to stop AI crawlers and other malicious bots. Built with Golang and advanced security algorithms.",
+      "A mobile app that uses AI to help you make sustainable fashion choices. Assess clothing quality, donate responsibly, and earn discounts from eco-friendly brands.",
     tags: [
-      { name: "Golang", type: "language" },
-      { name: "Security", type: "concept" },
-      { name: "Anti-bot", type: "concept" },
-      { name: "Proof-of-work", type: "concept" },
-    ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
-  },
-  {
-    id: "abacus",
-    title: "Abacus",
-    description:
-      "A highly-scalable and stateless counting API. Simple at its core, designed from the ground up to be scalable, secure and easy to use. Built using Golang, Gin, Docker, and Redis.",
-    tags: [
-      { name: "Golang", type: "language" },
-      { name: "API", type: "concept" },
-      { name: "Redis", type: "tool" },
-      { name: "Docker", type: "tool" },
-    ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
-  },
-  {
-    id: "realtime-chat",
-    title: "RealTime Chat",
-    description:
-      "Production-ready WebSocket chat application with rooms, typing indicators, and message persistence. Features end-to-end encryption and rich media support.",
-    tags: [
-      { name: "React", type: "framework" },
-      { name: "WebSocket", type: "concept" },
-      { name: "Node.js", type: "framework" },
-      { name: "MongoDB", type: "tool" },
-    ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
-  },
-  {
-    id: "api-shield",
-    title: "API Shield",
-    description:
-      "Rate limiting and DDoS protection middleware for APIs with intelligent threat detection, automatic blocking, and detailed analytics dashboard.",
-    tags: [
-      { name: "Golang", type: "language" },
-      { name: "Security", type: "concept" },
-      { name: "Rate-limiting", type: "concept" },
-      { name: "Middleware", type: "concept" },
-    ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
-  },
-  {
-    id: "cloudsync",
-    title: "CloudSync",
-    description:
-      "Cross-platform file synchronization service with conflict resolution, version history, and selective sync. Built for teams with enterprise-grade security.",
-    tags: [
-      { name: "Rust", type: "language" },
-      { name: "Encryption", type: "concept" },
-      { name: "Distributed", type: "concept" },
-      { name: "AWS", type: "tool" },
-    ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
-  },
-  {
-    id: "logstream",
-    title: "LogStream",
-    description:
-      "Real-time log aggregation and analysis platform with powerful search, custom dashboards, and alerting. Handles millions of events per second.",
-    tags: [
-      { name: "Go", type: "language" },
-      { name: "Elasticsearch", type: "tool" },
-      { name: "Kafka", type: "tool" },
-      { name: "Monitoring", type: "concept" },
-    ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
-  },
-  {
-    id: "authkit",
-    title: "AuthKit",
-    description:
-      "Complete authentication solution with OAuth2, JWT, MFA, and social login support. Drop-in replacement for auth services with zero configuration.",
-    tags: [
-      { name: "Node.js", type: "framework" },
+      { name: "React-Native", type: "framework" },
+      { name: "Express", type: "framework" },
+      { name: "Node.js", type: "tool" },
+      { name: "firebase", type: "tool" },
       { name: "TypeScript", type: "language" },
-      { name: "PostgreSQL", type: "tool" },
-      { name: "Redis", type: "tool" },
+      { name: "API", type: "concept" },
     ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
+    link: "https://github.com/Alex-Clau/Hackathon",
+    previewImage: eco_rewards_preview,
+    previewGif: eco_rewards_gif,
   },
   {
-    id: "graphql-gateway",
-    title: "GraphQL Gateway",
+    id: "chess",
+    title: "Chess Game",
     description:
-      "High-performance GraphQL API gateway with schema stitching, caching, and automatic documentation. Scales to millions of requests per day.",
+      "A simple chess game with appealing GUI and sound effects, made with C#, using .NET framework.",
     tags: [
-      { name: "GraphQL", type: "concept" },
-      { name: "Apollo", type: "framework" },
-      { name: "Caching", type: "concept" },
-      { name: "Microservices", type: "concept" },
+      { name: "C#", type: "language" },
+      { name: ".NET", type: "framework" },
+      { name: "Object-Oriented Programming", type: "concept" },
     ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
+    link: "https://github.com/paulfulop05/Chess-Game",
+    previewImage: chess_preview,
+    previewGif: chess_gif,
   },
   {
-    id: "taskqueue-pro",
-    title: "TaskQueue Pro",
+    id: "obstruction",
+    title: "Obstruction Game",
     description:
-      "Distributed task queue with retry logic, priority scheduling, and dead letter handling. Perfect for background job processing at scale.",
+      "A board game implementation of the obliteration gamee in python (using pygame but also works in the terminal).",
     tags: [
       { name: "Python", type: "language" },
-      { name: "Redis", type: "tool" },
-      { name: "Celery", type: "framework" },
-      { name: "RabbitMQ", type: "tool" },
+      { name: "pygame", type: "tool" },
+      { name: "Object-Oriented Programming", type: "concept" },
     ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
+    link: "https://github.com/paulfulop05/Obstruction-Game",
+    previewImage: obstruction_preview,
+    previewGif: obstruction_gif,
   },
   {
-    id: "container-registry",
-    title: "Container Registry",
-    description:
-      "Self-hosted Docker registry with garbage collection, image scanning, and webhook notifications. Enterprise-ready with RBAC and audit logs.",
+    id: "snake",
+    title: "Snake Game",
+    description: "Simple snake game with GUI, made in QtCreator, using C++.",
     tags: [
-      { name: "Go", type: "language" },
-      { name: "Docker", type: "tool" },
-      { name: "Security", type: "concept" },
-      { name: "Kubernetes", type: "tool" },
+      { name: "C++", type: "language" },
+      { name: "Qt", type: "tool" },
     ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
+    link: "https://github.com/paulfulop05/QT-Snake-Game",
+    previewImage: snake_preview,
+    previewGif: snake_gif,
   },
   {
-    id: "metrics-collector",
-    title: "Metrics Collector",
-    description:
-      "Lightweight metrics collection agent for infrastructure monitoring. Supports Prometheus, InfluxDB, and custom exporters with minimal overhead.",
+    id: "lee",
+    title: "Lee's algorithm illustration",
+    description: "Illustrating how Lee's algorithm works in C#.",
     tags: [
-      { name: "Go", type: "language" },
-      { name: "Monitoring", type: "concept" },
-      { name: "Prometheus", type: "tool" },
-      { name: "Grafana", type: "tool" },
+      { name: "C#", type: "language" },
+      { name: ".NET", type: "framework" },
+      { name: "Object-Oriented Programming", type: "concept" },
     ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
-  },
-  {
-    id: "db-migrator",
-    title: "DB Migrator",
-    description:
-      "Database migration tool with version control, rollback support, and multi-environment management. Works with PostgreSQL, MySQL, and MongoDB.",
-    tags: [
-      { name: "TypeScript", type: "language" },
-      { name: "Database", type: "concept" },
-      { name: "Migrations", type: "concept" },
-      { name: "CLI", type: "concept" },
-    ],
-    link: "https://github.com",
-    previewImage:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
-    previewGif: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
+    link: "https://github.com/paulfulop05/Lee-s-algorithm-illustration",
+    previewImage: lee_preview,
+    previewGif: lee_gif,
   },
 ];
 

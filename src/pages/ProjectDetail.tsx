@@ -120,10 +120,7 @@ const ProjectDetail = () => {
                     Overview
                   </h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    This project demonstrates advanced web development
-                    techniques and best practices. It showcases modern design
-                    patterns, performance optimization, and scalable
-                    architecture.
+                    Hello World
                   </p>
                 </section>
 

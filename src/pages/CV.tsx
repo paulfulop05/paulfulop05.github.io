@@ -6,6 +6,17 @@ const CV = () => {
   const cvPdfPath = "/PAUL_FÜLÖP_CV.pdf";
   const privateCvPdfPath = "/PAUL_FÜLÖP_CV_PRIVATE.pdf";
 
+  const handleDownloadPDF = (pdfPath: string, fileName: string) => {
+    // Create a temporary anchor element for download
+    const link = document.createElement("a");
+    link.href = pdfPath;
+    link.download = fileName;
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -45,16 +56,17 @@ const CV = () => {
                 <span className="hidden xs:inline">Open in New Tab</span>
                 <span className="xs:hidden">Open</span>
               </motion.a>
-              <motion.a
-                href={cvPdfPath}
-                download
+              <motion.button
+                onClick={() =>
+                  handleDownloadPDF(cvPdfPath, "PAUL_FÜLÖP_CV.pdf")
+                }
                 className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 md:px-4 py-2 text-xs md:text-sm bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
                 whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
                 whileTap={{ scale: 0.98 }}
               >
                 <Download className="w-4 h-4" />
                 <span>Download</span>
-              </motion.a>
+              </motion.button>
             </div>
           </motion.div>
 
@@ -90,16 +102,17 @@ const CV = () => {
               </p>
             </div>
             <div className="flex flex-col gap-3">
-              <motion.a
-                href={cvPdfPath}
-                download
+              <motion.button
+                onClick={() =>
+                  handleDownloadPDF(cvPdfPath, "PAUL_FÜLÖP_CV.pdf")
+                }
                 className="flex items-center justify-center gap-2 px-4 py-3 text-sm bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
                 whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
                 whileTap={{ scale: 0.98 }}
               >
                 <Download className="w-4 h-4" />
                 <span>Download CV</span>
-              </motion.a>
+              </motion.button>
               <motion.a
                 href={privateCvPdfPath}
                 target="_blank"
@@ -122,13 +135,12 @@ const CV = () => {
             transition={{ delay: 0.4 }}
           >
             Having trouble viewing the PDF?{" "}
-            <a
-              href={cvPdfPath}
-              download
-              className="text-primary hover:underline"
+            <button
+              onClick={() => handleDownloadPDF(cvPdfPath, "PAUL_FÜLÖP_CV.pdf")}
+              className="text-primary hover:underline cursor-pointer"
             >
               Download it directly
-            </a>
+            </button>
           </motion.p>
         </div>
       </motion.div>

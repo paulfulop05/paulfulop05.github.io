@@ -283,11 +283,12 @@ const Hero = () => {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                {(activeTab === "work" ? workExperience : education).length === 0 ? (
+                {(activeTab === "work" ? workExperience : education).length ===
+                0 ? (
                   <span className="text-muted-foreground text-sm italic">
-                    {activeTab === "work" 
-                      ? "No work experience yet — currently focused on learning and personal projects."
-                      : "No education entries yet."}
+                    {activeTab === "work"
+                      ? "No work experience yet :("
+                      : "No education entries yet :("}
                   </span>
                 ) : (
                   (activeTab === "work" ? workExperience : education).map(

@@ -29,7 +29,9 @@ const Projects = () => {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border hover:border-primary hover:bg-primary/10 transition-all duration-200 group"
               >
                 <Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
-                <span className="font-semibold text-foreground group-hover:text-primary transition-colors duration-200">GitHub</span>
+                <span className="font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
+                  GitHub
+                </span>
               </a>
             </div>
           </div>

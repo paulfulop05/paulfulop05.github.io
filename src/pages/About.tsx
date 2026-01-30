@@ -132,18 +132,143 @@ const About = () => {
               {/* Text - left on desktop, bottom on mobile */}
               <div className="prose prose-invert max-w-none flex-1 order-2 md:order-1">
                 <p className="text-md text-muted-foreground leading-relaxed mb-6">
-                  I am an undergraduate student in Computer Science and
-                  Mathematics with a strong interest in technology,
-                  problem-solving, and software development. I’ve built a strong
-                  foundation in algorithms, data structures, and analytical
-                  thinking, and I enjoy putting these concepts into practice
-                  through personal projects.
+                  I am an undergraduate student in{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: -2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    Computer Science
+                  </motion.span>{" "}
+                  and{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: 2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    Mathematics
+                  </motion.span>{" "}
+                  with a strong interest in{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: 2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    technology
+                  </motion.span>
+                  ,{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: -2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    problem-solving
+                  </motion.span>
+                  , and{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: -2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    software development
+                  </motion.span>
+                  . I’ve built a strong foundation in{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: -2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    algorithms
+                  </motion.span>
+                  ,{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: 2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    data structures
+                  </motion.span>
+                  , and{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: -2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    analytical thinking
+                  </motion.span>
+                  , and I enjoy putting these concepts into practice through
+                  personal projects.
                 </p>
                 <p className="text-md text-muted-foreground leading-relaxed mb-6">
-                  I like exploring new ideas and working on projects that help
-                  me grow as a developer. I’m especially interested in game
-                  development and look forward to learning more about artificial
-                  intelligence and machine learning as I progress.
+                  I have a mild interest in{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: 2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    game development
+                  </motion.span>
+                  ,{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: 2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    low-level programming
+                  </motion.span>{" "}
+                  in C/C++, and look forward to learning more about{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: 2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    artificial intelligence
+                  </motion.span>{" "}
+                  and{" "}
+                  <motion.span
+                    className="text-primary font-semibold inline-block"
+                    whileHover={{
+                      scale: 1,
+                      rotate: 2,
+                      transition: { duration: 0.15 },
+                    }}
+                  >
+                    machine learning
+                  </motion.span>{" "}
+                  as I progress.
                 </p>
 
                 <p className="text-md text-muted-foreground leading-relaxed mb-6">
@@ -154,53 +279,6 @@ const About = () => {
                 </p>
               </div>
             </div>
-
-            {/* What I Do Section */}
-            <section className="mb-32">
-              <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-                <motion.div
-                  animate={{ rotate: [0, 15, -15, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                >
-                  <Lightbulb className="w-8 h-8 text-primary" />
-                </motion.div>
-                What I Do
-              </h2>
-
-              <div className="relative h-[420px] sm:h-[450px] mt-8 sm:mt-16">
-                <CardSwap
-                  width={dimensions.cardWidth}
-                  height={dimensions.cardHeight}
-                  cardDistance={dimensions.cardDistance}
-                  verticalDistance={dimensions.verticalDistance}
-                  delay={4000}
-                  pauseOnHover={false}
-                  skewAmount={4}
-                  easing="elastic"
-                >
-                  {whatIDoCards.map((card, index) => {
-                    const Icon = card.icon;
-                    return (
-                      <Card key={index}>
-                        <div className="h-full w-full rounded-xl bg-secondary border border-border overflow-hidden">
-                          <div className="p-6 h-full flex flex-col">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                              <Icon className="w-5 h-5 text-primary" />
-                            </div>
-                            <h3 className="text-lg font-bold mb-2 text-foreground">
-                              {card.title}
-                            </h3>
-                            <p className="text-muted-foreground text-sm leading-relaxed">
-                              {card.description}
-                            </p>
-                          </div>
-                        </div>
-                      </Card>
-                    );
-                  })}
-                </CardSwap>
-              </div>
-            </section>
 
             {/* Skills Section */}
             <section className="mb-32">

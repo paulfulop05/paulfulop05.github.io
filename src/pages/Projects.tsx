@@ -16,9 +16,7 @@ const Projects = () => {
               My <span className="text-primary">Projects</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mb-4">
-              Here is some of my technical work. I use these projects to explore
-              different challenges and demonstrate my approach to software
-              development.
+              Here are some of the projects I've worked on.
             </p>
             <div className="inline-flex items-center gap-2 text-sm">
               <span className="text-muted-foreground">More on</span>

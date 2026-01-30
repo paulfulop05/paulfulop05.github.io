@@ -419,7 +419,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="rounded-xl bg-secondary border border-border overflow-hidden"
+                className="p-5 rounded-xl bg-secondary border border-border hover:border-primary/30 transition-all duration-300"
               >
                 <div
                   className="max-h-[320px] overflow-y-auto p-6 scrollbar-thin"

@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Download, ExternalLink } from "lucide-react";
 
 const CV = () => {
-  const cvPdfPath = "/PAUL_FÜLÖP_CV.pdf";
   const privateCvPdfPath = "/PAUL_FÜLÖP_CV_PRIVATE.pdf";
 
   const handleDownloadPDF = (pdfPath: string, fileName: string) => {
@@ -58,7 +57,10 @@ const CV = () => {
               </motion.a>
               <motion.button
                 onClick={() =>
-                  handleDownloadPDF(cvPdfPath, "PAUL_FÜLÖP_CV.pdf")
+                  handleDownloadPDF(
+                    privateCvPdfPath,
+                    "PAUL_FÜLÖP_CV_PRIVATE.pdf",
+                  )
                 }
                 className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 md:px-4 py-2 text-xs md:text-sm bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
                 whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
@@ -104,7 +106,10 @@ const CV = () => {
             <div className="flex flex-col gap-3">
               <motion.button
                 onClick={() =>
-                  handleDownloadPDF(cvPdfPath, "PAUL_FÜLÖP_CV.pdf")
+                  handleDownloadPDF(
+                    privateCvPdfPath,
+                    "PAUL_FÜLÖP_CV_PRIVATE.pdf",
+                  )
                 }
                 className="flex items-center justify-center gap-2 px-4 py-3 text-sm bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
                 whileHover={{ scale: 1.02, transition: { duration: 0.15 } }}
@@ -136,7 +141,9 @@ const CV = () => {
           >
             Having trouble viewing the PDF?{" "}
             <button
-              onClick={() => handleDownloadPDF(cvPdfPath, "PAUL_FÜLÖP_CV.pdf")}
+              onClick={() =>
+                handleDownloadPDF(privateCvPdfPath, "PAUL_FÜLÖP_CV_PRIVATE.pdf")
+              }
               className="text-primary hover:underline cursor-pointer"
             >
               Download it directly

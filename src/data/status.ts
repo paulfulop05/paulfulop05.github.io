@@ -13,7 +13,7 @@ export const currentStatus: CurrentStatus = {
   availabilityText: "Available for work",
   availabilityColor: "green-500", // Change to "red-500" when not available, or "yellow-500" for limited availability
   currentProject: {
-    title: "Toy Language Interpreter",
-    technologies: ["Java", "JavaFx"],
+    title: "PSH (my own shell)",
+    technologies: ["Plain C"],
   },
 };

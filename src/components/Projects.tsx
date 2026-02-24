@@ -70,11 +70,18 @@ const Projects = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {projects.map((project) => (
-            <motion.div key={project.id} variants={itemVariants} className="h-full">
-              <ProjectCard {...project} />
-            </motion.div>
-          ))}
+          {projects.map((project, index) => {
+            const isLastOdd = projects.length % 2 !== 0 && index === projects.length - 1;
+            return (
+              <motion.div
+                key={project.id}
+                variants={itemVariants}
+                className={`h-full ${isLastOdd ? "md:col-span-2 md:max-w-[calc(50%-12px)] md:mx-auto md:w-full" : ""}`}
+              >
+                <ProjectCard {...project} />
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

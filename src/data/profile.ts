@@ -37,6 +37,7 @@ export const getLinkedinUsername = () => {
   return match ? decodeURIComponent(match[1]) : "";
 };
 
+// unused for now, i'll see what i do with this in the future maybe
 export const whatIDoCards: WhatIDoCard[] = [
   {
     title: "Building My Skillset",

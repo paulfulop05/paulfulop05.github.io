@@ -1,7 +1,6 @@
 export interface CurrentStatus {
-  available: boolean;
-  availabilityText: string; // e.g., "Available for work", "Not available", "Open to opportunities"
-  availabilityColor: string; // Tailwind color class e.g., "green-500", "red-500", "yellow-500"
+  available: boolean; // true = open for work, false = not available
+  showAvailability: boolean; // controls whether the availability indicator is shown at all
   currentProject: {
     title: string;
     technologies: string[];
@@ -9,11 +8,18 @@ export interface CurrentStatus {
 }
 
 export const currentStatus: CurrentStatus = {
-  available: true,
-  availabilityText: "Available for work",
-  availabilityColor: "green-500", // Change to "red-500" when not available, or "yellow-500" for limited availability
+  available: true, // flip to true when open for work
+  showAvailability: true, // flip to false to hide the indicator entirely
   currentProject: {
-    title: "PSH (my own shell)",
+    title: "PSH",
     technologies: ["Plain C"],
   },
 };
+
+// Derived — don't edit these
+export const availabilityText = currentStatus.available
+  ? "Available for work"
+  : "Not available";
+export const availabilityColor = currentStatus.available
+  ? "green-500"
+  : "red-500";

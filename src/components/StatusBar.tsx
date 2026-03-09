@@ -1,16 +1,13 @@
 import { motion } from "framer-motion";
-import { Circle, Mail, Code2 } from "lucide-react";
+import { Circle, Code2 } from "lucide-react";
 import {
   currentStatus,
   availabilityText,
   availabilityColor,
 } from "@/data/status";
-import { getEmailLink } from "@/data/profile";
 
 const StatusBar = () => {
   const { available, currentProject, showAvailability } = currentStatus;
-
-  const emailLink = getEmailLink();
 
   return (
     <motion.div
@@ -20,49 +17,30 @@ const StatusBar = () => {
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-5xl mx-auto px-6 py-3 sm:py-2 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs">
-        {/* Top row on mobile / Left side on desktop - Status & Contact */}
-        <div className="flex items-center justify-between w-full sm:w-auto gap-4">
+      <div className="max-w-5xl mx-auto px-4 py-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs">
+        {/* Availability status */}
+        {showAvailability && (
           <motion.div
-            className="flex items-center gap-1.5"
+            className="flex items-center gap-1.5 shrink-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
-            {showAvailability && (
-              <>
-                <motion.div
-                  animate={available ? { scale: [1, 1.2, 1] } : {}}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Circle
-                    className={`w-2 h-2 fill-${availabilityColor} text-${availabilityColor}`}
-                  />
-                </motion.div>
-                <span className="text-muted-foreground">
-                  {availabilityText}
-                </span>
-              </>
-            )}
+            <motion.div
+              animate={available ? { scale: [1, 1.2, 1] } : {}}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <Circle
+                className={`w-2 h-2 fill-${availabilityColor} text-${availabilityColor}`}
+              />
+            </motion.div>
+            <span className="text-muted-foreground">{availabilityText}</span>
           </motion.div>
+        )}
 
-          {/* Contact - visible on mobile in top row */}
-          <motion.a
-            href={emailLink}
-            className="flex sm:hidden items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            whileHover={{ x: 2, transition: { duration: 0.15 } }}
-          >
-            <Mail className="w-3 h-3" />
-            <span>Contact</span>
-          </motion.a>
-        </div>
-
-        {/* Center - Currently Working On (Spotify-style) */}
+        {/* Currently Working On */}
         <motion.div
-          className="flex items-center gap-2 text-muted-foreground"
+          className="flex items-center gap-2 text-muted-foreground min-w-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
@@ -70,16 +48,21 @@ const StatusBar = () => {
           <motion.div
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            className="shrink-0"
           >
             <Code2 className="w-3.5 h-3.5 text-primary" />
           </motion.div>
-          <span className="hidden sm:inline">Currently working on</span>
-          <span className="sm:hidden">Working on</span>
-          <span className="font-medium text-foreground">
+          <span className="hidden sm:inline shrink-0">
+            Currently working on
+          </span>
+          <span className="sm:hidden shrink-0">Working on</span>
+          <span className="font-medium text-foreground truncate">
             {currentProject.title}
           </span>
-          <span className="hidden md:inline text-muted-foreground/60">•</span>
-          <span className="hidden md:inline text-muted-foreground/60">
+          <span className="hidden md:inline text-muted-foreground/60 shrink-0">
+            •
+          </span>
+          <span className="hidden md:inline text-muted-foreground/60 truncate">
             {currentProject.technologies.join(", ")}
           </span>
         </motion.div>

@@ -11,8 +11,8 @@ export const currentStatus: CurrentStatus = {
   available: true, // flip to true when open for work
   showAvailability: true, // flip to false to hide the indicator entirely
   currentProject: {
-    title: "PSH",
-    technologies: ["Plain C"],
+    title: "elderyCare",
+    technologies: ["Next.js", "Javascript", "PostgreSQL"],
   },
 };
 

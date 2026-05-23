@@ -20,7 +20,7 @@ export const education: Experience[] = [
     name: "UBB FMI",
     role: "Bachelor's in Computer Science",
     description:
-      "I am currently studying at Babeș-Bolyai University in the Faculty of Mathematics and Computer Science. My studies include operating systems, where I worked with C, Bash, and basic computer architecture and assembly. I’ve also strengthened my understanding of object-oriented programming through C++, Java, and Python, and continued to deepen my knowledge of data structures, algorithms, and mathematics.",
+      "I am currently studying at Babeș-Bolyai University in the Faculty of Mathematics and Computer Science. My coursework covers operating systems (C, Bash, basic architecture and assembly), networks, databases, web programming, and software engineering. I have strengthened my object-oriented programming skills with C++, Java, and Python, and have deepened my knowledge of data structures, algorithms, system design, and machine learning.",
     period: "October 2024 - July 2027",
     website: "https://www.cs.ubbcluj.ro/",
     icon: ubb_icon,

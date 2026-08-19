@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
-import { Github } from "lucide-react";
+import { Github, ChevronLeft } from "pixelarticons/react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import TechBadge from "@/components/TechBadge";
@@ -22,7 +22,10 @@ const ProjectDetail = () => {
               The project you're looking for doesn't exist.
             </p>
             <Button asChild variant="outline">
-              <a href="/projects">← Back to Projects</a>
+              <a href="/projects">
+                <ChevronLeft className="w-4 h-4" />
+                Back to Projects
+              </a>
             </Button>
           </div>
         </main>
@@ -50,7 +53,13 @@ const ProjectDetail = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
             >
-              <span className="text-sm">← Back to Projects</span>
+              <motion.div
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </motion.div>
+              <span className="text-sm">Back to Projects</span>
             </motion.a>
 
             {/* Project Header */}
@@ -90,7 +99,7 @@ const ProjectDetail = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-6 h-6" />
                     View on GitHub
                   </a>
                 </Button>

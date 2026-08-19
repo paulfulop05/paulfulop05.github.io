@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail, Code, Brain, Rocket } from "lucide-react";
+import { Code, Brain, Rocket } from "lucide-react";
+import { Github, Linkedin, Mail } from "pixelarticons/react";
 
 export interface SocialLink {
   href: string;

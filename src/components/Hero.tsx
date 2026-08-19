@@ -1,4 +1,4 @@
-import { FileText } from "lucide-react";
+import { ChevronRight, FileText } from "pixelarticons/react";
 import { cn } from "@/lib/utils";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -180,7 +180,7 @@ const Hero = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.15 }}
               >
-                <FileText className="w-4 h-4" />
+                <FileText className="w-5 h-5" />
                 <span>CV</span>
               </motion.a>
             </motion.div>
@@ -226,7 +226,13 @@ const Hero = () => {
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.15 }}
               >
-                <span className="text-sm">More about me →</span>
+                <span className="text-sm">More about me</span>
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </motion.div>
               </motion.a>
             </motion.div>
           </motion.div>
@@ -249,7 +255,7 @@ const Hero = () => {
                   "text-lg font-semibold transition-all duration-200 pb-2 relative",
                   activeTab === tab
                     ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
+                    : "text-muted-foreground hover:text-foreground",
                 )}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
@@ -334,7 +340,7 @@ const Hero = () => {
                           </span>
                         )}
                       </motion.div>
-                    )
+                    ),
                   )
                 )}
               </motion.div>

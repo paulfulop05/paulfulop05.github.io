@@ -1,5 +1,6 @@
 import ProjectCard from "./ProjectCard";
-import { ArrowRight, Star } from "lucide-react";
+import { ChevronRight2 } from "pixelarticons/react";
+import { Code } from "pixelarticons/react";
 import { motion } from "framer-motion";
 import { getFeaturedProjects } from "@/data/projects";
 
@@ -44,7 +45,7 @@ const Projects = () => {
               animate={{ rotate: [0, 15, -15, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
             >
-              <Star className="w-8 h-8 text-primary" />
+              <Code className="w-9 h-9 text-primary" />
             </motion.div>
             Featured Projects
           </h2>
@@ -58,7 +59,7 @@ const Projects = () => {
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              <ArrowRight className="w-4 h-4" />
+              <ChevronRight2 className="w-4 h-4" />
             </motion.div>
           </motion.a>
         </motion.div>
@@ -71,7 +72,8 @@ const Projects = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {projects.map((project, index) => {
-            const isLastOdd = projects.length % 2 !== 0 && index === projects.length - 1;
+            const isLastOdd =
+              projects.length % 2 !== 0 && index === projects.length - 1;
             return (
               <motion.div
                 key={project.id}

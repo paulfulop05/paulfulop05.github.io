@@ -1,4 +1,4 @@
-import { ExternalLink, Folder } from "lucide-react";
+import { ExternalLink, Folder } from "pixelarticons/react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { useState } from "react";

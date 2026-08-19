@@ -347,7 +347,7 @@ const About = () => {
                         {languageSkills.familiar.items.map((skill, idx) => (
                           <span
                             key={idx}
-                            className="px-2.5 py-1 rounded-md text-xs font-medium border bg-[hsl(var(--tech-language-bg))] text-[hsl(var(--tech-language-text))] border-[hsl(var(--tech-language-border))]"
+                            className="px-2.5 py-1 rounded-md text-xs font-medium border bg-[hsl(var(--tech-familiar-language-bg))] text-[hsl(var(--tech-familiar-language-text))] border-[hsl(var(--tech-familiar-language-border))]"
                           >
                             {skill}
                           </span>

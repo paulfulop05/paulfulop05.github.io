@@ -61,6 +61,10 @@ All colors MUST be HSL.
     --tech-language-text: 45 93% 58%;
     --tech-language-border: 45 93% 47% / 0.3;
 
+    --tech-familiar-language-bg: 270 65% 47% / 0.2;
+    --tech-familiar-language-text: 270 75% 65%;
+    --tech-familiar-language-border: 270 65% 47% / 0.3;
+
     --tech-framework-bg: 0 84% 60% / 0.2;
     --tech-framework-text: 0 84% 65%;
     --tech-framework-border: 0 84% 60% / 0.3;

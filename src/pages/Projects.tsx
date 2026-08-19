@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
 import { getGithubLink } from "@/data/profile";
-import { Github } from "lucide-react";
+import { Github } from "pixelarticons/react";
 
 const Projects = () => {
   return (

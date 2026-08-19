@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { motion } from "framer-motion";
-import { Download, ExternalLink } from "lucide-react";
+import { Download, ExternalLink, ChevronLeft } from "pixelarticons/react";
 
 const CV = () => {
   const privateCvPdfPath = "/PAUL_FÜLÖP_CV_PRIVATE.pdf";
@@ -39,7 +39,13 @@ const CV = () => {
               className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
               whileHover={{ x: 5, transition: { duration: 0.15 } }}
             >
-              <span className="text-sm">← Back to Home</span>
+              <motion.div
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </motion.div>
+              <span className="text-sm"> Back to Home</span>
             </motion.a>
 
             <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">

@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
-import { Github, ChevronLeft } from "pixelarticons/react";
+import { Calendar, ChevronLeft2, Github, Label } from "pixelarticons/react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import TechBadge from "@/components/TechBadge";
@@ -16,14 +16,14 @@ const ProjectDetail = () => {
       <div className="min-h-screen">
         <Navigation />
         <main className="pt-32 pb-20">
-          <div className="max-w-5xl mx-auto px-6 text-center">
+          <div className="max-w-7xl mx-auto w-full px-6 md:px-10 text-center">
             <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
             <p className="text-muted-foreground mb-8">
               The project you're looking for doesn't exist.
             </p>
             <Button asChild variant="outline">
               <a href="/projects">
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft2 className="w-4 h-4" />
                 Back to Projects
               </a>
             </Button>
@@ -38,101 +38,83 @@ const ProjectDetail = () => {
       <Navigation />
 
       <main className="pt-32 pb-20">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Back to Projects */}
-            <motion.a
-              href="/projects"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
-              whileHover={{ x: 5, transition: { duration: 0.15 } }}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.05 }}
-            >
-              <motion.div
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </motion.div>
-              <span className="text-sm">Back to Projects</span>
-            </motion.a>
-
-            {/* Project Header */}
-            <motion.div
-              className="mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-            >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                {project.title}
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-3xl mb-6">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-8">
-                {project.tags.map((tag, index) => (
-                  <TechBadge
-                    key={index}
-                    tech={tag.name}
-                    type={tag.type}
-                    index={index}
-                  />
-                ))}
-              </div>
-
-              <div className="flex gap-4">
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-border hover:border-primary"
-                >
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
-                    <Github className="w-6 h-6" />
-                    View on GitHub
-                  </a>
-                </Button>
-              </div>
-            </motion.div>
-
             {/* Project Demo/Image */}
             <motion.div
-              className="mb-12 rounded-lg overflow-hidden border border-border bg-muted flex items-center justify-center"
+              className="mb-10 rounded-lg overflow-hidden border border-border bg-muted flex items-center justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.05 }}
             >
               <img
                 src={project.previewGif || project.previewImage}
                 alt={`${project.title} demo`}
-                className="w-full max-h-[500px] object-contain"
+                className="w-full max-h-[640px] object-contain"
               />
             </motion.div>
 
-            {/* Project Content */}
+            {/* Project Metadata */}
             <motion.div
-              className="prose prose-invert max-w-none"
+              className="mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
             >
-              <div className="space-y-8">
+              <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6">
+                {project.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-5 mb-6 text-sm text-muted-foreground">
+                <span className="inline-flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  {project.date || "Date not specified"}
+                </span>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Open GitHub repository"
+                  aria-label="Open GitHub repository"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <Label className="w-5 h-5 mt-1 shrink-0 text-muted-foreground" />
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, index) => (
+                    <TechBadge
+                      key={index}
+                      tech={tag.name}
+                      type={tag.type}
+                      index={index}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            <div className="border-t border-border mb-8" />
+
+            {/* Project Content */}
+            <motion.div
+              className="max-w-4xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.25 }}
+            >
+              <div className="space-y-10">
                 {project.overview && (
                   <section>
-                    <h2 className="text-3xl font-bold mb-4 text-foreground">
+                    <h3 className="text-3xl font-bold mb-4 text-foreground">
                       Overview
-                    </h2>
+                    </h3>
                     <p className="text-muted-foreground leading-relaxed">
                       {project.overview}
                     </p>
@@ -141,9 +123,9 @@ const ProjectDetail = () => {
 
                 {project.features && project.features.length > 0 && (
                   <section>
-                    <h2 className="text-3xl font-bold mb-4 text-foreground">
+                    <h3 className="text-3xl font-bold mb-4 text-foreground">
                       Features
-                    </h2>
+                    </h3>
                     <ul className="space-y-2 text-muted-foreground">
                       {project.features.map((feature, index) => (
                         <li key={index}>• {feature}</li>
@@ -154,9 +136,9 @@ const ProjectDetail = () => {
 
                 {project.technicalStack && (
                   <section>
-                    <h2 className="text-3xl font-bold mb-4 text-foreground">
+                    <h3 className="text-3xl font-bold mb-4 text-foreground">
                       Technical Stack
-                    </h2>
+                    </h3>
                     <p className="text-muted-foreground leading-relaxed">
                       {project.technicalStack}
                     </p>
@@ -165,9 +147,9 @@ const ProjectDetail = () => {
 
                 {project.implementation && (
                   <section>
-                    <h2 className="text-3xl font-bold mb-4 text-foreground">
+                    <h3 className="text-3xl font-bold mb-4 text-foreground">
                       Implementation
-                    </h2>
+                    </h3>
                     <p className="text-muted-foreground leading-relaxed">
                       {project.implementation}
                     </p>

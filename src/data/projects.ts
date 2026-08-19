@@ -22,6 +22,7 @@ export interface ProjectTag {
 export interface Project {
   id: string;
   title: string;
+  date?: string;
   description: string;
   tags: ProjectTag[];
   link: string;

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { getFeaturedProjects } from "@/data/projects";
 
 const Projects = () => {
-  const projects = getFeaturedProjects();
+  const projects = getFeaturedProjects().slice(0, 2);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -32,7 +32,7 @@ const Projects = () => {
 
   return (
     <section className="pt-0 pb-4 bg-background">
-      <div className="max-w-6xl mx-auto w-full px-6 md:px-10">
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-10">
         <motion.div
           className="flex items-center justify-between mb-4"
           initial={{ opacity: 0, y: 20 }}
@@ -71,14 +71,12 @@ const Projects = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {projects.map((project, index) => {
-            const isLastOdd =
-              projects.length % 2 !== 0 && index === projects.length - 1;
+          {projects.map((project) => {
             return (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
-                className={`h-full ${isLastOdd ? "md:col-span-2 md:max-w-[calc(50%-12px)] md:mx-auto md:w-full" : ""}`}
+                className="h-full"
               >
                 <ProjectCard {...project} />
               </motion.div>

@@ -10,7 +10,7 @@ const Projects = () => {
       <Navigation />
 
       <main className="pt-32 pb-20">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-10">
           <div className="animate-fade-in mb-12">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               My <span className="text-primary">Projects</span>

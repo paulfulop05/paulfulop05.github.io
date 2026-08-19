@@ -47,7 +47,7 @@ const ProjectCard = ({
         whileTap={{ scale: 0.98 }}
       >
         <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 h-full flex flex-col">
-          <div className="relative h-48 bg-muted overflow-hidden flex items-center justify-center">
+          <div className="relative h-72 md:h-80 bg-muted overflow-hidden flex items-center justify-center">
             <motion.div
               className="absolute inset-0 flex items-center justify-center"
               initial={false}
@@ -102,7 +102,7 @@ const ProjectCard = ({
                 </motion.span>
               </h3>
             </div>
-            <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+            <p className="text-sm text-muted-foreground mb-3 min-h-20 line-clamp-4 leading-5">
               {description}
             </p>
             <div className="flex flex-wrap gap-1.5 items-start mt-auto">

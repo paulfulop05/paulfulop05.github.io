@@ -46,7 +46,7 @@ const ProjectCard = ({
         whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.2 } }}
         whileTap={{ scale: 0.98 }}
       >
-        <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 h-full flex flex-col">
+        <Card className="overflow-hidden border-border hover:border-primary transition-all duration-300 h-full flex flex-col">
           <div className="relative h-48 bg-muted overflow-hidden flex items-center justify-center">
             <motion.div
               className="absolute inset-0 flex items-center justify-center"
@@ -58,7 +58,7 @@ const ProjectCard = ({
                 <motion.img
                   src={previewGif || DEFAULT_PREVIEW_GIF}
                   alt={`${title} demo`}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-fill"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
@@ -67,7 +67,7 @@ const ProjectCard = ({
                 <img
                   src={previewImage || DEFAULT_PREVIEW_IMAGE}
                   alt={title}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-fill"
                 />
               )}
             </motion.div>

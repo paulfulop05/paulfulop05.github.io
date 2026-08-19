@@ -32,7 +32,7 @@ const Projects = () => {
 
   return (
     <section className="pt-0 pb-4 bg-background">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto w-full px-6 md:px-10">
         <motion.div
           className="flex items-center justify-between mb-4"
           initial={{ opacity: 0, y: 20 }}

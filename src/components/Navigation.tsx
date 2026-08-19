@@ -56,7 +56,7 @@ const Navigation = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="max-w-5xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+      <div className="w-full px-8 sm:px-10 lg:px-20 py-5 flex flex-wrap items-center justify-between gap-2">
         <motion.div
           className="flex items-center text-sm md:text-lg min-w-0"
           initial={{ opacity: 0 }}

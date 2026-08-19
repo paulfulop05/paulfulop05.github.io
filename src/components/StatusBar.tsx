@@ -17,7 +17,7 @@ const StatusBar = () => {
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-5xl mx-auto px-4 py-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs">
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 py-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs">
         {/* Availability status */}
         {showAvailability && (
           <motion.div

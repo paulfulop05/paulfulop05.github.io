@@ -96,7 +96,7 @@ const Hero = () => {
 
   return (
     <section className="min-h-[85vh] flex items-center pt-20 pb-8 relative">
-      <div className="max-w-5xl mx-auto px-6 w-full">
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 flex flex-col items-center text-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -117,7 +117,7 @@ const Hero = () => {
 
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-4 leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground max-w-4xl mb-4 leading-relaxed"
           >
             I'm a 20-year-old CS student at Babeș-Bolyai University in Romania.
             My work is centered around{" "}
@@ -158,7 +158,7 @@ const Hero = () => {
 
           <motion.p
             variants={itemVariants}
-            className="text-md text-muted-foreground max-w-3xl mb-8 leading-relaxed"
+            className="text-md text-muted-foreground max-w-4xl mb-8 leading-relaxed"
           >
             I have a strong enthusiasm for learning new concepts and applying
             them to develop meaningful, challenging projects.
@@ -166,7 +166,7 @@ const Hero = () => {
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6"
+            className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6"
           >
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -240,13 +240,13 @@ const Hero = () => {
 
         {/* Work & Education Section */}
         <motion.div
-          className="mt-20"
+          className="mt-20 w-full flex flex-col items-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
           {/* Tab Toggle */}
-          <div className="flex items-center gap-8 mb-8 w-fit">
+          <div className="flex items-center justify-center gap-8 mb-8 w-fit">
             {["work", "education"].map((tab) => (
               <motion.button
                 key={tab}
@@ -274,11 +274,11 @@ const Hero = () => {
           </div>
 
           {/* Organization Badges */}
-          <div className="w-full md:w-fit mb-8">
+          <div className="w-full mb-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
-                className="flex flex-wrap items-center gap-4 md:gap-6"
+                className="flex flex-wrap items-center justify-center gap-4 md:gap-6"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}

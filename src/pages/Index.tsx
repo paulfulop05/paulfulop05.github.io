@@ -14,7 +14,7 @@ const Index = () => {
 
       {/* Dashboard / Highlights Section */}
       <section className="py-12 bg-background">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-10">
           {/* Responsive Flex for Cards with Equal Height */}
           <div className="flex flex-col md:flex-row gap-6 items-start">
             {/* Recent Commits Card - 2/3 width */}

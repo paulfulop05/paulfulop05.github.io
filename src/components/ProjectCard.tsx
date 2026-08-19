@@ -73,7 +73,6 @@ const ProjectCard = ({
                 />
               )}
             </motion.div>
-
           </div>
 
           <CardContent className="p-4 flex flex-col h-full">

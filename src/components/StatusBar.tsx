@@ -17,7 +17,7 @@ const StatusBar = () => {
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 py-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs">
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 py-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-semibold">
         {/* Availability status */}
         {showAvailability && (
           <motion.div
@@ -31,7 +31,7 @@ const StatusBar = () => {
               transition={{ duration: 2, repeat: Infinity }}
             >
               <Circle
-                className={`w-2 h-2 fill-${availabilityColor} text-${availabilityColor}`}
+                className={`w-2.5 h-2.5 fill-${availabilityColor} text-${availabilityColor}`}
               />
             </motion.div>
             <span className="text-muted-foreground">{availabilityText}</span>
@@ -50,7 +50,7 @@ const StatusBar = () => {
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             className="shrink-0"
           >
-            <Code2 className="w-3.5 h-3.5 text-primary" />
+            <Code2 className="w-4 h-4 text-primary" />
           </motion.div>
           <span className="hidden sm:inline shrink-0">
             Currently working on

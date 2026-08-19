@@ -58,7 +58,7 @@ const Navigation = () => {
     >
       <div className="w-full px-8 sm:px-10 lg:px-20 py-5 flex flex-wrap items-center justify-between gap-2">
         <motion.div
-          className="flex items-center text-sm md:text-lg min-w-0"
+          className="flex items-center text-base md:text-xl font-semibold min-w-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -107,7 +107,7 @@ const Navigation = () => {
             >
               <Link
                 to={link.to}
-                className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors relative group whitespace-nowrap"
+                className="text-sm sm:text-base font-semibold text-muted-foreground hover:text-primary transition-colors relative group whitespace-nowrap"
               >
                 <motion.span
                   whileHover={{ y: -2, transition: { duration: 0.15 } }}

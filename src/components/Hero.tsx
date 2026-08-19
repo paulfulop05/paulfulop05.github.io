@@ -94,7 +94,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-[72vh] flex items-center pt-20 pb-8 relative">
+    <section className="min-h-[60vh] flex items-center pt-28 pb-8 relative">
       <div className="max-w-7xl mx-auto w-full px-6 md:px-10 text-left">
         <motion.div
           variants={containerVariants}
@@ -116,12 +116,12 @@ const Hero = () => {
 
           <motion.p
             variants={itemVariants}
-            className="text-left text-lg md:text-xl text-muted-foreground max-w-4xl mb-4 leading-relaxed"
+            className="text-left text-lg md:text-xl text-muted-foreground max-w-3xl mb-4 leading-relaxed"
           >
             21-year-old undergrad CS student at Babeș-Bolyai University in
             Romania. My work is centered around{" "}
             <motion.span
-              className="text-primary font-semibold inline-block"
+              className="text-primary inline-block"
               whileHover={{
                 scale: 1.1,
                 rotate: -2,
@@ -132,7 +132,7 @@ const Hero = () => {
             </motion.span>
             ,{" "}
             <motion.span
-              className="text-primary font-semibold inline-block"
+              className="text-primary inline-block"
               whileHover={{
                 scale: 1.1,
                 rotate: 2,
@@ -143,7 +143,7 @@ const Hero = () => {
             </motion.span>
             , and{" "}
             <motion.span
-              className="text-primary font-semibold inline-block"
+              className="text-primary inline-block"
               whileHover={{
                 scale: 1.1,
                 rotate: -2,
@@ -151,17 +151,15 @@ const Hero = () => {
               }}
             >
               problem-solving
-            </motion.span>{" "}
-            .
+            </motion.span>
+            . I have a strong enthusiasm for learning new concepts and applying
+            them to develop meaningful, challenging projects.
           </motion.p>
 
           <motion.p
             variants={itemVariants}
-            className="text-left text-md text-muted-foreground max-w-4xl mb-8 leading-relaxed"
-          >
-            I have a strong enthusiasm for learning new concepts and applying
-            them to develop meaningful, challenging projects.
-          </motion.p>
+            className="text-left text-lg md:text-xl text-muted-foreground max-w-3xl mb-8 leading-relaxed"
+          ></motion.p>
 
           <motion.div
             variants={itemVariants}
@@ -247,45 +245,42 @@ const Hero = () => {
           <div className="w-full mb-8">
             <div className="flex flex-wrap items-center gap-4 md:gap-6">
               {allOrganizations.length === 0 ? (
-                  <span className="text-muted-foreground text-sm italic">
-                    No experience or education entries yet :(
-                  </span>
-                ) : (
-                  allOrganizations.map((org, index) => (
-                      <div
-                        key={org.key}
-                        className="flex items-center gap-6"
-                      >
-                        <div
-                          className={`flex items-center gap-3 cursor-pointer group transition-[filter,opacity] duration-200 ${org.isPast ? "brightness-50 opacity-70 hover:brightness-75 hover:opacity-100" : "brightness-100 hover:brightness-75"}`}
-                          onClick={(e) => handleOrgClick(org.key, e)}
-                        >
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
-                            <img
-                              src={org.icon}
-                              alt={org.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="flex items-baseline gap-1">
-                            <span className="text-base font-bold text-foreground/70">
-                              {org.name}
-                            </span>
-                            {org.isPast && (
-                              <span className="text-xs text-muted-foreground">
-                                (Past)
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                        {index < allOrganizations.length - 1 && (
-                          <span className="text-primary text-lg font-bold hidden md:inline">
-                            /
+                <span className="text-muted-foreground text-sm italic">
+                  No experience or education entries yet :(
+                </span>
+              ) : (
+                allOrganizations.map((org, index) => (
+                  <div key={org.key} className="flex items-center gap-6">
+                    <div
+                      className={`flex items-center gap-3 cursor-pointer group transition-[filter,opacity] duration-200 ${org.isPast ? "brightness-50 opacity-70 hover:brightness-75 hover:opacity-100" : "brightness-100 hover:brightness-75"}`}
+                      onClick={(e) => handleOrgClick(org.key, e)}
+                    >
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+                        <img
+                          src={org.icon}
+                          alt={org.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-base font-bold text-foreground/70">
+                          {org.name}
+                        </span>
+                        {org.isPast && (
+                          <span className="text-xs text-muted-foreground">
+                            (Past)
                           </span>
                         )}
                       </div>
-                  ))
-                )}
+                    </div>
+                    {index < allOrganizations.length - 1 && (
+                      <span className="text-primary text-lg font-bold hidden md:inline">
+                        /
+                      </span>
+                    )}
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </motion.div>

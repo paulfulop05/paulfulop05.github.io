@@ -1,4 +1,4 @@
-import { Code2, Zap, Wrench, Lightbulb } from "lucide-react";
+import { Code, Zap, Tools, Lightbulb } from "pixelarticons/react";
 
 export interface LanguageSkills {
   proficient: {
@@ -15,7 +15,7 @@ export interface SkillCategory {
   category: string;
   description: string;
   items: string[];
-  icon: typeof Code2;
+  icon: typeof Code;
   color: string;
 }
 
@@ -79,7 +79,7 @@ export const skills: SkillCategory[] = [
       "Git",
       "Prisma",
     ],
-    icon: Wrench,
+    icon: Tools,
     color:
       "bg-[hsl(var(--tech-tool-bg))] text-[hsl(var(--tech-tool-text))] border-[hsl(var(--tech-tool-border))]",
   },

@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { MapPin } from "pixelarticons/react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -11,7 +11,7 @@ const CurrentLocation = () => {
       minute: "2-digit",
       second: "2-digit",
       hour12: false,
-    })
+    }),
   );
 
   const LATITUDE = 46.7712;
@@ -30,7 +30,7 @@ const CurrentLocation = () => {
           minute: "2-digit",
           second: "2-digit",
           hour12: false,
-        })
+        }),
       );
     }, 1000);
 
@@ -53,7 +53,7 @@ const CurrentLocation = () => {
           animate={{ y: [0, -2, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <MapPin className="w-4 h-4 text-primary" />
+          <MapPin className="w-6 h-6 text-primary" />
         </motion.div>
         Currently Based In
       </h3>

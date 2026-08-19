@@ -1,13 +1,11 @@
 import Navigation from "@/components/Navigation";
-import { Code2, Trophy, Lightbulb, Wrench } from "lucide-react";
+import { Code, Trophy, Box } from "pixelarticons/react";
 import profileImage from "../assets/avatar.jpg";
 import profileImageGlasses from "../assets/avatar_with_glasses.jpg";
 import PixelTransition from "@/components/ui/pixel_transition";
-import CardSwap, { Card } from "@/components/ui/card-swap";
 import { motion } from "framer-motion";
 import { languageSkills, skills } from "@/data/skills";
 import { achievements } from "@/data/achievements";
-import { whatIDoCards } from "@/data/profile";
 import { useState, useEffect } from "react";
 
 const getCardDimensions = (viewportWidth: number) => {
@@ -292,7 +290,7 @@ const About = () => {
                   animate={{ rotate: [0, 15, -15, 0] }}
                   transition={{ duration: 2, repeat: Infinity, repeatDelay: 4 }}
                 >
-                  <Wrench className="w-8 h-8 text-primary" />
+                  <Box className="w-8 h-8 text-primary" />
                 </motion.div>
                 Skills & Technologies
               </motion.h2>
@@ -307,7 +305,7 @@ const About = () => {
                 >
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Code2 className="w-4 h-4 text-primary" />
+                      <Code className="w-6 h-6 text-primary" />
                     </div>
                     <h3 className="text-base font-bold text-primary">
                       Languages
@@ -372,7 +370,7 @@ const About = () => {
                       >
                         <div className="flex items-center gap-3 mb-3">
                           <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                            <Icon className="w-4 h-4 text-primary" />
+                            <Icon className="w-6 h-6 text-primary" />
                           </div>
                           <h3 className="text-base font-bold text-primary">
                             {skillGroup.category}

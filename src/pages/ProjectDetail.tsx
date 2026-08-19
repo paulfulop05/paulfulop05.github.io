@@ -23,7 +23,7 @@ const ProjectDetail = () => {
             </p>
             <Button asChild variant="outline">
               <a href="/projects">
-                <ChevronLeft2 className="w-4 h-4" />
+                <ChevronLeft2 className="w-5 h-5" />
                 Back to Projects
               </a>
             </Button>
@@ -70,7 +70,7 @@ const ProjectDetail = () => {
               </h1>
               <div className="flex flex-wrap items-center gap-5 mb-6 text-sm text-muted-foreground">
                 <span className="inline-flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
+                  <Calendar className="w-5 h-5" />
                   {project.date || "Date not specified"}
                 </span>
                 <a
@@ -81,12 +81,12 @@ const ProjectDetail = () => {
                   aria-label="Open GitHub repository"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  <Github className="w-5 h-5" />
+                  <Github className="w-6 h-6" />
                 </a>
               </div>
 
               <div className="flex items-start gap-3">
-                <Label className="w-5 h-5 mt-1 shrink-0 text-muted-foreground" />
+                <Label className="w-6 h-6 mt-1 shrink-0 text-muted-foreground" />
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, index) => (
                     <TechBadge

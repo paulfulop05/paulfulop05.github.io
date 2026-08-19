@@ -38,6 +38,7 @@ export const projects: Project[] = [
   {
     id: "eco_rewards",
     title: "Eco Rewards",
+    date: "May 18, 2025",
     description:
       "Award-Winning hackathon project. A mobile app that uses AI to help you make sustainable fashion choices. Assess clothing quality, donate responsibly, and earn discounts from eco-friendly brands.",
     tags: [
@@ -67,6 +68,7 @@ export const projects: Project[] = [
   {
     id: "tli",
     title: "Toy Language Interpreter",
+    date: "April 12, 2025",
     description:
       "A multi-threaded toy programming language interpreter with a JavaFX GUI, built as part of the Advanced Programming Methods course at UBB. Supports a custom imperative language with types, expressions, concurrency primitives, file I/O, and garbage collection.",
     tags: [
@@ -98,6 +100,7 @@ export const projects: Project[] = [
   {
     id: "chess",
     title: "Chess Game",
+    date: "February 23, 2025",
     description:
       "A simple chess game with appealing GUI and sound effects, made with C#, using .NET framework.",
     tags: [
@@ -124,6 +127,7 @@ export const projects: Project[] = [
   {
     id: "psh",
     title: "psh",
+    date: "January 15, 2025",
     description:
       "A minimal shell written in C for Windows. Runs external programs and supports a small set of built-in commands like cd, help, and exit.",
     tags: [{ name: "C", type: "language" }],
@@ -146,6 +150,7 @@ export const projects: Project[] = [
   {
     id: "obstruction",
     title: "Obstruction Game",
+    date: "December 08, 2024",
     description:
       "A board game implementation of the obliteration gamee in python (using pygame but also works in the terminal).",
     tags: [
@@ -172,6 +177,7 @@ export const projects: Project[] = [
   {
     id: "snake",
     title: "Snake Game",
+    date: "November 21, 2024",
     description: "Simple snake game with GUI, made in QtCreator, using C++.",
     tags: [
       { name: "C++", type: "language" },
@@ -196,6 +202,7 @@ export const projects: Project[] = [
   {
     id: "lee",
     title: "Lee's algorithm illustration",
+    date: "October 03, 2024",
     description: "Illustrating how Lee's algorithm works in C#.",
     tags: [
       { name: "C#", type: "language" },

@@ -1,5 +1,4 @@
 import { ChevronRight, FileText } from "pixelarticons/react";
-import { cn } from "@/lib/utils";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { workExperience, education, getOrganizations } from "@/data/experience";
@@ -9,7 +8,6 @@ import OrganizationModal, { ModalPosition } from "./OrganizationModal";
 const Hero = () => {
   const activeBadgeRef = useRef<HTMLElement | null>(null);
   const [activeModal, setActiveModal] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState("work");
   const [modalPosition, setModalPosition] = useState<ModalPosition>({
     badgeTopAbsolute: 0,
     badgeBottomAbsolute: 0,
@@ -19,6 +17,7 @@ const Hero = () => {
   });
 
   const organizations = getOrganizations();
+  const allOrganizations = [...workExperience, ...education];
 
   const handleOrgClick = (orgKey, event) => {
     const element = event.currentTarget;
@@ -95,7 +94,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-[85vh] flex items-center pt-20 pb-8 relative">
+    <section className="min-h-[72vh] flex items-center pt-20 pb-8 relative">
       <div className="max-w-7xl mx-auto w-full px-6 md:px-10 text-left">
         <motion.div
           variants={containerVariants}
@@ -238,97 +237,38 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Work & Education Section */}
+        {/* Experience and education badges */}
         <motion.div
           className="mt-20 w-full"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          {/* Tab Toggle */}
-          <div className="flex items-center gap-8 mb-8 w-fit">
-            {["work", "education"].map((tab) => (
-              <motion.button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={cn(
-                  "text-lg font-semibold transition-all duration-200 pb-2 relative",
-                  activeTab === tab
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.15 }}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                {activeTab === tab && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-                    layoutId="activeTab"
-                    transition={{
-                      type: "spring",
-                      stiffness: 500,
-                      damping: 30,
-                    }}
-                  />
-                )}
-              </motion.button>
-            ))}
-          </div>
-
-          {/* Organization Badges */}
           <div className="w-full mb-8">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                className="flex flex-wrap items-center gap-4 md:gap-6"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
-              >
-                {(activeTab === "work" ? workExperience : education).length ===
-                0 ? (
+            <div className="flex flex-wrap items-center gap-4 md:gap-6">
+              {allOrganizations.length === 0 ? (
                   <span className="text-muted-foreground text-sm italic">
-                    {activeTab === "work"
-                      ? "No work experience yet :("
-                      : "No education entries yet :("}
+                    No experience or education entries yet :(
                   </span>
                 ) : (
-                  (activeTab === "work" ? workExperience : education).map(
-                    (org, index, array) => (
-                      <motion.div
+                  allOrganizations.map((org, index) => (
+                      <div
                         key={org.key}
                         className="flex items-center gap-6"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
                       >
-                        <motion.div
-                          className="flex items-center gap-3 cursor-pointer group"
+                        <div
+                          className={`flex items-center gap-3 cursor-pointer group transition-[filter,opacity] duration-200 ${org.isPast ? "brightness-50 opacity-70 hover:brightness-75 hover:opacity-100" : "brightness-100 hover:brightness-75"}`}
                           onClick={(e) => handleOrgClick(org.key, e)}
-                          whileHover={{
-                            scale: 1.05,
-                            transition: { duration: 0.15 },
-                          }}
-                          whileTap={{ scale: 0.98 }}
                         >
-                          <motion.div
-                            className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 group-hover:ring-2 group-hover:ring-primary/50 transition-all"
-                            whileHover={{
-                              rotate: [0, -5, 5, 0],
-                              transition: { duration: 0.5 },
-                            }}
-                          >
+                          <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
                             <img
                               src={org.icon}
                               alt={org.name}
                               className="w-full h-full object-cover"
                             />
-                          </motion.div>
-                          <div className="flex flex-col">
-                            <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                          </div>
+                          <div className="flex items-baseline gap-1">
+                            <span className="text-base font-bold text-foreground/70">
                               {org.name}
                             </span>
                             {org.isPast && (
@@ -337,18 +277,16 @@ const Hero = () => {
                               </span>
                             )}
                           </div>
-                        </motion.div>
-                        {index < array.length - 1 && (
+                        </div>
+                        {index < allOrganizations.length - 1 && (
                           <span className="text-primary text-lg font-bold hidden md:inline">
                             /
                           </span>
                         )}
-                      </motion.div>
-                    ),
-                  )
+                      </div>
+                  ))
                 )}
-              </motion.div>
-            </AnimatePresence>
+            </div>
           </div>
         </motion.div>
       </div>

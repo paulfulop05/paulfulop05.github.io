@@ -13,6 +13,8 @@ import tli_preview from "@/assets/project_data/tli_preview.png";
 import tli_gif from "@/assets/project_data/tli.gif";
 import psh_preview from "@/assets/project_data/psh_preview.png";
 import psh_gif from "@/assets/project_data/psh.gif";
+import elderycare_gif from "@/assets/project_data/elderycare.gif";
+import elderycare_preview from "@/assets/project_data/elderycare.png";
 
 export interface ProjectTag {
   name: string;
@@ -36,9 +38,42 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "elderycare",
+    title: "elderyCare",
+    date: "Mar 23, 2026",
+    description:
+      "A healthcare coordination platform that helps elderly people and residential care hospitals communicate more easily. Doctors and administrators can schedule appointments, manage patient records, and monitor health progress in one place.",
+    tags: [
+      { name: "Next.js", type: "framework" },
+      { name: "React", type: "framework" },
+      { name: "TypeScript", type: "language" },
+      { name: "Prisma", type: "tool" },
+      { name: "PostgreSQL", type: "tool" },
+      { name: "Tailwind CSS", type: "framework" },
+    ],
+    link: "https://github.com/paulfulop05/elderycare",
+    previewImage: elderycare_preview,
+    previewGif: elderycare_gif,
+    overview:
+      "elderyCare is a web application designed to improve communication and care coordination between elderly patients, geriatric doctors, and residential care hospital teams. The live application is available at https://elderycare.vercel.app/. There is no public account creation because the platform is intended exclusively for geriatric care teams and managed users.",
+    features: [
+      "Role-based authentication for doctors and administrators",
+      "Restricted access without public account creation, designed for geriatric care teams",
+      "Appointment scheduling and status management",
+      "Patient records with doctor notes and visit history",
+      "Doctor and patient management for administrators",
+      "Health metrics tracking with historical progress data",
+      "Responsive dashboard with light and dark theme support",
+    ],
+    technicalStack:
+      "Built with Next.js, React, and TypeScript for the web application, Tailwind CSS and Radix UI for the interface, Prisma for database access, PostgreSQL/Neon for persistent data, and Jest and Playwright for automated testing.",
+    implementation:
+      "The application uses Next.js App Router pages and API routes to separate the public landing page, authentication flows, protected dashboard, and health-progress views. Prisma models doctors, patients, appointments, current health metrics, and historical measurements. Role-aware authentication protects dashboard operations, while service and repository layers keep data access organized and testable.",
+  },
+  {
     id: "eco_rewards",
     title: "Eco Rewards",
-    date: "May 18, 2025",
+    date: "Nov 22, 2025",
     description:
       "Award-Winning hackathon project. A mobile app that uses AI to help you make sustainable fashion choices. Assess clothing quality, donate responsibly, and earn discounts from eco-friendly brands.",
     tags: [
@@ -68,7 +103,7 @@ export const projects: Project[] = [
   {
     id: "tli",
     title: "Toy Language Interpreter",
-    date: "April 12, 2025",
+    date: "Mar 7, 2026",
     description:
       "A multi-threaded toy programming language interpreter with a JavaFX GUI, built as part of the Advanced Programming Methods course at UBB. Supports a custom imperative language with types, expressions, concurrency primitives, file I/O, and garbage collection.",
     tags: [
@@ -100,7 +135,7 @@ export const projects: Project[] = [
   {
     id: "chess",
     title: "Chess Game",
-    date: "February 23, 2025",
+    date: "May 20, 2024",
     description:
       "A simple chess game with appealing GUI and sound effects, made with C#, using .NET framework.",
     tags: [
@@ -127,7 +162,7 @@ export const projects: Project[] = [
   {
     id: "psh",
     title: "psh",
-    date: "January 15, 2025",
+    date: "Feb 21, 2026",
     description:
       "A minimal shell written in C for Windows. Runs external programs and supports a small set of built-in commands like cd, help, and exit.",
     tags: [{ name: "C", type: "language" }],
@@ -150,7 +185,7 @@ export const projects: Project[] = [
   {
     id: "obstruction",
     title: "Obstruction Game",
-    date: "December 08, 2024",
+    date: "Dec 13, 2024",
     description:
       "A board game implementation of the obliteration gamee in python (using pygame but also works in the terminal).",
     tags: [
@@ -177,7 +212,7 @@ export const projects: Project[] = [
   {
     id: "snake",
     title: "Snake Game",
-    date: "November 21, 2024",
+    date: "Dec 10, 2023",
     description: "Simple snake game with GUI, made in QtCreator, using C++.",
     tags: [
       { name: "C++", type: "language" },
@@ -202,7 +237,7 @@ export const projects: Project[] = [
   {
     id: "lee",
     title: "Lee's algorithm illustration",
-    date: "October 03, 2024",
+    date: "April 17, 2023",
     description: "Illustrating how Lee's algorithm works in C#.",
     tags: [
       { name: "C#", type: "language" },
